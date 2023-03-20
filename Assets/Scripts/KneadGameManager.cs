@@ -18,6 +18,9 @@ public class KneadGameManager : MonoBehaviour
     public TMP_Text newCurrencyText;
     public TMP_Text totalCurrencyText;
 
+    private GameObject catPaw1;
+    private GameObject catPaw2;
+
     private int numLumps;
     private int loavesKneaded = 0;
 
@@ -29,6 +32,9 @@ public class KneadGameManager : MonoBehaviour
         lumpManager.GetComponent<LumpManager>().numLumps = numLumps;
         winMenu.SetActive(false);
         startMenu.SetActive(true);
+
+        catPaw1 = GameObject.Find("catpaw1");
+        catPaw2 = GameObject.Find("catpaw2");
     }
 
     // Update is called once per frame
@@ -59,6 +65,8 @@ public class KneadGameManager : MonoBehaviour
     {
         winMenu.SetActive(false);
         lumpManager.GetComponent<LumpManager>().NewLoaf();
+        catPaw1.transform.position = new Vector3(catPaw1.transform.position.x, 1.19f, catPaw1.transform.position.z);
+        catPaw2.transform.position = new Vector3(catPaw2.transform.position.x, 1.19f, catPaw2.transform.position.z);
     }
 
     public void BackToTown()

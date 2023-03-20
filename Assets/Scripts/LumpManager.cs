@@ -11,6 +11,9 @@ public class LumpManager : MonoBehaviour
     private float squishFactor;
     public LayerMask hitMask;
 
+    private GameObject catPaw1;
+    private GameObject catPaw2;
+
     private GameObject manager;
     private Camera _mainCamera;
     private Renderer _renderer;
@@ -32,6 +35,9 @@ public class LumpManager : MonoBehaviour
         manager = GameObject.Find("ScriptsObject");
         _mainCamera = Camera.main;
         _renderer = GetComponent<Renderer>();
+
+        catPaw1 = GameObject.Find("catpaw1");
+        catPaw2 = GameObject.Find("catpaw2");
 
         lumpsRemaining = numLumps;
         lumps = new GameObject[numLumps];
@@ -91,6 +97,10 @@ public class LumpManager : MonoBehaviour
                                 lumps[i].transform.position += new Vector3(0, -(squishFactor/2), 0);
                             }
                         }
+
+                        // Temporary Fix until Cat Paws have animations
+                        catPaw1.transform.position += new Vector3(0, -(squishFactor / 2), 0);
+                        catPaw2.transform.position += new Vector3(0, -(squishFactor / 2), 0);
                     }
                 }
                 else Debug.Log(_hit.collider.tag);
