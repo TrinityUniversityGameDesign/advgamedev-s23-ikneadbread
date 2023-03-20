@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BreadMaking.unity
     guid: 272a1e2a79f924077ba82f8fdcea1d03
+  - enabled: 1
+    path: Assets/Scenes/KneadingGame.unity
+    guid: 2426aa2f30e8830498d755988c1caf94
   m_configObjects: {}

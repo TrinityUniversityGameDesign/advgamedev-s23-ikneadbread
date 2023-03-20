@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class KneadGameManager : MonoBehaviour
 {
@@ -51,6 +52,11 @@ public class KneadGameManager : MonoBehaviour
     {
         winMenu.SetActive(false);
         lumpManager.GetComponent<LumpManager>().NewLoaf();
+    }
+
+    public void BackToTown()
+    {
+        SceneManager.LoadScene("CityTime");
     }
 
     public int getLoavesKneaded()
