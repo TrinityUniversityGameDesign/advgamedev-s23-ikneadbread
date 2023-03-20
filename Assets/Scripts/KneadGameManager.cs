@@ -12,6 +12,7 @@ public class KneadGameManager : MonoBehaviour
     public GameObject lumpPrefab;
 
     public GameObject meter;
+    public GameObject startMenu;
     public GameObject winMenu;
     public TMP_Text numLoafText;
     public TMP_Text newCurrencyText;
@@ -27,12 +28,18 @@ public class KneadGameManager : MonoBehaviour
         meter.GetComponent<Slider>().maxValue = numLumps;
         lumpManager.GetComponent<LumpManager>().numLumps = numLumps;
         winMenu.SetActive(false);
+        startMenu.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
         meter.GetComponent<Slider>().value = numLumps - lumpManager.GetComponent<LumpManager>().getLumpsRemaining();
+    }
+
+    public void StartGame()
+    {
+        startMenu.SetActive(false);
     }
 
     public void WinGame()
