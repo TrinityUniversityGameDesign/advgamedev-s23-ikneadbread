@@ -24,7 +24,7 @@ public class npcSellingPopup : MonoBehaviour
     {
         popUpBox.SetActive(true);
         popUpText.text = text;
-        animator.SetTrigger("popUp");
+        animator.SetTrigger("Pop");
     }
 
     public void sellingBread()
@@ -32,7 +32,7 @@ public class npcSellingPopup : MonoBehaviour
         //breadSale = true;
         Debug.Log("clicked");
         FindObjectOfType<CameraControls>().bakeryCamera();
-        animator.SetTrigger("close");
+        animator.SetTrigger("Drop");
         Debug.Log("should start the selling portion");
     }
 

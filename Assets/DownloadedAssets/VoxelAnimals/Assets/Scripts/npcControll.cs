@@ -40,7 +40,6 @@ public class npcControll : MonoBehaviour
         if (lowRangeX <= transform.position.x && transform.position.x <= highRangeX)
         {
             bakeryTrigger = true;
-            Debug.Log("ever in the no walk?");
             anim.SetInteger("Walk", 0);
             transform.LookAt(playerCat);
 
@@ -50,7 +49,6 @@ public class npcControll : MonoBehaviour
         }
         else
         {
-            Debug.Log("within the walk");
             anim.SetInteger("Walk", 1);
             // Move our position a step closer to the target.
             transform.position = Vector3.MoveTowards(transform.position, quadTile.position, step);
