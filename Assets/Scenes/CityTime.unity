@@ -6502,7 +6502,7 @@ MonoBehaviour:
   sensY: 0
   player: {fileID: 1631595894}
   distance: 5
-  height: 2
+  height: 1
   rotationDamping: 3
 --- !u!114 &1351459109
 MonoBehaviour:
