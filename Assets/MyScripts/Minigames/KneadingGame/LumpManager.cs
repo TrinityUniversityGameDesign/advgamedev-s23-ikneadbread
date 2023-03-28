@@ -39,6 +39,7 @@ public class LumpManager : MonoBehaviour
         catPaw1 = GameObject.Find("catpaw1");
         catPaw2 = GameObject.Find("catpaw2");
 
+
         lumpsRemaining = numLumps;
         lumps = new GameObject[numLumps];
         for (int i = 0; i < numLumps; i++)
@@ -67,8 +68,9 @@ public class LumpManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update(){
+        //Debug.Log("catPaw1 position z" + catPaw1.transform.position.z);
+        //Debug.Log("catPaw2 position z" + catPaw2.transform.position.z);
         if (Input.GetMouseButtonDown(0))
         {
             //Debug.Log("Click");
@@ -78,6 +80,15 @@ public class LumpManager : MonoBehaviour
             {
                 if (_hit.collider.CompareTag("Lump"))
                 {
+                    Vector3 lumpPosCopy = new Vector3(_hit.transform.position.x, _hit.transform.position.y, _hit.transform.position.z);
+                    Vector3 lumpPosCopy2 = new Vector3(_hit.transform.position.x + 1f, _hit.transform.position.y, _hit.transform.position.z);
+
+                    catPaw1.transform.position = lumpPosCopy;
+                    catPaw2.transform.position = lumpPosCopy2;
+
+                    Debug.Log(lumpPosCopy);
+
+
                     _hit.transform.localScale += new Vector3(0, -0.1f, 0);
                     //Debug.Log(_hit.transform.localScale);
                     Vector3 newScale = _hit.transform.localScale;
@@ -97,10 +108,6 @@ public class LumpManager : MonoBehaviour
                                 lumps[i].transform.position += new Vector3(0, -(squishFactor/2), 0);
                             }
                         }
-
-                        // Temporary Fix until Cat Paws have animations
-                        catPaw1.transform.position += new Vector3(0, -(squishFactor / 2), 0);
-                        catPaw2.transform.position += new Vector3(0, -(squishFactor / 2), 0);
                     }
                 }
                 else Debug.Log(_hit.collider.tag);
