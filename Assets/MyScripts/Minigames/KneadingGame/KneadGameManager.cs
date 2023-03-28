@@ -24,6 +24,8 @@ public class KneadGameManager : MonoBehaviour
     private int numLumps;
     private int loavesKneaded = 0;
 
+    public bool gameStarted = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,7 @@ public class KneadGameManager : MonoBehaviour
     public void StartGame()
     {
         startMenu.SetActive(false);
+        gameStarted = true;
     }
 
     public void WinGame()
