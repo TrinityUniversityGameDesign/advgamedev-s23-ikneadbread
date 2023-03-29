@@ -73,74 +73,77 @@ public class LumpManager : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
+        //(1) this is for folding the dough
+
+
+        // (2)this is for kneading the dough
         if (KneadGameManager.GetComponent<KneadGameManager>().gameStarted == true)
         {
-            //Debug.Log("catPaw1 position z" + catPaw1.transform.position.z);
-            //Debug.Log("catPaw2 position z" + catPaw2.transform.position.z);
-            if (Input.GetMouseButtonDown(0))
-            {
-                //Debug.Log("Click");
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                if (Physics.Raycast(ray, out _hit, 3000f, hitMask))
-                {
-                    if (_hit.collider.CompareTag("Lump"))
-                    {
-                        Vector3 lumpPosCopy = new Vector3(_hit.transform.position.x, _hit.transform.position.y, _hit.transform.position.z);
-                        Vector3 lumpPosCopy2 = new Vector3(_hit.transform.position.x + 1f, _hit.transform.position.y, _hit.transform.position.z);
-
-                        catPaw1.transform.position = lumpPosCopy;
-                        catPaw2.transform.position = lumpPosCopy2;
-
-                        Debug.Log(lumpPosCopy);
-
-
-                        _hit.transform.localScale += new Vector3(0, -0.1f, 0);
-                        //Debug.Log(_hit.transform.localScale);
-                        Vector3 newScale = _hit.transform.localScale;
-                        if (newScale.y < 0.8f)
-                        {
-                            // Remove Lump and Flatten Dough a bit
-                            _hit.transform.position = Vector3.one * -10;
-                            lumpsRemaining--;
-                            Vector3 flatterScale = new Vector3(doughScale.x - squishFactor, doughScale.y, doughScale.z);
-                            doughScale = flatterScale;
-                            dough.transform.localScale = flatterScale;
-                            //Debug.Log("Remaining Lumps: "+lumpsRemaining);
-                            for (int i = 0; i < numLumps; i++)
-                            {
-                                if (lumps[i].transform.position.y > 0.15)
-                                {
-                                    lumps[i].transform.position += new Vector3(0, -(squishFactor / 2), 0);
-                                }
-                            }
-                        }
-                    }
-                    else Debug.Log(_hit.collider.tag);
-                }
-                //else Debug.Log("Nothing");
-            }
-
-            if (!fullyKneaded)
-            {
-                if (lumpsRemaining <= 0)
-                {
-                    fullyKneaded = true;
-                    manager.GetComponent<KneadGameManager>().WinGame();
-                }
-            }
-
+            breadGame();
         }
 
         //if the startScene is onClicked everytthing within update should be calledd
     }
 
 
-    //public void breadGame()
-    //{
-        
-    //    breadGame();
-    //}
+    public void breadGame()
+    {
+
+        //Debug.Log("catPaw1 position z" + catPaw1.transform.position.z);
+        //Debug.Log("catPaw2 position z" + catPaw2.transform.position.z);
+        if (Input.GetMouseButtonDown(0))
+        {
+            //Debug.Log("Click");
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out _hit, 3000f, hitMask))
+            {
+                if (_hit.collider.CompareTag("Lump"))
+                {
+                    Vector3 lumpPosCopy = new Vector3(_hit.transform.position.x, _hit.transform.position.y, _hit.transform.position.z);
+                    Vector3 lumpPosCopy2 = new Vector3(_hit.transform.position.x + 1f, _hit.transform.position.y, _hit.transform.position.z);
+
+                    catPaw1.transform.position = lumpPosCopy;
+                    catPaw2.transform.position = lumpPosCopy2;
+
+                    Debug.Log(lumpPosCopy);
+
+
+                    _hit.transform.localScale += new Vector3(0, -0.1f, 0);
+                    //Debug.Log(_hit.transform.localScale);
+                    Vector3 newScale = _hit.transform.localScale;
+                    if (newScale.y < 0.8f)
+                    {
+                        // Remove Lump and Flatten Dough a bit
+                        _hit.transform.position = Vector3.one * -10;
+                        lumpsRemaining--;
+                        Vector3 flatterScale = new Vector3(doughScale.x - squishFactor, doughScale.y, doughScale.z);
+                        doughScale = flatterScale;
+                        dough.transform.localScale = flatterScale;
+                        //Debug.Log("Remaining Lumps: "+lumpsRemaining);
+                        for (int i = 0; i < numLumps; i++)
+                        {
+                            if (lumps[i].transform.position.y > 0.15)
+                            {
+                                lumps[i].transform.position += new Vector3(0, -(squishFactor / 2), 0);
+                            }
+                        }
+                    }
+                }
+                else Debug.Log(_hit.collider.tag);
+            }
+            //else Debug.Log("Nothing");
+        }
+
+        if (!fullyKneaded)
+        {
+            if (lumpsRemaining <= 0)
+            {
+                fullyKneaded = true;
+                manager.GetComponent<KneadGameManager>().WinGame();
+            }
+        }
+    }
 
     public int getLumpsRemaining()
     {
