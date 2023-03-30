@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UpgradeStoreManager : MonoBehaviour
 {
@@ -25,17 +26,52 @@ public class UpgradeStoreManager : MonoBehaviour
     private int silverCoins;
     private int bronzeCoins;
 
-    private string activeCategory = "b";
+    private char activeCategory = 'b';
     private GameObject upgradeInCart;
+    private int upgradeIndex;
     private GameObject catDisplay;
+
+    private GameManager GM;
+    private string boostsOwned;
+    private string accessoriesOwned;
+    private string ticketsOwned;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        GM = GameObject.FindObjectOfType<GameManager>();
         catDisplay = GameObject.Find("CatDisplay");
         upgradeInCart = GameObject.Find("Boost (1)");
+        upgradeIndex = 0;
+        activeCategory = 'b';
         upgradeNameText.text = boostNameDesc[0];
         upgradeDescText.text = boostNameDesc[1];
+
+        boostsOwned = PlayerPrefs.GetString("boostsOwned");
+        accessoriesOwned = PlayerPrefs.GetString("accessoriesOwned");
+        ticketsOwned = PlayerPrefs.GetString("ticketsOwned");
+
+        // Deactivate buttons for purchased upgrades
+        for (int i = 0; i < 5; i++)
+        {
+            char isOwned = boostsOwned[i];
+            if (isOwned == 't')
+                boostsPanel.transform.GetChild(i).gameObject.GetComponent<Button>().interactable = false;
+            isOwned = accessoriesOwned[i];
+            if (isOwned == 't')
+                accessoriesPanel.transform.GetChild(i).gameObject.GetComponent<Button>().interactable = false;
+            if (i < 3)
+            {
+                isOwned = ticketsOwned[i];
+                if (isOwned == 't')
+                    ticketsPanel.transform.GetChild(i).gameObject.GetComponent<Button>().interactable = false;
+            }
+        }
+        Debug.Log(boostsOwned);
+        Debug.Log(accessoriesOwned);
+        Debug.Log(ticketsOwned);
+        Debug.Log("");
     }
 
     // Update is called once per frame
@@ -54,15 +90,15 @@ public class UpgradeStoreManager : MonoBehaviour
         {
             case 0:
                 boostsPanel.SetActive(true);
-                activeCategory = "b";
+                activeCategory = 'b';
                 break;
             case 1:
                 accessoriesPanel.SetActive(true);
-                activeCategory = "a";
+                activeCategory = 'a';
                 break;
             case 2:
                 ticketsPanel.SetActive(true);
-                activeCategory = "t";
+                activeCategory = 't';
                 break;
         }
     }
@@ -71,20 +107,20 @@ public class UpgradeStoreManager : MonoBehaviour
     {
         upgradeInCart = upgrade;
         int index = upgrade.name.IndexOf('(') + 1;
-        int upgradeNum = (int) char.GetNumericValue(upgrade.name[index]);
-        upgradeNum = (upgradeNum - 1) * 2;
+        upgradeIndex = (int) char.GetNumericValue(upgrade.name[index]) - 1;
+        int upgradeNum = (upgradeIndex) * 2;
 
         switch (activeCategory)
         {
-            case "b":
+            case 'b':
                 upgradeNameText.text = boostNameDesc[upgradeNum];
                 upgradeDescText.text = boostNameDesc[upgradeNum + 1];
                 break;
-            case "a":
+            case 'a':
                 upgradeNameText.text = accessoryNameDesc[upgradeNum];
                 upgradeDescText.text = accessoryNameDesc[upgradeNum + 1];
                 break;
-            case "t":
+            case 't':
                 upgradeNameText.text = ticketNameDesc[upgradeNum];
                 upgradeDescText.text = ticketNameDesc[upgradeNum + 1];
                 break;
@@ -109,6 +145,47 @@ public class UpgradeStoreManager : MonoBehaviour
         confirmPanel.SetActive(false);
         catDisplay.SetActive(true);
         upgradeInCart.GetComponent<Button>().interactable = false;
+
         // Maybe use events to implement upgrades
+        switch (upgradeInCart.name)
+        {
+            case "Boost (1)":
+                if (GM) GM.boostBoots.Invoke();
+                break;
+        }
+
+        // Mark upgrade as permanently owned
+        switch (activeCategory)
+        {
+            case 'b':
+                string updatedBoosts = boostsOwned.Substring(0,upgradeIndex) + 't' + boostsOwned.Substring(upgradeIndex + 1);
+                boostsOwned = updatedBoosts;
+                PlayerPrefs.SetString("boostsOwned", updatedBoosts);
+                if (GM) GM.boostsOwned = updatedBoosts;
+                break;
+            case 'a':
+                string updatedAccs = accessoriesOwned.Substring(0, upgradeIndex) + 't' + 
+                    accessoriesOwned.Substring(upgradeIndex + 1);
+                accessoriesOwned = updatedAccs;
+                PlayerPrefs.SetString("accessoriesOwned", updatedAccs);
+                if (GM) GM.accessoriesOwned = updatedAccs;
+                break;
+            case 't':
+                string updatedTickets = ticketsOwned.Substring(0, upgradeIndex) + 't' + 
+                    ticketsOwned.Substring(upgradeIndex + 1);
+                ticketsOwned = updatedTickets;
+                PlayerPrefs.SetString("ticketsOwned", updatedTickets);
+                if (GM) GM.ticketsOwned = updatedTickets;
+                break;
+        }
+        Debug.Log(boostsOwned);
+        Debug.Log(accessoriesOwned);
+        Debug.Log(ticketsOwned);
+        Debug.Log("");
+    }
+
+    public void backToGame()
+    {
+        SceneManager.LoadScene("CityTime");
     }
 }
