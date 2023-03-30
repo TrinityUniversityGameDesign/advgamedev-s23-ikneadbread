@@ -26,9 +26,9 @@ public class FoldingDough : MonoBehaviour
     public void foldGame()
     {
         //add anim
-        anim.SetInteger("pointDown", 1);
+        //anim.SetInteger("pointDown", 1);
 
-        //anim.Play("pointDown");
+        anim.Play("pointDown");
         //anim.Play("")
 
         //code for the game
