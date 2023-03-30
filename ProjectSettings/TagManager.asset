@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Lump
   - Bread
+  - BoostUpgrade
+  - AccessoryUpgrade
+  - TicketUpgrade
   layers:
   - Default
   - TransparentFX

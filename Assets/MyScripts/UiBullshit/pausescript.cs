@@ -17,7 +17,7 @@ public class pausescript : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.P) && isPaused)
         {
             isPaused = !isPaused;
-            SceneManager.UnloadScene("IntroStoryScene");
+            SceneManager.UnloadSceneAsync("IntroStoryScene");
         }
     }
 }
