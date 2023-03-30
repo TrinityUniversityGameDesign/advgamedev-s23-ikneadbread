@@ -27,6 +27,12 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent onMiniGameCube = new UnityEvent();
 
+    private void Awake()
+    {
+        if (GameObject.FindObjectsOfType<GameManager>().Length > 1) {
+            Destroy(this.gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
