@@ -1,0 +1,132 @@
+﻿title: Start
+position: -101,-260
+---
+Hello everynyan!
+
+I've just inherited a bread bakery from my grandnya, and now it's my dream to learn how to bake all different kinds of bread!
+===
+
+
+// dialogue tree for Elder
+// title: Elder
+// position: -299,-80
+// ---
+// <<if getIntroElder() == false>>
+//     <<setIntroElder true>>
+//     Elder: Welcome Dantice! You came to help us defeat *insert cool boss name here*, right?
+//     -> Of course!
+//         Elder: Thank you so much! Make sure to introduce yourself to everyone before you head out.
+//         <<raiseReadiness 1>>
+//     -> Nah man, I'm just here to vibe.
+//         Elder: O-oh. Well... fuck you too I guess...
+//         <<jump BadEnd>>
+// <<elseif getIntroHephicetus() == false>>
+//     Elder: Hephicetus over there might be able to make your weapon more effective.
+// <<elseif getComplete1() == true>>
+//     Elder: Thank you for taking care of those spiders!
+// <<elseif getComplete2() == true>>
+//     Elder: You did it! We can't thank you enough for what you've done for us, Dantice!
+//     <<jump GoodEnd>>
+// <<else>>
+//     Elder: We're all with you, Dantice!
+// <<endif>>
+// ===
+
+// title: Hephicetus
+// position: 114,-79
+// ---
+// // first time talking to Hephicetus
+// <<if getIntroHephicetus() == false>>
+//     // the first time we talk to Hephicetus
+//     <<setIntroHephicetus true>>
+//     Hephicetus: Hello young lad! I can upgrade the legendary Frostbite for you, but you've gotta do a few things for me first.
+//     Hephicetus: I'll let you know what I need once you've gotten settled in.
+//     <<raiseReadiness 1>>
+// <<elseif getReadiness() >= 2>>
+//     <<if getBossBeaten() == true>>
+//         Hephicetus: Wow, you really did it, kid!
+//         Hephicetus: Go let the Elder know of your victory.
+//     <<elseif getUpgrade2() == true>>
+//         Hephicetus: Frostbite is as strong as it can get now!
+//         Hephicetus: Go out there and give that *insert cool boss name here* what for!
+//     <<elseif getUpgrade1() == true>>
+//         <<jump Quest2>>
+//     <<else>>
+//         <<jump Quest1>>
+//     <<endif>>
+// <<else>>
+//     Hephicetus: Make sure you introduce yourself to everyone.
+// <<endif>>
+// ===
+
+// title: Quest1
+// position: 14,133
+// ---
+// <<if getReceived1() == false>>
+//     Hephicetus: Welcome back Dantice! 
+//     Hephicetus: To start with, I need you to go kill 5 spiders.
+//     -> Accept
+//         Hephicetus: Thanks!
+//         <<setReceived1 true>>
+//     -> Reject
+//         Hephicetus: Come back when you're ready, I guess...
+// <<elseif getComplete1() == true>>
+//     Hephicetus: Great job! Give me a second and I'll make Frostbite even *COOL*er!
+//     <<setUpgrade1 true>>
+//     Hephicetus: There you go!
+// <<else>>
+//     Hephicetus: How's that monster slayin' going?
+// <<endif>>
+// ===
+
+// title: Quest2
+// position: 223,131
+// ---
+// <<if getReceived2() == false>>
+//     Hephicetus: Welcome back Dantice! 
+//     Hephicetus: This time I need you to, uh, kill 5 more spiders!
+//     -> Accept
+//         Hephicetus: Thanks!
+//         <<setReceived2 true>>
+//     -> Reject
+//         Hephicetus: Alright, if you don't think you're up for it...
+// <<elseif getComplete2() == true>>
+//     Hephicetus: Great job! Give me a second and I'll really make Frostbite roar!
+//     <<setUpgrade2 true>>
+//     Hephicetus: There you go!
+// <<else>>
+//     Hephicetus: How's that conquerin' going?
+// <<endif>>
+// ===
+
+// title: Dante
+// position: -110,327
+// ---
+// <<if visited("Dante") == false>>
+//     Dante: Welcome, Dantice. 
+//     Dante: I didn't think you'd actually make it this far.
+//     Dante: Time to deal with you myself.
+// <<elseif getBossBeaten() == true>>
+//     Dante: NO!
+//     Dante: How could I allow someone like you to best me in combat...
+// <<else>>
+//     Dante: Back for more? I'll gladly oblige.
+// <<endif>>
+// ===
+
+// title: BadEnd
+// position: -199,130
+// ---
+// *insert cool boss name here* took over Hell and everyone lived unhappily-ever-after.
+// THE END
+// <<quit>>
+// ===
+
+// title: GoodEnd
+// position: -407,133
+// ---
+// Congradulations!
+// *insert cool boss name here* fled in terror and the Frostlands are safe!
+// THE END
+// <<quit>>
+// ===
