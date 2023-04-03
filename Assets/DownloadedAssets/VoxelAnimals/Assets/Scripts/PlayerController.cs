@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public float movementSpeed = 3;
+    [SerializeField]
+    public float movementSpeed;
     public float jumpForce = 300;
     public float timeBeforeNextJump = 1.2f;
     private float canJump = 0f;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        Debug.Log("current speed in the CityTime: " + movementSpeed);
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
 
