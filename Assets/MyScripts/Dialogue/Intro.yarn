@@ -1,16 +1,19 @@
 ﻿title: Start
 ---
-Sometimes all we knead in life is to rise to opportunities in life.
-<<jump ParentsIntro>>
+<<if getIntroDone() == false>>
+    Sometimes all we knead in life is to rise to opportunities in life.
+    <<jump Intro>>
+<<endif>>
 ===
 
-//dialogue tree for ParentsIntro
-title: ParentsIntro
+//dialogue tree for Intro
+title: Intro
 ---
-<<if visited("ParentsIntro") == false>>
+<<if getIntroDone() == false>>
     MomCat: Honey I know you're moving so we want you to have this.
     *Hands over keys to the bakery* 
     DadCat: These are the keys to our old family bakery that has been in our family for 4 generations and meows the time we paw it over to you. 
+    <<setIntroDone true>>
 <<endif>>
 ===
 
