@@ -7,6 +7,7 @@ TagManager:
   - Lump
   - Bread
   - Jellyable
+  - Ingridient
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - Clickable
   - Water
   - UI
-  - 
-  - 
+  - Bible
+  - Ingrediants
   - 
   - 
   - 
@@ -43,4 +44,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ingrediants
+    uniqueID: 814731563
+    locked: 0
+  - name: Bible
+    uniqueID: 4105494261
     locked: 0
