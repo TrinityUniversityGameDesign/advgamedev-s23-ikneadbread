@@ -48,7 +48,7 @@ public class foldBread : MonoBehaviour
             {
                 Debug.Log("Hit: " + _hit.transform);
 
-                catPaw1.transform.position = _hit.point;// lumpPosCopy;
+                catPaw1.transform.position = _hit.point;
                 catPaw2.transform.position = _hit.point + new Vector3(1f, -0.5f, 0f);
             }
         }
