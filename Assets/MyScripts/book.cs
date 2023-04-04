@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class book : MonoBehaviour
 {
@@ -14,6 +16,11 @@ public class book : MonoBehaviour
     private void Start()
     {
         InitialState();
+    }
+
+    public void returnScene()
+    {
+        SceneManager.LoadScene("CityTime");
     }
 
     public void InitialState()

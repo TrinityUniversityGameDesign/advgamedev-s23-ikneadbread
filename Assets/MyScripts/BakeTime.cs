@@ -13,4 +13,9 @@ public class BakeTime : MonoBehaviour
             SceneManager.LoadScene(sceneLoad);
         }
     }
+
+    public void switchScenes()
+    {
+        SceneManager.LoadScene(sceneLoad);
+    }
 }

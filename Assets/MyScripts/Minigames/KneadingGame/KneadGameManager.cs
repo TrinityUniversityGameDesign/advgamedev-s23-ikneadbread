@@ -24,6 +24,17 @@ public class KneadGameManager : MonoBehaviour
     private int numLumps;
     private int loavesKneaded = 0;
 
+
+
+    //wen code
+    public bool gameStarted = false;
+    public bool gameEnded = false;
+    public bool foldGame = false;
+
+
+    public GameObject foldMenu;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +43,10 @@ public class KneadGameManager : MonoBehaviour
         lumpManager.GetComponent<LumpManager>().numLumps = numLumps;
         winMenu.SetActive(false);
         startMenu.SetActive(true);
+        //startMenu.SetActive(false);
+
+        //wen code
+        foldMenu.SetActive(false);
 
         catPaw1 = GameObject.Find("catpaw1");
         catPaw2 = GameObject.Find("catpaw2");
@@ -46,10 +61,23 @@ public class KneadGameManager : MonoBehaviour
     public void StartGame()
     {
         startMenu.SetActive(false);
+
+        //wen code
+        //foldMenu.SetActive(false);
+
+
+        //start the folding game
+        //foldGame = true;
+
+
+        //starts the kneading game
+        gameStarted = true;
+        //gameStarted = false;
     }
 
     public void WinGame()
     {
+        gameEnded = true;
         Debug.Log("You Win");
         loavesKneaded++;
         winMenu.SetActive(true);
