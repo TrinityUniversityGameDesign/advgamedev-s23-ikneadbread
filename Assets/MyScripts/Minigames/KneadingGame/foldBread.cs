@@ -21,32 +21,32 @@ public class foldBread : MonoBehaviour
     {
         catPaw1 = GameObject.Find("catpaw1");
         catPaw2 = GameObject.Find("catpaw2");
-        Debug.Log("started the game");
+        //Debug.Log("started the game");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("within the update");
+        //Debug.Log("within the update");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out _hit, 3000f, hitMask);
         movePaws();
 
         if (KneadGameManager.GetComponent<KneadGameManager>().gameStarted == true)
         {
-            Debug.Log("pressed to start the game");
+            //Debug.Log("pressed to start the game");
         }
     }
 
     public void movePaws()
     {
         if (Input.GetMouseButtonDown(0)) {
-            Debug.Log("within the move paw scripts");
+            //Debug.Log("within the move paw scripts");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (_hit.transform != null)
             {
-                //Debug.Log("Hit: " + _hit.transform);
+                Debug.Log("Hit: " + _hit.transform);
 
                 catPaw1.transform.position = _hit.point;
                 catPaw2.transform.position = _hit.point + new Vector3(1f, -0.5f, 0f);
