@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class ScreenScript : MonoBehaviour
 {
@@ -19,7 +21,12 @@ public class ScreenScript : MonoBehaviour
        StartScreen.SetActive(false);
     }
 
-    
+
+    public void endGame()
+    {
+        SceneManager.LoadScene("CityTime");
+    }
+
 
 }
 
