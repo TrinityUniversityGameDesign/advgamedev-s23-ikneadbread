@@ -106,9 +106,6 @@ public class LumpManager : MonoBehaviour
                     catPaw1.transform.position = lumpPosCopy;
                     catPaw2.transform.position = lumpPosCopy2;
 
-                    Debug.Log(lumpPosCopy);
-
-
                     _hit.transform.localScale += new Vector3(0, -0.1f, 0);
                     //Debug.Log(_hit.transform.localScale);
                     Vector3 newScale = _hit.transform.localScale;

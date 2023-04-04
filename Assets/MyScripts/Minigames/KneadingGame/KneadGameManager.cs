@@ -41,11 +41,11 @@ public class KneadGameManager : MonoBehaviour
         meter.GetComponent<Slider>().maxValue = numLumps;
         lumpManager.GetComponent<LumpManager>().numLumps = numLumps;
         winMenu.SetActive(false);
-        //startMenu.SetActive(true);
-        startMenu.SetActive(false);
+        startMenu.SetActive(true);
+        //startMenu.SetActive(false);
 
         //wen code
-        foldMenu.SetActive(true);
+        foldMenu.SetActive(false);
 
         catPaw1 = GameObject.Find("catpaw1");
         catPaw2 = GameObject.Find("catpaw2");
@@ -59,19 +59,19 @@ public class KneadGameManager : MonoBehaviour
 
     public void StartGame()
     {
-        //startMenu.SetActive(false);
+        startMenu.SetActive(false);
 
         //wen code
-        foldMenu.SetActive(false);
+        //foldMenu.SetActive(false);
 
 
         //start the folding game
-        foldGame = true;
+        //foldGame = true;
 
 
         //starts the kneading game
-        //gameStarted = true;
-        gameStarted = false;
+        gameStarted = true;
+        //gameStarted = false;
     }
 
     public void WinGame()
