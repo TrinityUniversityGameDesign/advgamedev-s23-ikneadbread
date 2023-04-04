@@ -21,7 +21,7 @@ public class foldBread : MonoBehaviour
     {
         catPaw1 = GameObject.Find("catpaw1");
         catPaw2 = GameObject.Find("catpaw2");
-        //Debug.Log("started the game");
+        Debug.Log("started the game");
 
     }
 
@@ -49,7 +49,7 @@ public class foldBread : MonoBehaviour
                 Debug.Log("Hit: " + _hit.transform);
 
                 catPaw1.transform.position = _hit.point;
-                catPaw2.transform.position = _hit.point + new Vector3(1f, -0.5f, 0f);
+                catPaw2.transform.position = _hit.point;
             }
         }
     }

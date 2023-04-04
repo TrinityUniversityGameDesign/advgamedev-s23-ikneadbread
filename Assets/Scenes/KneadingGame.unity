@@ -256,7 +256,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 94
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &91030813
 BoxCollider:
@@ -266,7 +266,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91030804}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 25.939709, y: 48.938576, z: 13.721218}
@@ -287,8 +287,6 @@ MonoBehaviour:
   mass: 1
   stiffness: 1
   damping: 0.75
-  liftHeight: 2
-  dropSpeed: 2
 --- !u!114 &91030821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2197,7 +2195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &648632830
 Transform:
   m_ObjectHideFlags: 0
@@ -2227,7 +2225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dough: {fileID: 1060952121}
   lumpPrefab: {fileID: 2852393280935636298, guid: 9bbd0e962aa4b164b875098754a0c938, type: 3}
-  numLumps: 40
+  numLumps: 10
   hitMask:
     serializedVersion: 2
     m_Bits: 8
@@ -2242,8 +2240,8 @@ GameObject:
   m_Component:
   - component: {fileID: 653861998}
   - component: {fileID: 653862001}
-  - component: {fileID: 653862000}
   - component: {fileID: 653861999}
+  - component: {fileID: 653862000}
   m_Layer: 0
   m_Name: catpaw2
   m_TagString: Untagged
@@ -2259,7 +2257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653861997}
   m_LocalRotation: {x: -0, y: 0.76081085, z: 0.64897376, w: 0}
-  m_LocalPosition: {x: 2.276, y: 1.83, z: -0.14}
+  m_LocalPosition: {x: 2.276, y: 1.75, z: -0.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4473,8 +4471,6 @@ MonoBehaviour:
   mass: 1
   stiffness: 1
   damping: 0.75
-  liftHeight: 1
-  dropSpeed: 2
 --- !u!4 &1346917464 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: 196d6ff3eaa204a18b80ec8a9690b156, type: 3}
@@ -5214,6 +5210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1575727521}
+  - component: {fileID: 1575727522}
   m_Layer: 0
   m_Name: catPaws
   m_TagString: Untagged
@@ -5238,6 +5235,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1575727522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575727520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a88eb7d8163843ff8c79c715ccb20d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KneadGameManager: {fileID: 0}
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &1586004860
 GameObject:
   m_ObjectHideFlags: 0
@@ -6616,7 +6629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1984325330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6640,8 +6653,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984325329}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.100568, y: -0, z: -0, w: 0.99493027}
+  m_LocalPosition: {x: 0, y: 1.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6649,7 +6662,7 @@ Transform:
   - {fileID: 653861998}
   m_Father: {fileID: 0}
   m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 11.544, y: 0, z: 0}
 --- !u!1001 &2001799733
 PrefabInstance:
   m_ObjectHideFlags: 0
