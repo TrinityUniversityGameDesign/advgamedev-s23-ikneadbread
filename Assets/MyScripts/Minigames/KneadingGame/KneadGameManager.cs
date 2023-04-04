@@ -28,6 +28,7 @@ public class KneadGameManager : MonoBehaviour
 
     //wen code
     public bool gameStarted = false;
+    public bool gameEnded = false;
     public bool foldGame = false;
 
 
@@ -76,6 +77,7 @@ public class KneadGameManager : MonoBehaviour
 
     public void WinGame()
     {
+        gameEnded = true;
         Debug.Log("You Win");
         loavesKneaded++;
         winMenu.SetActive(true);

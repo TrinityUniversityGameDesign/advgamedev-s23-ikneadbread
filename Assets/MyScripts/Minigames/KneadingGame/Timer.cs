@@ -8,6 +8,8 @@ public class Timer : MonoBehaviour
     public float timeRemaining = 0;
     public bool timeIsRunning = true;
     public TMP_Text timeText;
+    public GameObject KneadGameManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,11 +20,19 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeIsRunning)
+        if (KneadGameManager.GetComponent<KneadGameManager>().gameStarted == true)
         {
-            if(timeRemaining >= 0)
+            if (timeIsRunning)
             {
-                timeRemaining += Time.deltaTime;
+                if (timeRemaining >= 0)
+                {
+                    timeRemaining += Time.deltaTime;
+                    DisplayTime(timeRemaining);
+                }
+            }
+            if (KneadGameManager.GetComponent<KneadGameManager>().gameEnded == true)
+            {
+                timeIsRunning = false;
                 DisplayTime(timeRemaining);
             }
         }
