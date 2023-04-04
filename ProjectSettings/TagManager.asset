@@ -6,10 +6,7 @@ TagManager:
   tags:
   - Lump
   - Bread
-  - IngrediantTab
-  - BoostUpgrade
-  - AccessoryUpgrade
-  - TicketUpgrade
+  - Ingridient
   layers:
   - Default
   - TransparentFX
