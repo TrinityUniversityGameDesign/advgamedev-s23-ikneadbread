@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 1ea911528643d47c7898e143d135c1fa
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 52
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Vast Shadow
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 995d2b4e5f74e4a82874a30431f2bd1f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
