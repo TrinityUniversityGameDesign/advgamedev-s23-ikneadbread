@@ -34,6 +34,6 @@ public class FoldingDough : MonoBehaviour
         //code for the game
 
 
-        Debug.Log("folding Moment");
+        //Debug.Log("folding Moment");
     }
 }

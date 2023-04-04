@@ -46,7 +46,7 @@ public class foldBread : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (_hit.transform != null)
             {
-                Debug.Log("Hit: " + _hit.transform);
+                //Debug.Log("Hit: " + _hit.transform);
 
                 catPaw1.transform.position = _hit.point;
                 catPaw2.transform.position = _hit.point + new Vector3(1f, -0.5f, 0f);

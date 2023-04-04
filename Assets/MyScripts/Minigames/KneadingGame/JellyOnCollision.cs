@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class JellyMesh : MonoBehaviour
+public class JellyOnCollision : MonoBehaviour
 {
     public float intensity = 1f;
     public float mass = 1f;
@@ -16,9 +14,12 @@ public class JellyMesh : MonoBehaviour
     private Vector3[] vertexArray;
 
     private bool isJellyActive = false;
+    private int jellyCounter = 0;
+
 
     private void Start()
     {
+        Debug.Log("starts the jelly on collision script");
         originalMesh = GetComponent<MeshFilter>().sharedMesh;
         meshClone = Instantiate(originalMesh);
         meshRenderer = GetComponent<MeshRenderer>();
@@ -34,14 +35,15 @@ public class JellyMesh : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isJellyActive)
+        if ((isJellyActive && jellyCounter == 10))
         {
-            Debug.Log("Boing");
+            jellyCounter = 0;
             vertexArray = originalMesh.vertices;
+            Debug.Log("jelly activities");
 
             for (int i = 0; i < jellyVertices.Length; i++)
             {
-                Debug.Log("bonk boing");
+                Debug.Log("bouncin");
                 Vector3 target = transform.TransformPoint(vertexArray[jellyVertices[i].ID]);
                 float jellyIntensity = (1 - (meshRenderer.bounds.max.y - target.y) / meshRenderer.bounds.size.y) * intensity;
                 jellyVertices[i].Shake(target, mass, stiffness, damping);
@@ -55,8 +57,25 @@ public class JellyMesh : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("paw and bread collision");
         isJellyActive = true;
+        jellyCounter += 1;
+        Debug.Log("jellyCounter: " + jellyCounter);
+
+        //if (other.gameObject.tag == "Jellyable")
+        //{
+        //    Debug.Log("jellyable");
+        //    isJellyActive = true;
+        //}
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        isJellyActive = false;
+
+        //if (other.gameObject.tag == "Jellyable")
+        //{
+        //    isJellyActive = false;
+        //}
     }
 
     public class JellyVertex
@@ -85,4 +104,3 @@ public class JellyMesh : MonoBehaviour
         }
     }
 }
-
