@@ -1,7 +1,7 @@
 ﻿title: Start
 ---
 <<if getIntroDone() == false>>
-    Sometimes all we knead in life is to rise to opportunities in life.
+    Sometimes all we <b>knead</b> in life is to <b>rise</b> to opportunities in life.
     <<jump Intro>>
 <<endif>>
 ===
@@ -12,7 +12,7 @@ title: Intro
 <<if getIntroDone() == false>>
     MomCat: Honey I know you're moving so we want you to have this.
     *Hands over keys to the bakery* 
-    DadCat: These are the keys to our old family bakery that has been in our family for 4 generations and meows the time we paw it over to you. 
+    DadCat: These are the keys to our old family bakery that has been in our family for 4 generations and <b>meows</b> the time we <b>paw</b> it over to you. 
     <<setIntroDone true>>
 <<endif>>
 ===
@@ -20,18 +20,18 @@ title: Intro
 //dialogue tree for Parents
 title: Parents
 ---
-DadCat: This is our, I mean your bakery, “Whiskerlicious”.
-MomCat: it will have everything you knead.
+DadCat: This is our, I mean your bakery, <b>“Whiskerlicious”</b>.
+MomCat: it will have everything you <b>knead</b>.
 *walk over to the front of the store*
-DadCat: Here's where all of your customers will line up for their order. “Click on their order to start” is what Meow-Pa always said. 
+DadCat: Here's where all of your customers will line up for their order. “Click on their order to start” is what <b>Meow-Pa</b> always said. 
 *walks over to the kitchen*
-MomCat: Here's the kitchen where you’ll bake and knead everything to bake bread out of scratch.
+MomCat: Here's the kitchen where you’ll bake and <b>knead</b> everything to bake bread out of <b>scratch</b>.
 ===
 
 //Ingredients Tutorial
 title: IngTutorialStart
 ---
-DadCat: Meow-Pa always told me to “Click on the cabinets” to collect ingredients.
+DadCat: <b>Meow-Pa</b> always told me to “Click on the cabinets” to collect ingredients.
 *Start collection minigame*
 MomCat: Once you open the cabinet doors, everything will fall, so have your basket ready to get everything you knead.
 ===
@@ -39,7 +39,7 @@ MomCat: Once you open the cabinet doors, everything will fall, so have your bask
 title: IngTutorialEnd
 ---
 <<if getIngTutorial() == true>>
-    MomCat: Purrfect! You got everything, let's keep going! 
+    MomCat: <b>Purrfect!</b> You got everything, let's keep going! 
 <<else>>
     MomCat: Uh-Oh you missed a few things, try again!
     //Redo
@@ -49,17 +49,17 @@ title: IngTutorialEnd
 //Kneading Tutorial
 title: KneadTutorialStart
 ---
-MomCat: Meows the Purrfect time Knead it all together!
+MomCat: <b>Meows</b> the <b>Purrfect</b> time Knead it all together!
 *Mini game starts*
-MomCat: To Knead all you knead to do is, “Right click on the dough bubbles to pop and knead it. Not too fast though or it won’t be Purrfect!”
+MomCat: To Knead all you <b>knead</b> to do is, “Right click on the dough bubbles to pop and knead it. Not too fast though or it won’t be <b>Purrfect!</b>”
 ===
 
 title: KneadTutorialEnd
 ---
 <<if getKneadTutorial() == true>>
-    DadCat: I’m felining purrty good about this.
+    DadCat: I’m <b>felining purrty</b> good about this.
 <<else>>
-    DadCat: You got your paws dirty for this? Let's do it again.
+    DadCat: You got your <b>paws</b> dirty for this? Let's do it again.
     //Redo
 <<endif>>
 ===
@@ -67,17 +67,17 @@ title: KneadTutorialEnd
 //Oven Tutorial
 title: OvenTutorialStart
 ---
-MomCat: Meow we bake our scratch dough!
+MomCat: <b>Meow</b> we bake our <b>scratch</b> dough!
 *minigame starts*
-DadCat: for the purrfect bread take a look at the “Baking meter”. It will show you when the bread is purrfect!
+DadCat: for the <b>purrfect</b> bread take a look at the “Baking meter”. It will show you when the bread is <b>purrfect!</b>
 ===
 
 title: OvenTutorialEnd
 ---
 <<if getOvenTutorial() == true>>
-    MomCat: I’m not kitten around when I say that looks pawsome!
+    MomCat: I’m not <b>kitten</b> around when I say that looks <b>pawsome!</b>
 <<else>>
-    MomCat: Are you kitten me!?
+    MomCat: Are you <b>kitten</b> me!?
     //Redo
 <<endif>>
 ===
@@ -85,7 +85,7 @@ title: OvenTutorialEnd
 //Display Tutorial
 title: DisplayTutorialStart
 ---
-DadCat: All that is meow left is to is to display the bread that you flourish
+DadCat: All that is <b>meow</b> left is to is to display the bread that you <b>flourish</b>
 *minigame starts*
 DadCat: To display, “click on the sliding wall and drag it open. Then place the bread in the case, without damaging the bread, and close the case”.
 ===
@@ -93,9 +93,9 @@ DadCat: To display, “click on the sliding wall and drag it open. Then place th
 title: DisplayTutorialEnd
 ---
 <<if getDispTutorial() == true>>
-    MomCat: Meow that looks Whiskerlicious.
+    MomCat: <b>Meow</b> that looks <b>Whiskerlicious</b>.
 <<else>>
-    MomCat: Uh-oh, let's not damage our purrfect bread!
+    MomCat: Uh-oh, let's not damage our <b>purrfect</b> bread!
     //Redo
 <<endif>>
 ===
@@ -105,9 +105,9 @@ title: BreadBible
 ---
 DadCat: Meow that you finished up your first loaf, it is time we give you this.
 *MomCat paws over the Bread Bible*
-MomCat: This book was made when your Great Meow-Pa started up the shop with your Great Meow-ma. 
-MomCat: Every Recipe that we obtained was recorded until one day Paw-pa had too much catnip and scratched almost all of the recipes. 
-Paw-Pa: Sorry about that. The first few pages are still in good condition. 
+MomCat: This book was made when your <b>Great Meow-Pa</b> started up the shop with your <b>Great Meow-ma</b>. 
+MomCat: Every Recipe that we obtained was recorded until one day <b>Paw-pa</b> had too much <b>catnip</b> and <b>scratched</b> almost all of the recipes. 
+Paw-Pa: Sorry about that. The first few pages are still in good condition.
 Paw-Pa: They have all of the pictures of what the bread looks like, but its up to you to rediscover the recipes by meeting new people and interacting by “Left clicking their speech bubble”. 
 ===
 
