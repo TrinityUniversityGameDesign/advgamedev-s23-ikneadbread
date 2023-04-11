@@ -34,7 +34,7 @@ public class PlaneTrigger : MonoBehaviour
         //breadSale = true;
         Debug.Log("changing scenes");
         animator.SetTrigger("FlyDrop");
-        SceneManager.LoadScene("HomeTownScene");
+        SceneManager.LoadScene("Egypt");
 
     }
 
