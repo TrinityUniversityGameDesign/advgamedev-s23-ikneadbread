@@ -44,5 +44,6 @@ public class ingForRecipes : MonoBehaviour
         {
             PlayerPrefs.SetInt("milk", milk);
         }
+        
     }
 }
