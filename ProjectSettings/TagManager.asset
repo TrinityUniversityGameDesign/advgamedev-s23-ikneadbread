@@ -8,6 +8,8 @@ TagManager:
   - Bread
   - Ingridient
   - Jellyable
+  - Culling
+  - Obstacle
   layers:
   - Default
   - TransparentFX
