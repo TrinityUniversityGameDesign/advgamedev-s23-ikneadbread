@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public string accessoriesOwned;
     public string ticketsOwned;
 
+    public float moveSpeed = 3;
+
     public UnityEvent onMiniGameCube = new UnityEvent();
 
     //Destroys the old GameManager but still contais all the previous data
@@ -74,9 +76,8 @@ public class GameManager : MonoBehaviour
     public void ApplyBootiesUpgrade()
     {
         Debug.Log("update boots");
-        Debug.Log("current cat speed: " + playerCat.GetComponent<PlayerController>().movementSpeed);
-        playerCat.GetComponent<PlayerController>().movementSpeed = 6;
-        Debug.Log("afterUpgrade (in scene) cat speed: " + playerCat.GetComponent<PlayerController>().movementSpeed);
+        moveSpeed = 6;
+        Debug.Log("afterUpgrade (in scene) cat speed: " + moveSpeed);
 
     }
 }

@@ -1875,7 +1875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2814ac9bc37a514e9e031cf39bf77dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButton: {fileID: 0}
+  startButton: {fileID: 149541106}
+  bottomLine: {fileID: 1419017485}
 --- !u!212 &1985551448
 SpriteRenderer:
   m_ObjectHideFlags: 0
