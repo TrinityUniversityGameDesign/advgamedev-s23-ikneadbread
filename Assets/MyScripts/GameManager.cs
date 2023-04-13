@@ -28,10 +28,18 @@ public class GameManager : MonoBehaviour
 
     //yarn variables
     static bool introDone = false;
-    static bool ingTutorial = false;
-    static bool kneadTutorial = false;
-    static bool ovenTutorial = false;
-    static bool dispTutorial = false;
+
+    public static bool ingTutorial = false;
+    public static bool kneadTutorial = false;
+    public static bool ovenTutorial = false;
+    public static bool dispTutorial = false;
+    public static bool stocksTutorial = false;
+
+    static bool ingDone = false;
+    static bool kneadDone = false;
+    static bool ovenDone = false;
+    static bool dispDone = false;
+    static bool stocksDone = false;
 
     public UnityEvent onMiniGameCube = new UnityEvent();
 
@@ -116,6 +124,18 @@ public class GameManager : MonoBehaviour
         ingTutorial = val;
     }
 
+    [YarnFunction("getIngDone")]
+    public static bool GetIngDone()
+    {
+        return ingDone;
+    }
+
+    [YarnCommand("setIngDone")]
+    public static void SetIngDone(bool val)
+    {
+        ingDone = val;
+    }
+
     // Kneading Tutorial
     [YarnFunction("getKneadTutorial")]
     public static bool GetKneadTutorial()
@@ -127,6 +147,18 @@ public class GameManager : MonoBehaviour
     public static void SetKneadTutorial(bool val)
     {
         kneadTutorial = val;
+    }
+
+    [YarnFunction("getKneadDone")]
+    public static bool GetKneadDone()
+    {
+        return kneadDone;
+    }
+
+    [YarnCommand("setKneadDone")]
+    public static void SetKneadDone(bool val)
+    {
+        kneadDone = val;
     }
 
     // Oven Tutorial
@@ -142,6 +174,18 @@ public class GameManager : MonoBehaviour
         ovenTutorial = val;
     }
 
+    [YarnFunction("getOvenDone")]
+    public static bool GetOvenDone()
+    {
+        return ovenDone;
+    }
+
+    [YarnCommand("setOvenDone")]
+    public static void SetOvenDone(bool val)
+    {
+        ovenDone = val;
+    }
+
     // Display Tutorial
     [YarnFunction("getDispTutorial")]
     public static bool GetDispTutorial()
@@ -153,5 +197,42 @@ public class GameManager : MonoBehaviour
     public static void SetDispTutorial(bool val)
     {
         dispTutorial = val;
+    }
+
+    [YarnFunction("getDispDone")]
+    public static bool GetDispDone()
+    {
+        return dispDone;
+    }
+
+    [YarnCommand("setDispDone")]
+    public static void SetDispDone(bool val)
+    {
+        dispDone = val;
+    }
+
+    // Stocks Tutorial
+    [YarnFunction("getStocksTutorial")]
+    public static bool GetStocksTutorial()
+    {
+        return stocksTutorial;
+    }
+
+    [YarnCommand("setStocksTutorial")]
+    public static void SetStocksTutorial(bool val)
+    {
+        stocksTutorial = val;
+    }
+
+    [YarnFunction("getStocksDone")]
+    public static bool GetStocksDone()
+    {
+        return stocksDone;
+    }
+
+    [YarnCommand("setStocksDone")]
+    public static void SetStocksDone(bool val)
+    {
+        stocksDone = val;
     }
 }

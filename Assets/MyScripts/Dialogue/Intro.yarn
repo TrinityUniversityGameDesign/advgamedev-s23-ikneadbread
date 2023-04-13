@@ -3,6 +3,16 @@
 <<if getIntroDone() == false>>
     Sometimes all we <b>knead</b> in life is to <b>rise</b> to opportunities in life.
     <<jump Intro>>
+<<elseif getIngTutorial() == true && getIngDone() == false>>
+    <<jump IngTutorialStart>>
+<<elseif getKneadTutorial() == true && getKneadDone() == false>>
+    <<jump KneadTutorialStart>>
+<<elseif getOvenTutorial() == true && getOvenDone() == false>>
+    <<jump OvenTutorialStart>>
+<<elseif getDispTutorial() == true && getDispDone() == false>>
+    <<jump DispTutorialStart>>
+<<elseif getStocksTutorial() == true && getStocksDone() == false>>
+    <<jump StocksTutorialStart>>
 <<endif>>
 ===
 
@@ -38,66 +48,88 @@ MomCat: Once you open the cabinet doors, everything will fall, so have your bask
 
 title: IngTutorialEnd
 ---
-<<if getIngTutorial() == true>>
-    MomCat: <b>Purrfect!</b> You got everything, let's keep going! 
-<<else>>
-    MomCat: Uh-Oh you missed a few things, try again!
-    //Redo
-<<endif>>
+MomCat: <b>Purrfect!</b> You got everything, let's keep going! 
+
+//MomCat: Uh-Oh you missed a few things, try again!
+//Redo
+<<setIngTutorial false>>
+<<setIngDone true>>
 ===
 
 //Kneading Tutorial
 title: KneadTutorialStart
 ---
 MomCat: <b>Meows</b> the <b>Purrfect</b> time Knead it all together!
-*Mini game starts*
+//*Mini game starts*
 MomCat: To Knead all you <b>knead</b> to do is, “Right click on the dough bubbles to pop and knead it. Not too fast though or it won’t be <b>Purrfect!</b>”
+<<if setKneadTutorial() == false>>
+    <<jump KneadTutorialEnd>>
+<<endif>>
 ===
 
 title: KneadTutorialEnd
 ---
-<<if getKneadTutorial() == true>>
-    DadCat: I’m <b>felining purrty</b> good about this.
-<<else>>
-    DadCat: You got your <b>paws</b> dirty for this? Let's do it again.
-    //Redo
-<<endif>>
+DadCat: I’m <b>felining purrty</b> good about this.
+
+//DadCat: You got your <b>paws</b> dirty for this? Let's do it again.
+//Redo
+<<setKneadDone true>>
 ===
 
 //Oven Tutorial
 title: OvenTutorialStart
 ---
 MomCat: <b>Meow</b> we bake our <b>scratch</b> dough!
-*minigame starts*
+//*minigame starts*
 DadCat: for the <b>purrfect</b> bread take a look at the “Baking meter”. It will show you when the bread is <b>purrfect!</b>
 ===
 
 title: OvenTutorialEnd
 ---
-<<if getOvenTutorial() == true>>
-    MomCat: I’m not <b>kitten</b> around when I say that looks <b>pawsome!</b>
-<<else>>
-    MomCat: Are you <b>kitten</b> me!?
-    //Redo
-<<endif>>
+MomCat: I’m not <b>kitten</b> around when I say that looks <b>pawsome!</b>
+
+//MomCat: Are you <b>kitten</b> me!?
+//Redo
+<<setOvenTutorial false>>
+<<setOvenDone true>>
 ===
 
 //Display Tutorial
 title: DisplayTutorialStart
 ---
 DadCat: All that is <b>meow</b> left is to is to display the bread that you <b>flourish</b>
-*minigame starts*
+//*minigame starts*
 DadCat: To display, “click on the sliding wall and drag it open. Then place the bread in the case, without damaging the bread, and close the case”.
 ===
 
 title: DisplayTutorialEnd
 ---
-<<if getDispTutorial() == true>>
-    MomCat: <b>Meow</b> that looks <b>Whiskerlicious</b>.
-<<else>>
-    MomCat: Uh-oh, let's not damage our <b>purrfect</b> bread!
-    //Redo
+MomCat: <b>Meow</b> that looks <b>Whiskerlicious</b>.
+
+//MomCat: Uh-oh, let's not damage our <b>purrfect</b> bread!
+//Redo
+<<setDispTutorial false>>
+<<setDispDone true>>
+===
+
+//Stocks Tutorial
+title: StocksTutorialStart
+---
+DadCat: All that is <b>meow</b> left is to is to display the bread that you <b>flourish</b>
+//*minigame starts*
+DadCat: To display, “click on the sliding wall and drag it open. Then place the bread in the case, without damaging the bread, and close the case”.
+<<if setStocksTutorial() == false>>
+    <<jump StocksTutorialEnd>>
 <<endif>>
+===
+
+title: StocksTutorialEnd
+---
+MomCat: <b>Meow</b> that looks <b>Whiskerlicious</b>.
+
+//MomCat: Uh-oh, let's not damage our <b>purrfect</b> bread!
+//Redo
+<<setStocksDone true>>
 ===
 
 //BreadBible
