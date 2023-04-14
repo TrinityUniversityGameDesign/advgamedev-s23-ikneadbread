@@ -10,6 +10,7 @@ TagManager:
   - Jellyable
   - Culling
   - Obstacle
+  - Win
   layers:
   - Default
   - TransparentFX

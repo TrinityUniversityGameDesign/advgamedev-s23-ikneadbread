@@ -1,14 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
-public class Timer : MonoBehaviour
+public class StocksTimer : MonoBehaviour
 {
-    public float timeRemaining = 0;
+    public float timeRemaining = 20;
     public bool timeIsRunning = true;
     public TMP_Text timeText;
-    public GameObject KneadGameManager;
-
+    public StockLineController controller;
 
     // Start is called before the first frame update
     void Start()
@@ -19,17 +19,18 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (KneadGameManager.GetComponent<KneadGameManager>().gameStarted == true)
+        if (controller.gameStarted == true)
         {
             if (timeIsRunning)
             {
                 if (timeRemaining >= 0)
                 {
-                    timeRemaining += Time.deltaTime;
+                    timeRemaining -= Time.deltaTime;
                     DisplayTime(timeRemaining);
                 }
+                else controller.endGame();
             }
-            if (KneadGameManager.GetComponent<KneadGameManager>().gameEnded == true)
+            if (controller.gameEnded == true)
             {
                 timeIsRunning = false;
                 DisplayTime(timeRemaining);

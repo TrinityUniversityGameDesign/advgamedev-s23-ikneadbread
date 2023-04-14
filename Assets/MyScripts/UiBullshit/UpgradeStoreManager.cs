@@ -152,11 +152,28 @@ public class UpgradeStoreManager : MonoBehaviour
         switch (upgradeInCart.name)
         {
             case "Boost (1)":
-                if (GM)
-                {
-                    GM.boostBoots.Invoke();
-                    Debug.Log("Boost Invoked");
-                }
+                GM.boost1.Invoke();
+                break;
+            case "Accessory (1)":
+                GM.accessory1.Invoke();
+                break;
+            case "Accessory (2)":
+                GM.accessory2.Invoke();
+                break;
+            case "Accessory (3)":
+                GM.accessory3.Invoke();
+                break;
+            case "Accessory (4)":
+                GM.accessory4.Invoke();
+                break;
+            case "Accessory (5)":
+                GM.accessory5.Invoke();
+                break;
+            case "Ticket (1)":
+                break;
+            case "Ticket (2)":
+                break;
+            case "Ticket (3)":
                 break;
         }
 
