@@ -7,6 +7,10 @@ TagManager:
   - Lump
   - Bread
   - Ingridient
+  - Jellyable
+  - Culling
+  - Obstacle
+  - Win
   layers:
   - Default
   - TransparentFX
