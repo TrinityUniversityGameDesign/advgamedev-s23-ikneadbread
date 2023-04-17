@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
 
     private float angleVelocity;
-    private GameManager GM;
 
     public Transform cam = null;
 
