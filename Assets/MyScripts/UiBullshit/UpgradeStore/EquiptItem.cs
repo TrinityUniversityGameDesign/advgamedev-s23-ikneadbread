@@ -8,18 +8,6 @@ public class EquiptItem : MonoBehaviour
     private GameObject[] allBoots = new GameObject[4];
     private GameObject BootBL, BootBR, BootFL, BootFR;
 
-    //public Vector3 BLPickPosition;
-    //public Vector3 BLPickRotation;
-
-    //public Vector3 BRPickPosition;
-    //public Vector3 BRPickRotation;
-
-    //public Vector3 FLPickPosition;
-    //public Vector3 FLPickRotation;
-
-    //public Vector3 FRPickPosition;
-    //public Vector3 FRPickRotation;
-
     private GameObject Cat;
     private GameObject Flour;
     private GameManager GM;
@@ -44,12 +32,6 @@ public class EquiptItem : MonoBehaviour
         allBoots[1] = GameObject.Find("BootBR");
         allBoots[2] = GameObject.Find("BootFL");
         allBoots[3] = GameObject.Find("BootFR");
-
-
-        //BootBL.GetComponent<Renderer>().enabled = false;
-        //BootBR.GetComponent<Renderer>().enabled = false;
-        //BootFL.GetComponent<Renderer>().enabled = false;
-        //BootFR.GetComponent<Renderer>().enabled = false;
 
 
     }
