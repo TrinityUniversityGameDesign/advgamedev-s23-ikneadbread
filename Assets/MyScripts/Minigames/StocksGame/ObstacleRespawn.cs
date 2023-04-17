@@ -19,7 +19,7 @@ public class ObstacleRespawn : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Culling"))
         {
-            Debug.Log("Culling");
+            //Debug.Log("Culling");
             respawn();
         }
         else if (other.gameObject.CompareTag("Player"))

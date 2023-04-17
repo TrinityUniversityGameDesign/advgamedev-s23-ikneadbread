@@ -21,7 +21,7 @@ public class StockLineController : MonoBehaviour
 
     private float speed = 2;
     private bool growing = false;
-    private float startingValue = 20;
+    private float startingValue = 0;
     private float growthRate = 0.25f;
     private float shrinkRate = -0.25f;
 
@@ -111,7 +111,7 @@ public class StockLineController : MonoBehaviour
         switch (obstacleType)
         {
             case 1:
-                addStockValue(-10);
+                addStockValue(-25);
                 break;
             case 2:
                 shrinkRate -= 0.25f;
