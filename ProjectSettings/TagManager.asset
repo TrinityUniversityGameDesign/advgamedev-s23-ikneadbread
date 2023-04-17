@@ -9,6 +9,9 @@ TagManager:
   - Ingridient
   - Jellyable
   - Water
+  - Culling
+  - Obstacle
+  - Win
   layers:
   - Default
   - TransparentFX

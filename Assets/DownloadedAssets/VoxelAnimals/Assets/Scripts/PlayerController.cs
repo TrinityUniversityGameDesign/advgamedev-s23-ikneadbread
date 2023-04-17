@@ -14,14 +14,17 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
 
     private float angleVelocity;
+    private GameManager GM;
 
     public Transform cam = null;
     
     void Start()
     {
-        Debug.Log("current speed in the CityTime: " + movementSpeed);
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        GM = GameObject.Find("globalGM").GetComponent<GameManager>();
+        movementSpeed = GM.moveSpeed;
+        Debug.Log("current speed in the CityTime: " + movementSpeed);
 
         //Camera.main.GetComponent<CameraController>().AssignTarget(transform);
     }
