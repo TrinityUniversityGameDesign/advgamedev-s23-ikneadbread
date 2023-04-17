@@ -5,6 +5,7 @@ using UnityEngine;
 public class EquiptItem : MonoBehaviour
 {
     //private GameObject cowboyHat;
+    private GameObject[] allBoots = new GameObject[4];
     private GameObject BootBL, BootBR, BootFL, BootFR;
 
     public Vector3 BLPickPosition;
@@ -33,15 +34,16 @@ public class EquiptItem : MonoBehaviour
         updateStoreManager = GameObject.FindObjectOfType<UpgradeStoreManager>();
         //cowboyHat = GameObject.Find("CowboyHat");
 
-        BootBL = GameObject.Find("BootBL");
-        BootBR = GameObject.Find("BootBR");
-        BootFL = GameObject.Find("BootFL");
-        BootFR = GameObject.Find("BootFR");
+        allBoots[0] = GameObject.Find("BootBL");
+        allBoots[1] = GameObject.Find("BootBR");
+        allBoots[2] = GameObject.Find("BootFL");
+        allBoots[3] = GameObject.Find("BootFR");
 
-        BootBL.GetComponent<Renderer>().enabled = false;
-        BootBR.GetComponent<Renderer>().enabled = false;
-        BootFL.GetComponent<Renderer>().enabled = false;
-        BootFR.GetComponent<Renderer>().enabled = false;
+
+        //BootBL.GetComponent<Renderer>().enabled = false;
+        //BootBR.GetComponent<Renderer>().enabled = false;
+        //BootFL.GetComponent<Renderer>().enabled = false;
+        //BootFR.GetComponent<Renderer>().enabled = false;
 
 
     }
@@ -51,31 +53,44 @@ public class EquiptItem : MonoBehaviour
     {
         //three cases we want to wear thing
         //1) we click on the object
-        //2) we already are wearing the object
+        //2) we have already purchased the object
 
 
-        //if(GM.bootsBought)
-        //{
-        //    EquiptBoots();
-        //}
-
-        if (updateStoreManager.upgradeNameText.text == "Cat Booties")
+        if (GM.bootsBought || (updateStoreManager.upgradeNameText.text == "Cat Booties"))
         {
-            EquiptBoots();
-        } else
-        {
-            DeEquiptBoots();
+            EquiptItems(allBoots);
+            //EquiptBoots();
+        } else {
+            DeEquiptItems(allBoots);
         }
     }
 
-    public void DeEquiptBoots()
-    {
-        catShoes = false;
 
-        BootBL.GetComponent<Renderer>().enabled = false;
-        BootBR.GetComponent<Renderer>().enabled = false;
-        BootFL.GetComponent<Renderer>().enabled = false;
-        BootFR.GetComponent<Renderer>().enabled = false;
+    //boosts
+
+
+
+    //abstract equiption
+    public void EquiptItems(GameObject[] showItems)
+    {
+        Debug.Log("lenght: " + showItems.Length);
+        for (int i = 0; i < showItems.Length ; i++)
+        {
+            showItems[i].GetComponent<Renderer>().enabled = true;
+        }
+    }
+
+    public void DeEquiptItems(GameObject[] hideItems)
+    {
+
+        foreach (GameObject obj in hideItems)
+        {
+            MeshRenderer renderer = obj.GetComponent<MeshRenderer>();
+            if (renderer != null)
+            {
+                renderer.enabled = false;
+            }
+        }
     }
 
     public void EquiptBoots()
@@ -88,6 +103,18 @@ public class EquiptItem : MonoBehaviour
         BootFR.GetComponent<Renderer>().enabled = true;
 
     }
+
+    public void DeEquiptBoots()
+    {
+        catShoes = false;
+
+        BootBL.GetComponent<Renderer>().enabled = false;
+        BootBR.GetComponent<Renderer>().enabled = false;
+        BootFL.GetComponent<Renderer>().enabled = false;
+        BootFR.GetComponent<Renderer>().enabled = false;
+    }
+
+
 
     public void EquiptCowboyHat()
     {

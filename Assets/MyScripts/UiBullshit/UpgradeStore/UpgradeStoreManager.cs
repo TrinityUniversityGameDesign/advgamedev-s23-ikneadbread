@@ -120,9 +120,9 @@ public class UpgradeStoreManager : MonoBehaviour
                 Debug.Log("case b: " + boostNameDesc[upgradeNum]);
                 upgradeNameText.text = boostNameDesc[upgradeNum];
                 upgradeDescText.text = boostNameDesc[upgradeNum + 1];
-                Debug.Log("case b: " + boostNameDesc[upgradeNum] + 1);
                 break;
             case 'a':
+                Debug.Log("case a: " + boostNameDesc[upgradeNum]);
                 upgradeNameText.text = accessoryNameDesc[upgradeNum];
                 upgradeDescText.text = accessoryNameDesc[upgradeNum + 1];
                 break;
