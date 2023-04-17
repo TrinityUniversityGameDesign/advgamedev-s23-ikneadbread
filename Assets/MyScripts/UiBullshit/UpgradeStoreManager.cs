@@ -22,6 +22,8 @@ public class UpgradeStoreManager : MonoBehaviour
     public TMP_Text upgradeDescText;
     public TMP_Text confirmPanelUpgrade;
 
+    public GameManager GM;
+
     private int goldCoins;
     private int silverCoins;
     private int bronzeCoins;
@@ -31,7 +33,6 @@ public class UpgradeStoreManager : MonoBehaviour
     private int upgradeIndex;
     private GameObject catDisplay;
 
-    private GameManager GM;
     private string boostsOwned;
     private string accessoriesOwned;
     private string ticketsOwned;
@@ -82,6 +83,7 @@ public class UpgradeStoreManager : MonoBehaviour
 
     public void changeProducts()
     {
+        Debug.Log(GM);
         boostsPanel.SetActive(false);
         accessoriesPanel.SetActive(false);
         ticketsPanel.SetActive(false);
@@ -150,7 +152,28 @@ public class UpgradeStoreManager : MonoBehaviour
         switch (upgradeInCart.name)
         {
             case "Boost (1)":
-                if (GM) GM.boostBoots.Invoke();
+                GM.boost1.Invoke();
+                break;
+            case "Accessory (1)":
+                GM.accessory1.Invoke();
+                break;
+            case "Accessory (2)":
+                GM.accessory2.Invoke();
+                break;
+            case "Accessory (3)":
+                GM.accessory3.Invoke();
+                break;
+            case "Accessory (4)":
+                GM.accessory4.Invoke();
+                break;
+            case "Accessory (5)":
+                GM.accessory5.Invoke();
+                break;
+            case "Ticket (1)":
+                break;
+            case "Ticket (2)":
+                break;
+            case "Ticket (3)":
                 break;
         }
 
