@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent onMiniGameCube = new UnityEvent();
 
+
+    //boolean for values
+    public bool bootsBought = false;
+
     //Destroys the old GameManager but still contais all the previous data
     //this awake is necessary so we do not have duplicate GameManagers
     private void Awake()
@@ -79,12 +83,15 @@ public class GameManager : MonoBehaviour
 
     }
 
+
     public void ApplyBootiesUpgrade()
     {
+        bootsBought = true;
         Debug.Log("update boots");
         Debug.Log("current cat speed: " + playerCat.GetComponent<PlayerController>().movementSpeed);
         playerCat.GetComponent<PlayerController>().movementSpeed = 6;
         Debug.Log("afterUpgrade (in scene) cat speed: " + playerCat.GetComponent<PlayerController>().movementSpeed);
+
 
     }
 
