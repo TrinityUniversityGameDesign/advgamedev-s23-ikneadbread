@@ -8,6 +8,7 @@ TagManager:
   - Bread
   - Ingridient
   - Jellyable
+  - Water
   layers:
   - Default
   - TransparentFX
