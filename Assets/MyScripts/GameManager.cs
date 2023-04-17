@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Events;
+using Yarn.Unity;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,13 @@ public class GameManager : MonoBehaviour
     public string accessoriesOwned;
     public string ticketsOwned;
 
+    //yarn variables
+    static bool introDone = false;
+    static bool ingTutorial = false;
+    static bool kneadTutorial = false;
+    static bool ovenTutorial = false;
+    static bool dispTutorial = false;
+    
     public float moveSpeed = 3;
 
     public UnityEvent onMiniGameCube = new UnityEvent();
@@ -88,6 +96,73 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // ------------ Yarn functions ------------
+
+    // Introduction Complete
+    [YarnFunction("getIntroDone")]
+    public static bool GetIntroDone()
+    {
+        return introDone;
+    }
+
+    [YarnCommand("setIntroDone")]
+    public static void SetIntroDone(bool val)
+    {
+        introDone = val;
+    }
+
+    // Ingredient Tutorial
+    [YarnFunction("getIngTutorial")]
+    public static bool GetIngTutorial()
+    {
+        return ingTutorial;
+    }
+
+    [YarnCommand("setIngTutorial")]
+    public static void SetIngTutorial(bool val)
+    {
+        ingTutorial = val;
+    }
+
+    // Kneading Tutorial
+    [YarnFunction("getKneadTutorial")]
+    public static bool GetKneadTutorial()
+    {
+        return kneadTutorial;
+    }
+
+    [YarnCommand("setKneadTutorial")]
+    public static void SetKneadTutorial(bool val)
+    {
+        kneadTutorial = val;
+    }
+
+    // Oven Tutorial
+    [YarnFunction("getOvenTutorial")]
+    public static bool GetOvenTutorial()
+    {
+        return ovenTutorial;
+    }
+
+    [YarnCommand("setOvenTutorial")]
+    public static void SetOvenTutorial(bool val)
+    {
+        ovenTutorial = val;
+    }
+
+    // Display Tutorial
+    [YarnFunction("getDispTutorial")]
+    public static bool GetDispTutorial()
+    {
+        return dispTutorial;
+    }
+
+    [YarnCommand("setDispTutorial")]
+    public static void SetDispTutorial(bool val)
+    {
+        dispTutorial = val;
+    }
+    
     // Add Hats to Inventory
     public void StrawHatUpgrade()
     {

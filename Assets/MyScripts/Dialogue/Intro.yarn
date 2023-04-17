@@ -1,132 +1,118 @@
 ﻿title: Start
-position: -101,-260
 ---
-Hello everynyan!
-
-I've just inherited a bread bakery from my grandnya, and now it's my dream to learn how to bake all different kinds of bread!
+<<if getIntroDone() == false>>
+    Sometimes all we knead in life is to rise to opportunities in life.
+    <<jump Intro>>
+<<endif>>
 ===
 
+//dialogue tree for Intro
+title: Intro
+---
+<<if getIntroDone() == false>>
+    MomCat: Honey I know you're moving so we want you to have this.
+    *Hands over keys to the bakery* 
+    DadCat: These are the keys to our old family bakery that has been in our family for 4 generations and meows the time we paw it over to you. 
+    <<setIntroDone true>>
+<<endif>>
+===
 
-// dialogue tree for Elder
-// title: Elder
-// position: -299,-80
-// ---
-// <<if getIntroElder() == false>>
-//     <<setIntroElder true>>
-//     Elder: Welcome Dantice! You came to help us defeat *insert cool boss name here*, right?
-//     -> Of course!
-//         Elder: Thank you so much! Make sure to introduce yourself to everyone before you head out.
-//         <<raiseReadiness 1>>
-//     -> Nah man, I'm just here to vibe.
-//         Elder: O-oh. Well... fuck you too I guess...
-//         <<jump BadEnd>>
-// <<elseif getIntroHephicetus() == false>>
-//     Elder: Hephicetus over there might be able to make your weapon more effective.
-// <<elseif getComplete1() == true>>
-//     Elder: Thank you for taking care of those spiders!
-// <<elseif getComplete2() == true>>
-//     Elder: You did it! We can't thank you enough for what you've done for us, Dantice!
-//     <<jump GoodEnd>>
-// <<else>>
-//     Elder: We're all with you, Dantice!
-// <<endif>>
-// ===
+//dialogue tree for Parents
+title: Parents
+---
+DadCat: This is our, I mean your bakery, “Whiskerlicious”.
+MomCat: it will have everything you knead.
+*walk over to the front of the store*
+DadCat: Here's where all of your customers will line up for their order. “Click on their order to start” is what Meow-Pa always said. 
+*walks over to the kitchen*
+MomCat: Here's the kitchen where you’ll bake and knead everything to bake bread out of scratch.
+===
 
-// title: Hephicetus
-// position: 114,-79
-// ---
-// // first time talking to Hephicetus
-// <<if getIntroHephicetus() == false>>
-//     // the first time we talk to Hephicetus
-//     <<setIntroHephicetus true>>
-//     Hephicetus: Hello young lad! I can upgrade the legendary Frostbite for you, but you've gotta do a few things for me first.
-//     Hephicetus: I'll let you know what I need once you've gotten settled in.
-//     <<raiseReadiness 1>>
-// <<elseif getReadiness() >= 2>>
-//     <<if getBossBeaten() == true>>
-//         Hephicetus: Wow, you really did it, kid!
-//         Hephicetus: Go let the Elder know of your victory.
-//     <<elseif getUpgrade2() == true>>
-//         Hephicetus: Frostbite is as strong as it can get now!
-//         Hephicetus: Go out there and give that *insert cool boss name here* what for!
-//     <<elseif getUpgrade1() == true>>
-//         <<jump Quest2>>
-//     <<else>>
-//         <<jump Quest1>>
-//     <<endif>>
-// <<else>>
-//     Hephicetus: Make sure you introduce yourself to everyone.
-// <<endif>>
-// ===
+//Ingredients Tutorial
+title: IngTutorialStart
+---
+DadCat: Meow-Pa always told me to “Click on the cabinets” to collect ingredients.
+*Start collection minigame*
+MomCat: Once you open the cabinet doors, everything will fall, so have your basket ready to get everything you knead.
+===
 
-// title: Quest1
-// position: 14,133
-// ---
-// <<if getReceived1() == false>>
-//     Hephicetus: Welcome back Dantice! 
-//     Hephicetus: To start with, I need you to go kill 5 spiders.
-//     -> Accept
-//         Hephicetus: Thanks!
-//         <<setReceived1 true>>
-//     -> Reject
-//         Hephicetus: Come back when you're ready, I guess...
-// <<elseif getComplete1() == true>>
-//     Hephicetus: Great job! Give me a second and I'll make Frostbite even *COOL*er!
-//     <<setUpgrade1 true>>
-//     Hephicetus: There you go!
-// <<else>>
-//     Hephicetus: How's that monster slayin' going?
-// <<endif>>
-// ===
+title: IngTutorialEnd
+---
+<<if getIngTutorial() == true>>
+    MomCat: Purrfect! You got everything, let's keep going! 
+<<else>>
+    MomCat: Uh-Oh you missed a few things, try again!
+    //Redo
+<<endif>>
+===
 
-// title: Quest2
-// position: 223,131
-// ---
-// <<if getReceived2() == false>>
-//     Hephicetus: Welcome back Dantice! 
-//     Hephicetus: This time I need you to, uh, kill 5 more spiders!
-//     -> Accept
-//         Hephicetus: Thanks!
-//         <<setReceived2 true>>
-//     -> Reject
-//         Hephicetus: Alright, if you don't think you're up for it...
-// <<elseif getComplete2() == true>>
-//     Hephicetus: Great job! Give me a second and I'll really make Frostbite roar!
-//     <<setUpgrade2 true>>
-//     Hephicetus: There you go!
-// <<else>>
-//     Hephicetus: How's that conquerin' going?
-// <<endif>>
-// ===
+//Kneading Tutorial
+title: KneadTutorialStart
+---
+MomCat: Meows the Purrfect time Knead it all together!
+*Mini game starts*
+MomCat: To Knead all you knead to do is, “Right click on the dough bubbles to pop and knead it. Not too fast though or it won’t be Purrfect!”
+===
 
-// title: Dante
-// position: -110,327
-// ---
-// <<if visited("Dante") == false>>
-//     Dante: Welcome, Dantice. 
-//     Dante: I didn't think you'd actually make it this far.
-//     Dante: Time to deal with you myself.
-// <<elseif getBossBeaten() == true>>
-//     Dante: NO!
-//     Dante: How could I allow someone like you to best me in combat...
-// <<else>>
-//     Dante: Back for more? I'll gladly oblige.
-// <<endif>>
-// ===
+title: KneadTutorialEnd
+---
+<<if getKneadTutorial() == true>>
+    DadCat: I’m felining purrty good about this.
+<<else>>
+    DadCat: You got your paws dirty for this? Let's do it again.
+    //Redo
+<<endif>>
+===
 
-// title: BadEnd
-// position: -199,130
-// ---
-// *insert cool boss name here* took over Hell and everyone lived unhappily-ever-after.
-// THE END
-// <<quit>>
-// ===
+//Oven Tutorial
+title: OvenTutorialStart
+---
+MomCat: Meow we bake our scratch dough!
+*minigame starts*
+DadCat: for the purrfect bread take a look at the “Baking meter”. It will show you when the bread is purrfect!
+===
 
-// title: GoodEnd
-// position: -407,133
-// ---
-// Congradulations!
-// *insert cool boss name here* fled in terror and the Frostlands are safe!
-// THE END
-// <<quit>>
-// ===
+title: OvenTutorialEnd
+---
+<<if getOvenTutorial() == true>>
+    MomCat: I’m not kitten around when I say that looks pawsome!
+<<else>>
+    MomCat: Are you kitten me!?
+    //Redo
+<<endif>>
+===
+
+//Display Tutorial
+title: DisplayTutorialStart
+---
+DadCat: All that is meow left is to is to display the bread that you flourish
+*minigame starts*
+DadCat: To display, “click on the sliding wall and drag it open. Then place the bread in the case, without damaging the bread, and close the case”.
+===
+
+title: DisplayTutorialEnd
+---
+<<if getDispTutorial() == true>>
+    MomCat: Meow that looks Whiskerlicious.
+<<else>>
+    MomCat: Uh-oh, let's not damage our purrfect bread!
+    //Redo
+<<endif>>
+===
+
+//BreadBible
+title: BreadBible
+---
+DadCat: Meow that you finished up your first loaf, it is time we give you this.
+*MomCat paws over the Bread Bible*
+MomCat: This book was made when your Great Meow-Pa started up the shop with your Great Meow-ma. 
+MomCat: Every Recipe that we obtained was recorded until one day Paw-pa had too much catnip and scratched almost all of the recipes. 
+Paw-Pa: Sorry about that. The first few pages are still in good condition. 
+Paw-Pa: They have all of the pictures of what the bread looks like, but its up to you to rediscover the recipes by meeting new people and interacting by “Left clicking their speech bubble”. 
+===
+
+//Upgrade dialogue
+title: Upgrades
+---
+Shopkeeper: Hewo!
+===
