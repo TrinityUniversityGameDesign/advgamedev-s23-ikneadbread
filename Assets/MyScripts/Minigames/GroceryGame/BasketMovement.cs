@@ -7,13 +7,12 @@ public class BasketMovement : MonoBehaviour
 {
     private int speed = 5;
     public GameObject basket;
-    private int ingrCount;
     public TextMeshProUGUI text;
-    public GameObject EndScreen;
+    //public GameObject EndScreen;
     void Start()
     {
         basket = GameObject.Find("Basket");
-        EndScreen.SetActive(false);
+        //EndScreen.SetActive(false);
     }
    
         void OnCollisionEnter(Collision col)
@@ -22,29 +21,20 @@ public class BasketMovement : MonoBehaviour
         if (col.gameObject.CompareTag("Ingridient"))
         {
             // Increment fruit count
-            ingrCount++;
-            text.text = "Score: " + ingrCount;
             // Destroy caught fruit
             Destroy(col.gameObject);
-            if(ingrCount==10)
-                EndScreen.SetActive(true);
+
                 
         }
     }
 
-    public int getScore()
-    {
-        return ingrCount;
-    }
-
-
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A)) { 
+        if (Input.GetKey(KeyCode.LeftArrow)) { 
             basket.transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             basket.transform.Translate(Vector3.back * Time.deltaTime * speed);
         }
