@@ -20,10 +20,10 @@
 title: Intro
 ---
 <<if getIntroDone() == false>>
+    <<setIntroDone true>>
     MomCat: Honey I know you're moving so we want you to have this.
     *Hands over keys to the bakery* 
     DadCat: These are the keys to our old family bakery that has been in our family for 4 generations and <b>meows</b> the time we <b>paw</b> it over to you. 
-    <<setIntroDone true>>
 <<endif>>
 ===
 
