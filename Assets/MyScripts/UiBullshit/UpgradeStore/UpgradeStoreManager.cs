@@ -37,6 +37,9 @@ public class UpgradeStoreManager : MonoBehaviour
     private string ticketsOwned;
 
 
+    //this is to see which item was clicked within the panel
+    public bool bootClicked;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -113,8 +116,11 @@ public class UpgradeStoreManager : MonoBehaviour
         switch (activeCategory)
         {
             case 'b':
+                //add bool val here
+                Debug.Log("case b: " + boostNameDesc[upgradeNum]);
                 upgradeNameText.text = boostNameDesc[upgradeNum];
                 upgradeDescText.text = boostNameDesc[upgradeNum + 1];
+                Debug.Log("case b: " + boostNameDesc[upgradeNum] + 1);
                 break;
             case 'a':
                 upgradeNameText.text = accessoryNameDesc[upgradeNum];
