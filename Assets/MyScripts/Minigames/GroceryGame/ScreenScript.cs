@@ -1,25 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-public class TimerScript : MonoBehaviour
+
+public class ScreenScript : MonoBehaviour
 {
+    public GameObject StartScreen;
+    public GameObject EndScreen;
     public float totalTime = 60f;
     public TextMeshProUGUI timerText;
 
+
+   
     private float timeRemaining;
-    private bool isRunning = false;
+    public bool isRunning = false;
+
 
     void Start()
-    {
+    { 
         timeRemaining = totalTime;
+        EndScreen.SetActive(false);
+        StartScreen.SetActive(true);
         StartTimer();
-        UpdateTimerText();
+
     }
 
     void Update()
     {
         if (isRunning)
         {
+            EndScreen.SetActive(false);
             timeRemaining -= Time.deltaTime;
             UpdateTimerText();
 
@@ -30,15 +40,20 @@ public class TimerScript : MonoBehaviour
 
             if (timeRemaining <= 0f)
             {
-                isRunning = false;
-                timerText.text = "Time's up!";
+                isRunning = false;                
+
             }
+        } else
+        {
+            EnableEnd();
         }
+ 
     }
 
     public void StartTimer()
     {
-        isRunning = true;
+        isRunning = true;        
+        UpdateTimerText();
     }
 
     private void UpdateTimerText()
@@ -47,4 +62,17 @@ public class TimerScript : MonoBehaviour
         int seconds = Mathf.FloorToInt(timeRemaining % 60f);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+
+
+    public void DisableStart()
+    {
+        StartScreen.SetActive(false);
+      
+    }
+
+    public void EnableEnd()
+    {
+        EndScreen.SetActive(true);
+    }
+
 }
