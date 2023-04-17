@@ -8,28 +8,34 @@ public class EquiptItem : MonoBehaviour
     private GameObject[] allBoots = new GameObject[4];
     private GameObject BootBL, BootBR, BootFL, BootFR;
 
-    public Vector3 BLPickPosition;
-    public Vector3 BLPickRotation;
+    //public Vector3 BLPickPosition;
+    //public Vector3 BLPickRotation;
 
-    public Vector3 BRPickPosition;
-    public Vector3 BRPickRotation;
+    //public Vector3 BRPickPosition;
+    //public Vector3 BRPickRotation;
 
-    public Vector3 FLPickPosition;
-    public Vector3 FLPickRotation;
+    //public Vector3 FLPickPosition;
+    //public Vector3 FLPickRotation;
 
-    public Vector3 FRPickPosition;
-    public Vector3 FRPickRotation;
+    //public Vector3 FRPickPosition;
+    //public Vector3 FRPickRotation;
 
+    private GameObject Cat;
+    private GameObject Flour;
     private GameManager GM;
     private UpgradeStoreManager updateStoreManager;
+   
 
 
     //for shoes and hats to be on the same time
     private bool catShoes = false;
     private bool catHats = false;
+    private bool showGatito = false;
 
     private void Start()
     {
+        Cat = GameObject.Find("CatDisplay");
+        Flour = GameObject.Find("flour");
         GM = GameObject.FindObjectOfType<GameManager>();
         updateStoreManager = GameObject.FindObjectOfType<UpgradeStoreManager>();
         //cowboyHat = GameObject.Find("CowboyHat");
@@ -55,12 +61,30 @@ public class EquiptItem : MonoBehaviour
         //1) we click on the object
         //2) we have already purchased the object
 
+        if(updateStoreManager.upgradeNameText.text == "Imported Flour")
+        {
+            if(showGatito == true)
+            {
+                DeEquiptS(Cat);
+            } else
+            {
+                EquiptS(Flour);
+                Flour.transform.Rotate(0, 1, 0);
+                //show flour
+
+            }
+
+        } 
 
         if (GM.bootsBought || (updateStoreManager.upgradeNameText.text == "Cat Booties"))
         {
+            DeEquiptS(Flour);
+            showGatito = true;
+            EquiptS(Cat);
             EquiptItems(allBoots);
-            //EquiptBoots();
         } else {
+            showGatito = false;
+            DeEquiptS(Cat);
             DeEquiptItems(allBoots);
         }
     }
@@ -93,34 +117,36 @@ public class EquiptItem : MonoBehaviour
         }
     }
 
-    public void EquiptBoots()
+
+    //these two are for when there are gameobjects with gameobjects (ex: prefabs)
+
+    public void DeEquiptS(GameObject item)
     {
-        catShoes = true;
 
-        BootBL.GetComponent<Renderer>().enabled = true;
-        BootBR.GetComponent<Renderer>().enabled = true;
-        BootFL.GetComponent<Renderer>().enabled = true;
-        BootFR.GetComponent<Renderer>().enabled = true;
-
+        foreach (Transform child in item.transform)
+        {
+            MeshRenderer renderer = child.GetComponent<MeshRenderer>();
+            if (renderer != null)
+            {
+                renderer.enabled = false;
+            }
+        }
+        showGatito = false;
     }
 
-    public void DeEquiptBoots()
+    public void EquiptS(GameObject item)
     {
-        catShoes = false;
 
-        BootBL.GetComponent<Renderer>().enabled = false;
-        BootBR.GetComponent<Renderer>().enabled = false;
-        BootFL.GetComponent<Renderer>().enabled = false;
-        BootFR.GetComponent<Renderer>().enabled = false;
+        foreach (Transform child in item.transform)
+        {
+            MeshRenderer renderer = child.GetComponent<MeshRenderer>();
+            if (renderer != null)
+            {
+                renderer.enabled = true;
+            }
+        }
+        showGatito = true;
     }
 
 
-
-    public void EquiptCowboyHat()
-    {
-        //apply vector3
-        //cowboyHat.transform.parent = GameObject.Find("Head").transform;
-        //cowboyHat.transform.localPosition = PickPosition;
-        //cowboyHat.transform.localEulerAngles = PickRotation;
-    }
 }
