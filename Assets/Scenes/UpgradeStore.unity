@@ -189,7 +189,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -530,6 +530,17 @@ PrefabInstance:
       objectReference: {fileID: 1585349779547952, guid: aa2d47f95b34fbe4d9cbe095f13585b5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cacaee8ea96c4bed9d83f76425573c0, type: 3}
+--- !u!114 &164910227 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2864781488269295602, guid: 5cacaee8ea96c4bed9d83f76425573c0, type: 3}
+  m_PrefabInstance: {fileID: 164910226}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2de63e400e2b433aaf7691fef353f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &207178012
 GameObject:
   m_ObjectHideFlags: 0
@@ -9920,10 +9931,10 @@ MonoBehaviour:
   - Increased timer in minigames
   - Kitten Mittens
   - Improves bread kneading capability
-  - Tote Bag (placeholder?)
+  - Tote Bag
   - Description TBD
-  - TBD
-  - Description TBD
+  - Offshore Bank Account
+  - Increases max. bottom line
   accessoryNameDesc:
   - Straw Hat
   - Reminds you of home
@@ -9946,3 +9957,4 @@ MonoBehaviour:
   upgradeNameText: {fileID: 1945516347}
   upgradeDescText: {fileID: 521569728}
   confirmPanelUpgrade: {fileID: 1563132772}
+  GM: {fileID: 164910227}
