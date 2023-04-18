@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         movementSpeed = GM.moveSpeed;
         Debug.Log("current speed in the CityTime: " + movementSpeed);
         this.transform.position = GM.lastCoords;
+        Debug.Log("Last coords: "+ GM.lastCoords);
 
 
         //Camera.main.GetComponent<CameraController>().AssignTarget(transform);

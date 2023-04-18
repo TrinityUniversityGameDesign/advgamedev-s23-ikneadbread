@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         Forest,
         KneadingGame,
     }
-    public Vector3 lastCoords;   //what are the coords used for? Is it a last saved location or current coordinates?
+    public Vector3 lastCoords;
 
     //yarn variables
     static bool introDone = false;
@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
         accessoriesOwned = "fffff";
         ticketsOwned = "fff";
 
+        //THE COORDINATES BELOW DETERMINE DEFAULT COORDINATES
         lastCoords = new Vector3(-0.1499996f, -0.01020604f, 42.2f);
 
         PlayerPrefs.SetString("boostsOwned", boostsOwned);
