@@ -119,12 +119,12 @@ public class UpgradeStoreManager : MonoBehaviour
         {
             case 'b':
                 //add bool val here
-                Debug.Log("case b: " + boostNameDesc[upgradeNum]);
+                Debug.Log("case b: " + upgradeNameText.text);
                 upgradeNameText.text = boostNameDesc[upgradeNum];
                 upgradeDescText.text = boostNameDesc[upgradeNum + 1];
                 break;
             case 'a':
-                Debug.Log("case a: " + boostNameDesc[upgradeNum]);
+                Debug.Log("case a: " + upgradeNameText.text);
                 upgradeNameText.text = accessoryNameDesc[upgradeNum];
                 upgradeDescText.text = accessoryNameDesc[upgradeNum + 1];
                 break;

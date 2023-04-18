@@ -41,10 +41,10 @@ public class EquiptItem : MonoBehaviour
 
         //hats
         StrawHat = GameObject.Find("StrawHat");
-        TopHat = GameObject.Find("CowboyHat");
+        TopHat = GameObject.Find("TopHat");
         Beret = GameObject.Find("VikingHelmet");
         CowboyHat = GameObject.Find("CowboyHat");
-        ChefHat = GameObject.Find("CowboyHat");
+        ChefHat = GameObject.Find("ChefHat");
 
         allHats[0] = StrawHat;
         allHats[1] = TopHat;
@@ -65,7 +65,7 @@ public class EquiptItem : MonoBehaviour
         bakeMittens[1] = GameObject.Find("Right_Mitten");
 
         DeEquiptItems(allHats);
-        //DeEquiptItems(bakeMittens);
+        DeEquiptS(Mittens);
 
 
     }
@@ -121,23 +121,75 @@ public class EquiptItem : MonoBehaviour
             DeEquiptItems(allBoots);
         }
 
-        //if(updateStoreManager.upgradeNameText.text == "Cat Booties")
-        //{
+        //hat time
+        if (updateStoreManager.upgradeNameText.text == "Straw Hat")
+        {
+            EquiptS(Cat);
+            hatsOnly();
+            StrawHat.GetComponent<Renderer>().enabled = true;
+            TurnOffMeshRenderers(StrawHat, allHats);
+        } else if(updateStoreManager.upgradeNameText.text == "Top Hat")
+        {
+            EquiptS(Cat);
+            hatsOnly();
+            TopHat.GetComponent<Renderer>().enabled = true;
+            TurnOffMeshRenderers(TopHat, allHats);
+        } else if (updateStoreManager.upgradeNameText.text == "Beret")
+        {
+            EquiptS(Cat);
+            hatsOnly();
+            Beret.GetComponent<Renderer>().enabled = true;
+            TurnOffMeshRenderers(Beret, allHats);
+        } else if (updateStoreManager.upgradeNameText.text == "Chef's Hat")
+        {
+            EquiptS(Cat);
+            hatsOnly();
+            ChefHat.GetComponent<Renderer>().enabled = true;
+            TurnOffMeshRenderers(ChefHat, allHats);
+        }
+        else if (updateStoreManager.upgradeNameText.text == "Cowboy Hat")
+        {
+            EquiptS(Cat);
+            hatsOnly();
+            CowboyHat.GetComponent<Renderer>().enabled = true;
+            TurnOffMeshRenderers(CowboyHat, allHats);
+        }
 
-        //}
-
+        //Top Hat
+        //Beret
+        //Cowboy Hat
+        //Chef's Hat
 
 
     }
 
 
+    void TurnOffMeshRenderers(GameObject obj, GameObject[] objects)
+    {
+        foreach (GameObject gameObj in objects)
+        {
+            if (gameObj != obj)
+            {
+                MeshRenderer meshRenderer = gameObj.GetComponent<MeshRenderer>();
+                if (meshRenderer != null)
+                {
+                    meshRenderer.enabled = false;
+                }
+            }
+        }
+    }
 
+
+    public void hatsOnly()
+    {
+        DeEquiptS(Flour);
+        DeEquiptS(Mittens);
+    }
 
 
     //abstract equiption
     public void EquiptItems(GameObject[] showItems)
     {
-        Debug.Log("lenght: " + showItems.Length);
         for (int i = 0; i < showItems.Length ; i++)
         {
             showItems[i].GetComponent<Renderer>().enabled = true;
