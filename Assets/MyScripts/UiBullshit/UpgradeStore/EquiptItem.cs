@@ -57,8 +57,8 @@ public class EquiptItem : MonoBehaviour
             {
                 EquiptS(Flour);
                 Flour.transform.Rotate(0, 1, 0);
+                DeEquiptS(Mittens);
                 //show flour
-
             }
         }
 
@@ -73,7 +73,9 @@ public class EquiptItem : MonoBehaviour
             {
                 EquiptItems(bakeMittens);
                 Mittens.transform.Rotate(0, 1, 0);
-            }  
+                DeEquiptS(Flour);
+
+            }
         } 
 
         if (GM.bootsBought || (updateStoreManager.upgradeNameText.text == "Cat Booties"))
