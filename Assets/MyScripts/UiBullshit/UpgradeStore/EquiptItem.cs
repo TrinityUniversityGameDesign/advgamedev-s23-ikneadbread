@@ -7,11 +7,22 @@ public class EquiptItem : MonoBehaviour
     //private GameObject cowboyHat;
     private GameObject[] allBoots = new GameObject[4];
     private GameObject[] bakeMittens = new GameObject[2];
+    private GameObject[] allHats = new GameObject[5];
+
     private GameObject BootBL, BootBR, BootFL, BootFR;
 
     private GameObject Cat;
     private GameObject Flour;
     private GameObject Mittens;
+
+
+    //hats
+    private GameObject StrawHat;
+    private GameObject TopHat;
+    private GameObject Beret;
+    private GameObject CowboyHat;
+    private GameObject ChefHat;
+
     private GameManager GM;
     private UpgradeStoreManager updateStoreManager;
    
@@ -27,6 +38,20 @@ public class EquiptItem : MonoBehaviour
         Cat = GameObject.Find("CatDisplay");
         Flour = GameObject.Find("flour");
         Mittens = GameObject.Find("Mittens");
+
+        //hats
+        StrawHat = GameObject.Find("StrawHat");
+        TopHat = GameObject.Find("CowboyHat");
+        Beret = GameObject.Find("VikingHelmet");
+        CowboyHat = GameObject.Find("CowboyHat");
+        ChefHat = GameObject.Find("CowboyHat");
+
+        allHats[0] = StrawHat;
+        allHats[1] = TopHat;
+        allHats[2] = Beret;
+        allHats[3] = CowboyHat;
+        allHats[4] = ChefHat;
+
         GM = GameObject.FindObjectOfType<GameManager>();
         updateStoreManager = GameObject.FindObjectOfType<UpgradeStoreManager>();
         //cowboyHat = GameObject.Find("CowboyHat");
@@ -38,6 +63,10 @@ public class EquiptItem : MonoBehaviour
 
         bakeMittens[0] = GameObject.Find("Left_Mitten");
         bakeMittens[1] = GameObject.Find("Right_Mitten");
+
+        DeEquiptItems(allHats);
+        //DeEquiptItems(bakeMittens);
+
 
     }
 
@@ -58,7 +87,7 @@ public class EquiptItem : MonoBehaviour
                 //shows flour
                 EquiptS(Flour);
                 Flour.transform.Rotate(0, 1, 0);
-                //DeEquiptS(Mittens);
+                DeEquiptS(Mittens);
             }
         }
 
