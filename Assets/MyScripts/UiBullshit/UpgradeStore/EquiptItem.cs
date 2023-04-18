@@ -90,10 +90,14 @@ public class EquiptItem : MonoBehaviour
             DeEquiptS(Cat);
             DeEquiptItems(allBoots);
         }
+
+
+
+
+
     }
 
 
-    //boosts
 
 
 
