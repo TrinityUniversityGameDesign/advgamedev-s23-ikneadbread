@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private GameManager GM;
 
     [SerializeField]
     public float movementSpeed;
@@ -14,10 +15,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
 
     private float angleVelocity;
-    private GameManager GM;
 
     public Transform cam = null;
-    
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
         movementSpeed = GM.moveSpeed;
         Debug.Log("current speed in the CityTime: " + movementSpeed);
+        this.transform.position = GM.lastCoords;
+
 
         //Camera.main.GetComponent<CameraController>().AssignTarget(transform);
     }

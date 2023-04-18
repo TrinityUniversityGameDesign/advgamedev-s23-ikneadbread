@@ -28,6 +28,19 @@ public class GameManager : MonoBehaviour
     public string accessoriesOwned;
     public string ticketsOwned;
 
+    //Bread info
+    //
+
+    //location info
+    public enum lastScene {
+        //should be updated to make sure it includes any scenes we may go to
+        Egypt,
+        HomeTown,
+        Forest,
+        KneadingGame,
+    }
+    public Vector3 lastCoords;   //what are the coords used for? Is it a last saved location or current coordinates?
+
     //yarn variables
     static bool introDone = false;
 
@@ -86,6 +99,9 @@ public class GameManager : MonoBehaviour
         boostsOwned = "fffff";
         accessoriesOwned = "fffff";
         ticketsOwned = "fff";
+
+        lastCoords = new Vector3(-0.1499996f, -0.01020604f, 42.2f);
+
         PlayerPrefs.SetString("boostsOwned", boostsOwned);
         PlayerPrefs.SetString("accessoriesOwned", accessoriesOwned);
         PlayerPrefs.SetString("ticketsOwned", ticketsOwned);
