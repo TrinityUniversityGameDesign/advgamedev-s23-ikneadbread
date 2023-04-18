@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 public class ScreenScript : MonoBehaviour
 {
 
@@ -62,5 +63,7 @@ public class ScreenScript : MonoBehaviour
     {
         EndScreen.SetActive(true);
     }
+
+
 
 }
