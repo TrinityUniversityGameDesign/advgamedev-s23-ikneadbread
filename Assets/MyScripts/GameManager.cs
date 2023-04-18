@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         accessoriesOwned = "fffff";
         ticketsOwned = "fff";
 
-        lastCoords = new Vector3(-0.1499996f, -0.01020604f, 42.2f);
+        // lastCoords = new Vector3(-0.1499996f, -0.01020604f, 42.2f);
 
         PlayerPrefs.SetString("boostsOwned", boostsOwned);
         PlayerPrefs.SetString("accessoriesOwned", accessoriesOwned);
