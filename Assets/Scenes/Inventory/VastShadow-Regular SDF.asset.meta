@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 0d999dd26d6ab44b8981c1c5ee63ac36
+<<<<<<<< HEAD:Assets/Scenes/Inventory/VastShadow-Regular SDF.asset.meta
+guid: 1353127f233634dcca9f4ab46a50d8a6
+========
+guid: 55e64e617a8bfff4ba846574e2651eb9
+>>>>>>>> wLee-demo-branch:Assets/Free Stylized Skybox/CubeMap/Materials/Sky_Anime_03_Day_a.mat.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

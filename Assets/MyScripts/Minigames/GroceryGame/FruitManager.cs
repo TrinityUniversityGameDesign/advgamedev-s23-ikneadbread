@@ -8,7 +8,7 @@ public class FruitManager: MonoBehaviour
     public float minSpeed = 1f; // The minimum speed at which the fruit drops
     public float maxSpeed = 2f; // The maximum speed at which the fruit drops
     public float min=2f;
-    public float max=3f;
+    public float max=10f;
 
 
     private float spawnRate = 4f; // The rate at which to spawn new fruits
@@ -24,11 +24,7 @@ public class FruitManager: MonoBehaviour
 
     }
 
-    void Move()
-    {
-        min=transform.position.x;
-        max=transform.position.x+3;
-    }
+
 
     // void setGameStatus(bool status)
     // {
