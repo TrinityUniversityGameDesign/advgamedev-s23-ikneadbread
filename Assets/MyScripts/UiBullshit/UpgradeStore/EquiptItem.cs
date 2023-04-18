@@ -6,10 +6,12 @@ public class EquiptItem : MonoBehaviour
 {
     //private GameObject cowboyHat;
     private GameObject[] allBoots = new GameObject[4];
+    private GameObject[] bakeMittens = new GameObject[2];
     private GameObject BootBL, BootBR, BootFL, BootFR;
 
     private GameObject Cat;
     private GameObject Flour;
+    private GameObject Mittens;
     private GameManager GM;
     private UpgradeStoreManager updateStoreManager;
    
@@ -24,6 +26,7 @@ public class EquiptItem : MonoBehaviour
     {
         Cat = GameObject.Find("CatDisplay");
         Flour = GameObject.Find("flour");
+        Mittens = GameObject.Find("Mittens");
         GM = GameObject.FindObjectOfType<GameManager>();
         updateStoreManager = GameObject.FindObjectOfType<UpgradeStoreManager>();
         //cowboyHat = GameObject.Find("CowboyHat");
@@ -33,6 +36,8 @@ public class EquiptItem : MonoBehaviour
         allBoots[2] = GameObject.Find("BootFL");
         allBoots[3] = GameObject.Find("BootFR");
 
+        bakeMittens[0] = GameObject.Find("Left_Mitten");
+        bakeMittens[1] = GameObject.Find("Right_Mitten");
 
     }
 
@@ -55,11 +60,25 @@ public class EquiptItem : MonoBehaviour
                 //show flour
 
             }
+        }
 
+        if(updateStoreManager.upgradeNameText.text == "Kitten Mittens")
+        {
+            if (showGatito == true)
+            {
+                DeEquiptS(Flour);
+                DeEquiptS(Cat);
+            }
+            else
+            {
+                EquiptItems(bakeMittens);
+                Mittens.transform.Rotate(0, 1, 0);
+            }  
         } 
 
         if (GM.bootsBought || (updateStoreManager.upgradeNameText.text == "Cat Booties"))
         {
+            DeEquiptItems(bakeMittens);
             DeEquiptS(Flour);
             showGatito = true;
             EquiptS(Cat);
