@@ -91,7 +91,10 @@ public class EquiptItem : MonoBehaviour
             DeEquiptItems(allBoots);
         }
 
+        //if(updateStoreManager.upgradeNameText.text == "Cat Booties")
+        //{
 
+        //}
 
 
 
