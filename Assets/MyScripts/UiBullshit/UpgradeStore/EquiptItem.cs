@@ -55,10 +55,10 @@ public class EquiptItem : MonoBehaviour
                 DeEquiptS(Cat);
             } else
             {
+                //shows flour
                 EquiptS(Flour);
                 Flour.transform.Rotate(0, 1, 0);
-                DeEquiptS(Mittens);
-                //show flour
+                //DeEquiptS(Mittens);
             }
         }
 
@@ -71,6 +71,7 @@ public class EquiptItem : MonoBehaviour
             }
             else
             {
+                //shows mittens
                 EquiptItems(bakeMittens);
                 Mittens.transform.Rotate(0, 1, 0);
                 DeEquiptS(Flour);
