@@ -72,6 +72,7 @@ public class KneadGameManager : MonoBehaviour
 
         //starts the kneading game
         gameStarted = true;
+        GameManager.kneadTutorial = true;
         //gameStarted = false;
     }
 
@@ -86,7 +87,7 @@ public class KneadGameManager : MonoBehaviour
             numLoafText.text = "1 Loaf Kneaded!";
         }
         else numLoafText.text = loavesKneaded + " Loaves Kneaded!";
-        
+        GameManager.kneadTutorial = false;
     }
 
     public void Restart()
