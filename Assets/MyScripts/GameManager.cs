@@ -14,11 +14,10 @@ public class GameManager : MonoBehaviour
 
     //global variables
     public GameObject playerCat;
-    // need variable for which town scene is loaded
 
     //ingredients info
-    public int numIngred1; //placeholder name
-    public int numIngred2; //placeholder name
+    public int numFlour;
+    public int numYeast;
     public int numChocolate;
     public int numCocoa;
     public int numRye;
@@ -45,6 +44,7 @@ public class GameManager : MonoBehaviour
         HomeTown,
         Forest,
         KneadingGame,
+        StocksGame
     }
     public Vector3 lastCoords;
 
@@ -103,8 +103,8 @@ public class GameManager : MonoBehaviour
         numSilverCoins = 0;
         numBronzeCoins = 0;
 
-        numIngred1 = 0;
-        numIngred2 = 0;
+        numFlour = 0;
+        numYeast = 0;
         numChocolate = 0;
         numCocoa = 0;
         numRye = 0;

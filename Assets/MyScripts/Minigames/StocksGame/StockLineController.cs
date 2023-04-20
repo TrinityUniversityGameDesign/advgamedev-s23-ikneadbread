@@ -101,11 +101,11 @@ public class StockLineController : MonoBehaviour
         gameEnded = true;
         endScreen.SetActive(true);
         rb.velocity = Vector2.zero;
-        string spaces = "       ";
+        string spaces = "     ";
         if (lossBar.GetComponent<Slider>().value > 0)
         {
             endText.text = "Stock Sold at a Loss :(";
-            numNewCoinsText.text = "0" + spaces + "0" + spaces + "0";
+            numNewCoinsText.text = "0 G" + spaces + "0 S" + spaces + "0 B";
         }
         else
         {
@@ -115,7 +115,7 @@ public class StockLineController : MonoBehaviour
             int goldCoins = (int) profit / 3;
             int silverCoins = (int) profit / 2;
             int bronzeCoins = (int) profit;
-            numNewCoinsText.text = goldCoins + spaces + silverCoins + spaces + bronzeCoins;
+            numNewCoinsText.text = goldCoins + " G" + spaces + silverCoins + " S" + spaces + bronzeCoins + " B";
             GM.giveCoins(goldCoins, silverCoins, bronzeCoins);
         }
         int totalGold = GM.numGoldCoins;
