@@ -24,7 +24,7 @@ public class KneadGameManager : MonoBehaviour
     private int numLumps;
     private int loavesKneaded = 0;
 
-
+    public GameManager GM;
 
     //wen code
     public bool gameStarted = false;
@@ -38,6 +38,7 @@ public class KneadGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GM = GameObject.FindObjectOfType<GameManager>();
         numLumps = 40;
         meter.GetComponent<Slider>().maxValue = numLumps;
         lumpManager.GetComponent<LumpManager>().numLumps = numLumps;
