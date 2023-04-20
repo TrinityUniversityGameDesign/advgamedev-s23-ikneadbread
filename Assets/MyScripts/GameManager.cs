@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     public int numGoldCoins;
     public int numSilverCoins;
     public int numBronzeCoins;
+    
+    //Inventory
+    public Inventory inventory;
 
     //upgrade info
     public string boostsOwned;
@@ -42,6 +45,8 @@ public class GameManager : MonoBehaviour
         if (GameObject.FindObjectsOfType<GameManager>().Length > 1) {
             Destroy(this.gameObject);
         }
+
+        inventory = new Inventory();
     }
 
     // Start is called before the first frame update

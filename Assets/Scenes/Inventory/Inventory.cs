@@ -11,15 +11,9 @@ public class Inventory
     public Inventory()
     {
         itemList = new List<Item>();
-        //AddItem(new Item { itemType = Item.ItemType.Egg, amount = 1 });
+        AddItem(new Item { itemType = Item.ItemType.Egg, amount = 1 });
 		//AddItem(new Item { itemType = Item.ItemType.Flour, amount = 1 });
 		//AddItem(new Item { itemType = Item.ItemType.Milk, amount = 1 });
-		//AddItem(new Item { itemType = Item.ItemType.Salt, amount = 1 });
-		//AddItem(new Item { itemType = Item.ItemType.Sugar, amount = 1 });
-		//AddItem(new Item { itemType = Item.ItemType.Butter, amount = 1 });
-		//AddItem(new Item { itemType = Item.ItemType.Rice, amount = 1 });
-		//AddItem(new Item { itemType = Item.ItemType.Yeast, amount = 1 });
-		//AddItem(new Item { itemType = Item.ItemType.Egg, amount = 1 });
         //Debug.Log("Amount of unique Items: " + itemList.Count);
 		//Debug.Log("Amount of " + itemList[0].itemType + ":" + itemList[0].amount);
 
@@ -75,5 +69,11 @@ public class Inventory
 	{
 		return itemList;
 	}
+
+	public void AddItemNCnt(Item.ItemType type, int count)
+	{
+		AddItem(new Item { itemType = type, amount = count });
+	}
+	//This method could be called by saying inventory.AddItemNCnt(Item.ItemType.Salt, 6)
 
 }
