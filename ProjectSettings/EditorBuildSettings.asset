@@ -39,6 +39,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Inventory/Inventory.unity
     guid: a5f5b84343d4a4da991adf32314b1038
   - enabled: 1
+<<<<<<< HEAD
+    path: Assets/Scenes/Forest.unity
+    guid: 642f9a82872d24b438b5dbb954b10eaf
+  - enabled: 1
+    path: Assets/Scenes/NewHomeTown.unity
+    guid: 4aaad8d302952469d8617f04c5e5a9c3
+  - enabled: 1
+    path: Assets/Scenes/SelectTown.unity
+    guid: 5b4c8f18f50ca4380a75a68382da80bb
+=======
     path: Assets/Scenes/StonksGame.unity
     guid: 3c28b2abe1eb0f44a89061014567cf2f
+>>>>>>> e54883a3ec0c8c4f4c0b0a0155e2606fcad59829
   m_configObjects: {}
