@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using static UnityEditor.VersionControl.Asset;
 
 public class StockLineController : MonoBehaviour
 {
@@ -12,10 +13,14 @@ public class StockLineController : MonoBehaviour
     public GameObject lossBar;
     public GameObject endScreen;
     public TMP_Text endText;
+    public TMP_Text numNewCoinsText;
+    public TMP_Text numTotalCoinsText;
     public StocksTimer timer;
 
     public bool gameStarted = false;
     public bool gameEnded = false;
+
+    public GameManager GM;
 
     private Rigidbody rb;
 
@@ -28,12 +33,21 @@ public class StockLineController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GM = GameObject.FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody>();
         profitBar.GetComponent<Slider>().value = startingValue;
+
+        // Apply Bank Account Upgrade
+        if (GM.boostsOwned.Substring(4) == "t")
+        {
+            profitBar.GetComponent<Slider>().maxValue = 200;
+            lossBar.GetComponent<Slider>().maxValue = 200;
+        }
     }
 
     public void StartMoving()
     {
+        Debug.Log(GM.boostsOwned);
         rb.velocity = new Vector2(speed, speed);
         profitBar.GetComponent<Slider>().value = startingValue;
         gameStarted = true;
@@ -87,15 +101,27 @@ public class StockLineController : MonoBehaviour
         gameEnded = true;
         endScreen.SetActive(true);
         rb.velocity = Vector2.zero;
+        string spaces = "       ";
         if (lossBar.GetComponent<Slider>().value > 0)
         {
             endText.text = "Stock Sold at a Loss :(";
-            // Reward less currency and ingredients
+            numNewCoinsText.text = "0" + spaces + "0" + spaces + "0";
         }
         else
         {
-            // Reward currency and ingredients
+            // Reward currency
+            endText.text = "Successful Cash Out!";
+            float profit = profitBar.GetComponent<Slider>().value;
+            int goldCoins = (int) profit / 3;
+            int silverCoins = (int) profit / 2;
+            int bronzeCoins = (int) profit;
+            numNewCoinsText.text = goldCoins + spaces + silverCoins + spaces + bronzeCoins;
+            GM.giveCoins(goldCoins, silverCoins, bronzeCoins);
         }
+        int totalGold = GM.numGoldCoins;
+        int totalSilver = GM.numSilverCoins;
+        int totalBronze = GM.numBronzeCoins;
+        numTotalCoinsText.text = totalGold + spaces + totalSilver + spaces + totalBronze;
     }
 
     public void addStockValue(float value)
@@ -111,12 +137,13 @@ public class StockLineController : MonoBehaviour
         switch (obstacleType)
         {
             case 1:
-                addStockValue(-25);
+                addStockValue(-35);
                 break;
             case 2:
                 shrinkRate -= 0.25f;
                 break;
             case 3:
+                addStockValue(15);
                 break;
         }
         Debug.Log("Obstacle Hit!");
@@ -130,6 +157,7 @@ public class StockLineController : MonoBehaviour
         timer.timeIsRunning = true;
         lossBar.GetComponent<Slider>().value = 0;
         profitBar.GetComponent<Slider>().value = startingValue;
+        shrinkRate = -0.25f;
         StartMoving();
     }
 

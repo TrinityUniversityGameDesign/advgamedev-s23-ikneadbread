@@ -65,7 +65,7 @@ public class UpgradeStoreManager : MonoBehaviour
             isOwned = accessoriesOwned[i];
             if (isOwned == 't')
                 accessoriesPanel.transform.GetChild(i).gameObject.GetComponent<Button>().interactable = false;
-            if (i < 3)
+            if (i < ticketsOwned.Length)
             {
                 isOwned = ticketsOwned[i];
                 if (isOwned == 't')
@@ -179,8 +179,6 @@ public class UpgradeStoreManager : MonoBehaviour
             case "Ticket (1)":
                 break;
             case "Ticket (2)":
-                break;
-            case "Ticket (3)":
                 break;
         }
 

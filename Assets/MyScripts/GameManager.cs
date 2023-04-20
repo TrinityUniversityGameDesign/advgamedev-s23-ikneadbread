@@ -16,7 +16,12 @@ public class GameManager : MonoBehaviour
     public GameObject playerCat;
     // need variable for which town scene is loaded
 
-    //bread info
+    //ingredients info
+    public int numIngred1; //placeholder name
+    public int numIngred2; //placeholder name
+    public int numChocolate;
+    public int numCocoa;
+    public int numRye;
 
     //coin info
     public int numGoldCoins;
@@ -29,7 +34,9 @@ public class GameManager : MonoBehaviour
     public string ticketsOwned;
 
     //Bread info
-    //
+    public int numDinnerRoll;
+    public int numCroissant;
+    public int numPumpernickel;
 
     //location info
     public enum lastScene {
@@ -100,9 +107,19 @@ public class GameManager : MonoBehaviour
         numSilverCoins = 0;
         numBronzeCoins = 0;
 
+        numIngred1 = 0;
+        numIngred2 = 0;
+        numChocolate = 0;
+        numCocoa = 0;
+        numRye = 0;
+
+        numDinnerRoll = 0;
+        numCroissant = 0;
+        numPumpernickel = 0;
+
         boostsOwned = "fffff";
         accessoriesOwned = "fffff";
-        ticketsOwned = "fff";
+        ticketsOwned = "ff";
 
         //THE COORDINATES BELOW DETERMINE DEFAULT COORDINATES
         lastCoords = new Vector3(-0.1499996f, -0.01020604f, 42.2f);
@@ -126,6 +143,19 @@ public class GameManager : MonoBehaviour
         Debug.Log("afterUpgrade (in scene) cat speed: " + moveSpeed);
 
 
+    }
+
+    // Call this function to change the number of ingredients
+    public void giveIngredients()
+    {
+    }
+
+    // Call this function to change the number of coins owned
+    public void giveCoins(int gold, int silver, int bronze)
+    {
+        numGoldCoins += gold;
+        numSilverCoins += silver;
+        numBronzeCoins += bronze;
     }
 
     // ------------ Yarn functions ------------
