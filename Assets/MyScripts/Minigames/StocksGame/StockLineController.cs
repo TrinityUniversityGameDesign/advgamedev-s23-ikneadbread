@@ -16,6 +16,8 @@ public class StockLineController : MonoBehaviour
     public TMP_Text numNewCoinsText;
     public TMP_Text numTotalCoinsText;
     public StocksTimer timer;
+    public GameObject flourIcon;
+    public GameObject bankIcon;
 
     public bool gameStarted = false;
     public bool gameEnded = false;
@@ -29,6 +31,7 @@ public class StockLineController : MonoBehaviour
     private float startingValue = 0;
     private float growthRate = 0.25f;
     private float shrinkRate = -0.25f;
+    private bool flourUpgradeOwned;
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +40,19 @@ public class StockLineController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         profitBar.GetComponent<Slider>().value = startingValue;
 
+        // Apply Flour Upgrade
+        if (GM.boostsOwned.Substring(1, 1) == "t")
+        {
+            flourUpgradeOwned = true;
+            flourIcon.SetActive(true);
+        }
+
         // Apply Bank Account Upgrade
         if (GM.boostsOwned.Substring(4) == "t")
         {
             profitBar.GetComponent<Slider>().maxValue = 200;
             lossBar.GetComponent<Slider>().maxValue = 200;
+            bankIcon.SetActive(true);
         }
     }
 
@@ -115,13 +126,19 @@ public class StockLineController : MonoBehaviour
             int goldCoins = (int) profit / 3;
             int silverCoins = (int) profit / 2;
             int bronzeCoins = (int) profit;
+            if (flourUpgradeOwned)
+            {
+                goldCoins = (int) (goldCoins * 1.2f);
+                silverCoins = (int) (silverCoins * 1.2f);
+                bronzeCoins = (int) (bronzeCoins * 1.2f);
+            }
             numNewCoinsText.text = goldCoins + " G" + spaces + silverCoins + " S" + spaces + bronzeCoins + " B";
             GM.giveCoins(goldCoins, silverCoins, bronzeCoins);
         }
         int totalGold = GM.numGoldCoins;
         int totalSilver = GM.numSilverCoins;
         int totalBronze = GM.numBronzeCoins;
-        numTotalCoinsText.text = totalGold + spaces + totalSilver + spaces + totalBronze;
+        numTotalCoinsText.text = totalGold + " G" + spaces + totalSilver + " S" + spaces + totalBronze + " B";
     }
 
     public void addStockValue(float value)
