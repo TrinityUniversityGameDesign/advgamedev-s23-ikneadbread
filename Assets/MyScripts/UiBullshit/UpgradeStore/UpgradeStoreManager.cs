@@ -214,6 +214,15 @@ public class UpgradeStoreManager : MonoBehaviour
 
     public void backToGame()
     {
-        SceneManager.LoadScene("CityTime");
+        if (GM.lastScene == GameManager.travelDestination.CityTime)
+            GM.lastCoords = new Vector3(-13.75f, -0.0102060437f, -25.1299992f);
+        else if (GM.lastScene == GameManager.travelDestination.Egypt)
+            GM.lastCoords = new Vector3(-532.916992f, 16.6599998f, 632.41803f);
+        else if (GM.lastScene == GameManager.travelDestination.Forest)
+            GM.lastCoords = new Vector3(428.04776f, -0.0199999511f, 381.833923f);
+        else if (GM.lastScene == GameManager.travelDestination.HomeTown)
+            GM.lastCoords = new Vector3(459.420013f, 0.0289999992f, 451.269989f);
+
+        SceneManager.LoadScene(GM.lastScene.ToString());
     }
 }

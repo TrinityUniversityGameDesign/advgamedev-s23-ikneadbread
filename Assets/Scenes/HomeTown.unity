@@ -1971,6 +1971,7 @@ MonoBehaviour:
   animator: {fileID: 743049079}
   popUpText: {fileID: 743049078}
   ridePlane: {fileID: 743049076}
+  GM: {fileID: 0}
 --- !u!64 &841657446
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2540,15 +2541,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4333491988720984, guid: aa2d47f95b34fbe4d9cbe095f13585b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 474.1
+      value: 459.42
       objectReference: {fileID: 0}
     - target: {fileID: 4333491988720984, guid: aa2d47f95b34fbe4d9cbe095f13585b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0069999993
+      value: 0.029
       objectReference: {fileID: 0}
     - target: {fileID: 4333491988720984, guid: aa2d47f95b34fbe4d9cbe095f13585b5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 371.8
+      value: 451.27
       objectReference: {fileID: 0}
     - target: {fileID: 4333491988720984, guid: aa2d47f95b34fbe4d9cbe095f13585b5, type: 3}
       propertyPath: m_LocalRotation.w
