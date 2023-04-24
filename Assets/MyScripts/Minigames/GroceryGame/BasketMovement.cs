@@ -7,8 +7,7 @@ public class BasketMovement : MonoBehaviour
 {
     private int speed = 5;
     public GameObject basket;
-    public TextMeshProUGUI text;
-    //public GameObject EndScreen;
+    public int ingrCount = 0;
     void Start()
     {
         basket = GameObject.Find("Basket");
@@ -20,11 +19,8 @@ public class BasketMovement : MonoBehaviour
         // Check if collided object is a fruit
         if (col.gameObject.CompareTag("Ingridient"))
         {
-            // Increment fruit count
-            // Destroy caught fruit
-            Destroy(col.gameObject);
-
-                
+            ingrCount++;
+            Destroy(col.gameObject); 
         }
     }
 

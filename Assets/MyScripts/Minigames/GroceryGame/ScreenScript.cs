@@ -6,7 +6,7 @@ using TMPro;
 public class ScreenScript : MonoBehaviour
 {
     public GameObject StartScreen;
-    public GameObject EndScreen;
+  
     public float totalTime = 60f;
     public TextMeshProUGUI timerText;
 
@@ -19,8 +19,8 @@ public class ScreenScript : MonoBehaviour
     void Start()
     { 
         timeRemaining = totalTime;
-        EndScreen.SetActive(false);
-        StartScreen.SetActive(true);
+      
+        StartScreen.SetActive(false);
         StartTimer();
 
     }
@@ -29,7 +29,7 @@ public class ScreenScript : MonoBehaviour
     {
         if (isRunning)
         {
-            EndScreen.SetActive(false);
+            
             timeRemaining -= Time.deltaTime;
             UpdateTimerText();
 
@@ -43,10 +43,7 @@ public class ScreenScript : MonoBehaviour
                 isRunning = false;                
 
             }
-        } else
-        {
-            EnableEnd();
-        }
+        } 
  
     }
 
@@ -70,9 +67,5 @@ public class ScreenScript : MonoBehaviour
       
     }
 
-    public void EnableEnd()
-    {
-        EndScreen.SetActive(true);
-    }
 
 }
