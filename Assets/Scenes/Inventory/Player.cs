@@ -11,24 +11,20 @@ public class Player : MonoBehaviour
     public Button removeItem;
     public string[] ing = new string[] { "Flour", "Rice", "Salt", "Sugar", "Egg", "Milk", "Yeast", "Butter" };
 
-    //Add this to other scripts that need the GM.inventory + line 19 in Start()
+    //Add this to other scripts that need the GM.inventory + line 21 in Start()
     private GameManager GM;
     
     void Start()
     {
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
-        //GM.inventory = new GM.inventory();
+        GM.inventory = new Inventory();
+        uiInventory.SetInventory(GM.inventory);
+        //GM.inventory = new Inventory();
         //uiGM.inventory.SetGM.inventory(GM.inventory);
         Button addBtn = addItem.GetComponent<Button>();
         Button delBtn = removeItem.GetComponent<Button>();
         addBtn.onClick.AddListener(AddOnClick);
         delBtn.onClick.AddListener(RemoveOnClick);
-    }
-    
-    private void Awake()
-    {
-        GM.inventory = new Inventory();
-        uiInventory.SetInventory(GM.inventory);
     }
 
     private void AddOnClick()
