@@ -50,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StonksGame.unity
     guid: 3c28b2abe1eb0f44a89061014567cf2f
+  - enabled: 1
+    path: Assets/Scenes/QuestHometown.unity
+    guid: 158eef7219052442f8a251842b533598
   m_configObjects: {}

@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NPCAction : MonoBehaviour
 {
     Animator anim;
-    // Reference to the player's transform
     public Transform player;
 
     // Speed at which the enemy will move
@@ -18,9 +19,16 @@ public class NPCAction : MonoBehaviour
     // Distance at which the enemy will stop moving
     public float playerRadius = 5f;
 
+    public CanvasGroup uiElement;
+
+    //button interaction
+    public string sceneName;
+    public Button uiButton;
+
 
     void Start(){
         anim = GetComponent<Animator>();
+        uiButton.onClick.AddListener(LoadScene);
     }
 
     // Update is called once per frame
@@ -40,6 +48,12 @@ public class NPCAction : MonoBehaviour
             // If the enemy is farther away than the stop distance, move towards the player
             if (distanceToPlayer > stopDistance)
             {
+                //this is for ui stuff -- turn off
+                //uiElement.alpha = 0f;
+                //uiElement.interactable = false;
+                //uiElement.blocksRaycasts = false;
+
+
                 Debug.Log("o lord he walking");
                 anim.SetInteger("Walk", 1);
                 transform.position += directionToPlayer * moveSpeed * Time.deltaTime;
@@ -48,6 +62,11 @@ public class NPCAction : MonoBehaviour
 
             if (distanceToPlayer < followDistance && distanceToPlayer > stopDistance && distanceToPlayer > playerRadius)
             {
+                //this is for the UI stuff --turns on 
+                //uiElement.alpha = 1f;
+                //uiElement.interactable = true;
+                //uiElement.blocksRaycasts = true;
+
                 // Calculate the direction to the player
                 directionToPlayer = (player.position - transform.position).normalized;
 
@@ -59,4 +78,11 @@ public class NPCAction : MonoBehaviour
             }
         }
     }
+
+
+    void LoadScene()
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
 }
