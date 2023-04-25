@@ -14,11 +14,10 @@ public class GameManager : MonoBehaviour
 
     //global variables
     public GameObject playerCat;
-    // need variable for which town scene is loaded
 
     //ingredients info
-    public int numIngred1; //placeholder name
-    public int numIngred2; //placeholder name
+    public int numFlour;
+    public int numYeast;
     public int numChocolate;
     public int numCocoa;
     public int numRye;
@@ -27,6 +26,9 @@ public class GameManager : MonoBehaviour
     public int numGoldCoins;
     public int numSilverCoins;
     public int numBronzeCoins;
+
+    //Inventory
+    public Inventory inventory;
 
     //upgrade info
     public string boostsOwned;
@@ -39,13 +41,15 @@ public class GameManager : MonoBehaviour
     public int numPumpernickel;
 
     //location info
-    public enum travelDestination {
+    public enum travelDestination
+    {
         //should be updated to make sure it includes any scenes we may go to
         Egypt,
         HomeTown,
         Forest,
         KneadingGame,
-        CityTime
+        CityTime,
+        StocksGame
     }
     public Vector3 lastCoords;
     public Vector3 planePos = new Vector3(0.150714532f, -0.020006299f, -27.3976288f);
@@ -66,7 +70,7 @@ public class GameManager : MonoBehaviour
     static bool ovenDone = false;
     static bool dispDone = false;
     static bool stocksDone = false;
-    
+
     public float moveSpeed = 3;
     public UnityEvent onMiniGameCube = new UnityEvent();
 
@@ -78,9 +82,12 @@ public class GameManager : MonoBehaviour
     //this awake is necessary so we do not have duplicate GameManagers
     private void Awake()
     {
-        if (GameObject.FindObjectsOfType<GameManager>().Length > 1) {
+        if (GameObject.FindObjectsOfType<GameManager>().Length > 1)
+        {
             Destroy(this.gameObject);
         }
+
+        inventory = new Inventory();
     }
 
     // Start is called before the first frame update
@@ -110,8 +117,8 @@ public class GameManager : MonoBehaviour
         numSilverCoins = 0;
         numBronzeCoins = 0;
 
-        numIngred1 = 0;
-        numIngred2 = 0;
+        numFlour = 0;
+        numYeast = 0;
         numChocolate = 0;
         numCocoa = 0;
         numRye = 0;
@@ -263,7 +270,7 @@ public class GameManager : MonoBehaviour
     {
         dispTutorial = val;
     }
-    
+
     // Add Hats to Inventory
     public void StrawHatUpgrade()
     {

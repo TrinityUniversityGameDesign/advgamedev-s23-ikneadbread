@@ -9,15 +9,18 @@ public class UI_Inventory : MonoBehaviour
     private Inventory inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
+    private GameManager GM;
 
     private void Awake()
     {
+        GM = GameObject.Find("globalGM").GetComponent<GameManager>();
         itemSlotContainer = transform.Find("ItemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
     }
 
     public void SetInventory(Inventory inventory)
     {
+        //GM.numGoldCoins 
         this.inventory = inventory;
         inventory.OnItemListChanged += Inventory_OnItemListChanged;
         RefreshInventoryItems();
@@ -62,5 +65,7 @@ public class UI_Inventory : MonoBehaviour
             }
         }
     }
+    
+    
     
 }
