@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public int numGoldCoins;
     public int numSilverCoins;
     public int numBronzeCoins;
-    
+
     //Inventory
     public Inventory inventory;
 
@@ -41,15 +41,20 @@ public class GameManager : MonoBehaviour
     public int numPumpernickel;
 
     //location info
-    public enum lastScene {
+    public enum travelDestination
+    {
         //should be updated to make sure it includes any scenes we may go to
         Egypt,
         HomeTown,
         Forest,
         KneadingGame,
+        CityTime,
         StocksGame
     }
     public Vector3 lastCoords;
+    public Vector3 planePos = new Vector3(0.150714532f, -0.020006299f, -27.3976288f);
+    public travelDestination lastScene;
+    //minor change
 
     //yarn variables
     static bool introDone = false;
@@ -65,9 +70,8 @@ public class GameManager : MonoBehaviour
     static bool ovenDone = false;
     static bool dispDone = false;
     static bool stocksDone = false;
-    
-    public float moveSpeed = 3;
 
+    public float moveSpeed = 3;
     public UnityEvent onMiniGameCube = new UnityEvent();
 
 
@@ -78,7 +82,8 @@ public class GameManager : MonoBehaviour
     //this awake is necessary so we do not have duplicate GameManagers
     private void Awake()
     {
-        if (GameObject.FindObjectsOfType<GameManager>().Length > 1) {
+        if (GameObject.FindObjectsOfType<GameManager>().Length > 1)
+        {
             Destroy(this.gameObject);
         }
 
@@ -265,7 +270,7 @@ public class GameManager : MonoBehaviour
     {
         dispTutorial = val;
     }
-    
+
     // Add Hats to Inventory
     public void StrawHatUpgrade()
     {
