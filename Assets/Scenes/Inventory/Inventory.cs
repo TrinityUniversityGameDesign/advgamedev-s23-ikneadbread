@@ -7,23 +7,14 @@ public class Inventory
 {
     public List<Item> itemList;
 	public event EventHandler OnItemListChanged;
+	public bool isInInventory;
 
     public Inventory()
     {
         itemList = new List<Item>();
-        AddItem(new Item { itemType = Item.ItemType.Egg, amount = 1 });
-		//AddItem(new Item { itemType = Item.ItemType.Flour, amount = 1 });
-		//AddItem(new Item { itemType = Item.ItemType.Milk, amount = 1 });
+        //AddItem(new Item { itemType = Item.ItemType.Flour, amount = 1 });
         //Debug.Log("Amount of unique Items: " + itemList.Count);
 		//Debug.Log("Amount of " + itemList[0].itemType + ":" + itemList[0].amount);
-
-		//Make Dinner Roll Button Pressed
-		//for(int i = 0; i < itemList.Length(); i++){
-			//if(itemList[i].itemType = "Egg" && itemList[i].Count >= 2){
-				//Debug.Log("We have enough Eggs for DR");
-			//} else Debug.Log("NO");
-		//}
-		
     }
 	
     public void AddItem(Item item)
@@ -76,4 +67,26 @@ public class Inventory
 	}
 	//This method could be called by saying inventory.AddItemNCnt(Item.ItemType.Salt, 6)
 
+	public void RemoveItemNCnt(Item.ItemType type, int count)
+	{
+		RemoveItem(new Item { itemType = type, amount = count });
+	}
+	
+	public bool CheckForItem(Item.ItemType type, int count)
+	{
+		isInInventory = false;
+		foreach (Item inventoryItem in itemList)
+		{
+			if (inventoryItem.itemType == type)
+			{
+				if (inventoryItem.amount >= count)
+				{
+					// Item found and enough items
+					isInInventory = true;
+				}
+			}
+		}
+		return isInInventory;
+	}
+	
 }
