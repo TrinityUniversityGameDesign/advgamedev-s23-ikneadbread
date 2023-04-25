@@ -39,15 +39,19 @@ public class GameManager : MonoBehaviour
     public int numPumpernickel;
 
     //location info
-    public enum lastScene {
+    public enum travelDestination {
         //should be updated to make sure it includes any scenes we may go to
         Egypt,
         HomeTown,
         Forest,
         KneadingGame,
+        CityTime
     }
     
     public Vector3 lastCoords;
+    public Vector3 planePos = new Vector3(0.150714532f, -0.020006299f, -27.3976288f);
+    public travelDestination lastScene;
+    //minor change
 
     //yarn variables
     static bool introDone = false;
@@ -65,8 +69,11 @@ public class GameManager : MonoBehaviour
     static bool stocksDone = false;
     
     public float moveSpeed = 3;
-
     public UnityEvent onMiniGameCube = new UnityEvent();
+
+
+    //boolean for values
+    public bool bootsBought = false;
 
     //Destroys the old GameManager but still contais all the previous data
     //this awake is necessary so we do not have duplicate GameManagers
@@ -131,11 +138,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+
     public void ApplyBootiesUpgrade()
     {
+        bootsBought = true;
         Debug.Log("update boots");
         moveSpeed = 6;
         Debug.Log("afterUpgrade (in scene) cat speed: " + moveSpeed);
+
 
     }
 

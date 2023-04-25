@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 public class ScreenScript : MonoBehaviour
 {
     public GameObject StartScreen;
-  
+
     public float totalTime = 60f;
     public TextMeshProUGUI timerText;
     private float timeRemaining;
@@ -16,8 +17,7 @@ public class ScreenScript : MonoBehaviour
     void Start()
     { 
         timeRemaining = totalTime;
-      
-        StartScreen.SetActive(false);
+  
         StartTimer();
 
     }
@@ -58,11 +58,6 @@ public class ScreenScript : MonoBehaviour
     }
 
 
-    public void DisableStart()
-    {
-        StartScreen.SetActive(false);
-      
-    }
 
 
 }

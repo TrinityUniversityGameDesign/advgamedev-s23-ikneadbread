@@ -19,23 +19,20 @@ public class IngridiantsManager: MonoBehaviour
 
     void Start()
     {
-        //setIngridiants();
+        setIngridiants();
         this.transform.position = new Vector3(-7f,12.65f,13.71f);
         gm = GameObject.FindObjectOfType<GameManager>();
     }
 
-    // void setIngridiants()
-    // {
-      
-
-    //     if(gm.lastScene.GetType() == GameManager.lastScene.Egypt)
-    //         ingrPrefabs[ingrPrefabs.Length] = specialIngr[0];
-    //     if(gm.lastScene == 1)
-    //         ingrPrefabs[ingrPrefabs.Length] = specialIngr[1];
-    //     else
-    //         ingrPrefabs[ingrPrefabs.Length] = specialIngr[2];
-
-    // }
+    void setIngridiants()
+    {
+        if(gm.lastScene == GameManager.travelDestination.Egypt)
+            ingrPrefabs[ingrPrefabs.Length] = specialIngr[0];
+        if(gm.lastScene == GameManager.travelDestination.Forest)
+            ingrPrefabs[ingrPrefabs.Length] = specialIngr[1];
+        else
+            ingrPrefabs[ingrPrefabs.Length] = specialIngr[2];
+    }
 
     void dropFruit()
     {

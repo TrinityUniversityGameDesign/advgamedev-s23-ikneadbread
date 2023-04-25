@@ -13,6 +13,7 @@ public class PlaneTrigger : MonoBehaviour
     public Animator animator;
     public TMP_Text popUpText;
     public Button ridePlane;
+    public GameManager GM;
 
 
     //public bool breadSale = false;
@@ -20,6 +21,7 @@ public class PlaneTrigger : MonoBehaviour
     public void Start()
     {
         ridePlane.onClick.AddListener(changeScene);
+        GM = GameObject.Find("globalGM").GetComponent<GameManager>();
     }
 
     public void FlyPopUp(string text)
@@ -34,7 +36,8 @@ public class PlaneTrigger : MonoBehaviour
         //breadSale = true;
         Debug.Log("changing scenes");
         animator.SetTrigger("FlyDrop");
-        SceneManager.LoadScene("Egypt");
+        GM.lastCoords = GM.planePos;//set last coords to where you want to spawn in the next scene
+        SceneManager.LoadScene("SelectTown");
 
     }
 
@@ -47,6 +50,10 @@ public class PlaneTrigger : MonoBehaviour
             FlyPopUp("Fly?");
             Debug.Log("collided");
         }
+    }
+
+    private void OnTriggerExit() {
+        popUpBox.SetActive(false);
     }
 
 }

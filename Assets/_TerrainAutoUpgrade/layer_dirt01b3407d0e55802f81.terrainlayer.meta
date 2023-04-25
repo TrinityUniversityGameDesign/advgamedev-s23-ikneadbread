@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 20c5ba9989eb24b129e1c0f7b092487c
+=======
+<<<<<<<< HEAD:Assets/_TerrainAutoUpgrade/layer_dirt01b3407d0e55802f81.terrainlayer.meta
+guid: 24116557ec5b943d0a90925d80bc84c0
+========
+guid: 8162517b6ec2309499f99e303b29f146
+>>>>>>>> wLee-demo-branch:Assets/Free Stylized Skybox/CubeMap/Materials/Sky_Anime_11_morning_a.mat.meta
+>>>>>>> wLee-demo-sprint3
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 8574412962073106934
