@@ -9,9 +9,6 @@ public class ScreenScript : MonoBehaviour
   
     public float totalTime = 60f;
     public TextMeshProUGUI timerText;
-
-
-   
     private float timeRemaining;
     public bool isRunning = false;
 

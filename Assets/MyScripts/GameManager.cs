@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         Forest,
         KneadingGame,
     }
+    
     public Vector3 lastCoords;
 
     //yarn variables

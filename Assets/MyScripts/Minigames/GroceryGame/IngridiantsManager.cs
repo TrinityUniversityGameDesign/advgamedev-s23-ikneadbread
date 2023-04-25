@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class IngridiantsManager: MonoBehaviour
 {
+    private GameManager gm;
     public GameObject[] ingrPrefabs; // The prefab for the fruit to generate
-    public float minSpeed = 1f; // The minimum speed at which the fruit drops
+    public GameObject[] specialIngr;
+    public float minSpeed = 1f; // The 2inimum speed at which the fruit drops
     public float maxSpeed = 2f; // The maximum speed at which the fruit drops
     private float min=0f;
     private float max=10f;
@@ -17,14 +19,21 @@ public class IngridiantsManager: MonoBehaviour
 
     void Start()
     {
+        //setIngridiants();
         this.transform.position = new Vector3(-7f,12.65f,13.71f);
-
+        gm = GameObject.FindObjectOfType<GameManager>();
     }
 
-    // GameObject[] setIngridiants(int num)
+    // void setIngridiants()
     // {
-    //     if(num == 1)
-    //         //set regular other for diff towns
+      
+
+    //     if(gm.lastScene.GetType() == GameManager.lastScene.Egypt)
+    //         ingrPrefabs[ingrPrefabs.Length] = specialIngr[0];
+    //     if(gm.lastScene == 1)
+    //         ingrPrefabs[ingrPrefabs.Length] = specialIngr[1];
+    //     else
+    //         ingrPrefabs[ingrPrefabs.Length] = specialIngr[2];
 
     // }
 
@@ -53,15 +62,4 @@ public class IngridiantsManager: MonoBehaviour
     }
 }
 
-/* BASIC INGREDIENTS: 
-Flour 
-Yeast
-Sugar
-Salt 
-Milk 
-Butter 
-Egg
 
-Unique Ingredients
-Cocoa Powder 
-Rye Flour */
