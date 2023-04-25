@@ -8,14 +8,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
     //NPC quest + scene checking
     private string currentSceneName;
     private bool isFirstVisit = true;
 
     //popup panel for what scene you are on
     public GameObject scenePanel;
-
 
 
     //add event

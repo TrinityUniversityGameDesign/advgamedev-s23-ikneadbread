@@ -1,0 +1,34 @@
+﻿title: Quest3
+tags:
+---
+EgyptCat: Feline good?
+    -> This heat is scorching my fur <b>furreal</b>.
+        EgyptCat: Get used to it, <b>kitten</b>.
+            <<jump Quest3Q>>
+     -> Yeah! Those pyramids are <b>purrific!</b>
+        EgyptCat: They're this town's <b>purride</b> and joy. 
+        EgyptCat: If only you could see the Sphinx from here too.
+            <<jump Quest3Q>>
+===
+
+title: Quest3Q
+---
+EgyptCat: Would you mind helping me out with getting me some Pumpernickel? 
+EgyptCat: If you do, I’ll give you something better then <b>catnip</b>.
+ -> Accept
+    EgyptCat: <b>Furreal?</b> Thank you!
+    <<jump Quest3A>>
+ -> Deny
+    EgyptCat: Oh, thats <b>clawful</b> but ok.
+    EgyptCat: My <b>purr</b> has turned into a <b>meow</b> of sadness.
+===
+
+title: Quest3A
+---
+EgyptCat: Thank you for the help, a lot better than <b>Meowpatra</b> and <b>Julius Fleaser</b>. 
+===
+
+title: Quest3Complete
+---
+EgyptCat: <b>Catgratulations</b> on making <b>Whiskerlicious</b> a worldwide <b>nyame</b>!
+===
