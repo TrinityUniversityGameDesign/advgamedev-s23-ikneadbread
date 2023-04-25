@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     public Vector3 lastCoords;
     public Vector3 planePos = new Vector3(0.150714532f, -0.020006299f, -27.3976288f);
     public travelDestination lastScene;
+    //minor change
 
     //yarn variables
     static bool introDone = false;
