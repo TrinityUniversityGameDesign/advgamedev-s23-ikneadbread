@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     //ingredients info
     public int numFlour;
     public int numYeast;
-    public int numChocolate;
     public int numCocoa;
     public int numRye;
 
@@ -119,7 +118,6 @@ public class GameManager : MonoBehaviour
 
         numFlour = 0;
         numYeast = 0;
-        numChocolate = 0;
         numCocoa = 0;
         numRye = 0;
 
