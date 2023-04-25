@@ -14,7 +14,10 @@ public class Item
         Egg,
         Milk,
         Yeast,
-        Butter
+        Butter,
+		Gold_Coin,
+		Silver_Coin,
+		Bronze_Coin
     }
 
     public ItemType itemType;
@@ -46,6 +49,9 @@ public class Item
 		case ItemType.Milk:
 		case ItemType.Yeast:
 		case ItemType.Butter:
+		case ItemType.Gold_Coin:
+		case ItemType.Silver_Coin:
+		case ItemType.Bronze_Coin:
 			return true;
 		//Non-Stackable Items
 			return false;
