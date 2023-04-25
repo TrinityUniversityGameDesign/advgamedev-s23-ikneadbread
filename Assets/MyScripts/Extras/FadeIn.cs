@@ -1,42 +1,68 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FadeIn : MonoBehaviour {
-    public float fadeTime = 1.0f;
-    public KeyCode activateKey = KeyCode.Space;
+public class FadeIn : MonoBehaviour
+{
+    // Reference to the UI element to fade
+    public CanvasGroup uiElement;
 
-    private Camera cam;
-    private Image image;
-    private float startTime;
-    private bool activated = false;
+    // Duration of the fade effect
+    public float fadeDuration = 1f;
 
-    void Start() {
-        cam = Camera.main;
-        image = GetComponent<Image>();
-        image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+    // Delay before starting the fade effect
+    public float delay = 1f;
+
+    // Duration of time the UI element will be displayed
+    public float displayDuration = 2f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Set the UI element's alpha to 0
+        uiElement.alpha = 0;
+
+        // Start the fade coroutine after the specified delay
+        StartCoroutine(FadeCoroutine());
     }
 
-    void Update() {
-        if (activated) {
-            if (cam.depthTextureMode == DepthTextureMode.None) {
-                cam.depthTextureMode = DepthTextureMode.Depth;
-            }
+    IEnumerator FadeCoroutine()
+    {
+        // Wait for the specified delay before starting the fade effect
+        yield return new WaitForSeconds(delay);
 
-            if (cam.depthTextureMode == DepthTextureMode.Depth && cam.depthTextureMode == DepthTextureMode.DepthNormals) {
-                Ray ray = cam.ScreenPointToRay(cam.WorldToScreenPoint(transform.position));
-                RaycastHit hitInfo;
-                if (Physics.Raycast(ray, out hitInfo)) {
-                    if (hitInfo.distance < cam.transform.position.z) {
-                        float elapsedTime = Time.time - startTime;
-                        float alpha = Mathf.Clamp01(elapsedTime / fadeTime);
-                        image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
-                    }
-                }
-            }
+        // Fade the UI element in
+        StartCoroutine(Fade(uiElement, 0f, 1f, fadeDuration));
+
+        // Wait for the fade effect to complete
+        yield return new WaitForSeconds(fadeDuration);
+
+        // Wait for the specified display duration
+        yield return new WaitForSeconds(displayDuration);
+
+        // Fade the UI element out
+        StartCoroutine(Fade(uiElement, 1f, 0f, fadeDuration));
+    }
+
+    IEnumerator Fade(CanvasGroup canvasGroup, float startAlpha, float endAlpha, float duration)
+    {
+        // Set the UI element's starting alpha
+        canvasGroup.alpha = startAlpha;
+
+        // Calculate the rate at which the alpha should change each frame
+        float alphaChangePerFrame = (endAlpha - startAlpha) / duration * Time.deltaTime;
+
+        // Loop until the alpha reaches the target value
+        while (Mathf.Abs(canvasGroup.alpha - endAlpha) > 0.01f)
+        {
+            // Update the UI element's alpha
+            canvasGroup.alpha += alphaChangePerFrame;
+
+            // Wait for the next frame
+            yield return null;
         }
-        else if (Input.GetKeyDown(activateKey)) {
-            activated = true;
-            startTime = Time.time;
-        }
+
+        // Set the UI element's alpha to the target value
+        canvasGroup.alpha = endAlpha;
     }
 }
