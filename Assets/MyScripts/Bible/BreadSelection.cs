@@ -8,10 +8,13 @@ public class BreadSelection : MonoBehaviour
     private int index;
     [SerializeField] GameObject uhohWindow;
     [SerializeField] GameObject exit;
-    
+
+    GameManager GM; 
 
     private void Start()
     {
+        GM = GameObject.Find("globalGM").GetComponent<GameManager>();
+        GM.inventory = new Inventory();
         uhohWindow.SetActive(false);
         exit.SetActive(false);
 
@@ -71,7 +74,7 @@ public class BreadSelection : MonoBehaviour
         //Current Invetory: ... 
         if (index == 1)
         {
-            if (PlayerPrefs.GetInt("milk") < 2 || PlayerPrefs.GetInt("flour") < 8)
+            if (GM.inventory.CheckForItem(Item.ItemType.Flour, 2))
             {
                 uhohWindow.SetActive(true);
                 exit.SetActive(true);
@@ -88,6 +91,10 @@ public class BreadSelection : MonoBehaviour
             {
                 Debug.Log("we gucci");
             }
+        }
+        if (index == 3)
+        {
+
         }
     }
 
