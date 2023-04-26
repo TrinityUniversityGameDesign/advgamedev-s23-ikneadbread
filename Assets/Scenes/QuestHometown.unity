@@ -2577,6 +2577,7 @@ GameObject:
   - component: {fileID: 800809056}
   - component: {fileID: 800809058}
   - component: {fileID: 800809057}
+  - component: {fileID: 800809059}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -2650,6 +2651,23 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &800809059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800809055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfdef0cdf9ae4f019cf477a06e8ce0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  zoomSpeed: 10
+  maxZoom: 5
+  minZoom: 2
+  isZoomed: 0
 --- !u!1 &819760458
 GameObject:
   m_ObjectHideFlags: 0
@@ -5256,6 +5274,7 @@ MonoBehaviour:
   animator: {fileID: 542164864}
   popUpText: {fileID: 542164863}
   ridePlane: {fileID: 542164861}
+  GM: {fileID: 0}
 --- !u!64 &1671347821
 MeshCollider:
   m_ObjectHideFlags: 0
