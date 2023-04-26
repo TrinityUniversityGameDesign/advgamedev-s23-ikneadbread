@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using Yarn.Unity;
 
 public class GameManager : MonoBehaviour
@@ -46,13 +47,18 @@ public class GameManager : MonoBehaviour
         Egypt,
         HomeTown,
         Forest,
-        KneadingGame,
         CityTime,
-        StocksGame
+        InheritStore,
+        Inventory,
+        Minigame2,
+        KneadingGame,
+        StocksGame,
+        WinScene
     }
     public Vector3 lastCoords;
     public Vector3 planePos = new Vector3(0.150714532f, -0.020006299f, -27.3976288f);
     public travelDestination lastScene;
+    public travelDestination currScene;
     //minor change
 
     //yarn variables
@@ -107,7 +113,21 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (currScene == travelDestination.Inventory)
+            {
+                SceneManager.LoadScene(townToReturn());
+            }
+            else if (currScene == travelDestination.HomeTown || currScene == travelDestination.Forest 
+                || currScene == travelDestination.Egypt || currScene == travelDestination.CityTime)
+            {
+                lastScene = currScene;
+                currScene = travelDestination.Inventory;
+                Debug.Log(lastScene);
+                SceneManager.LoadScene("Inventory");
+            }
+        }
     }
 
     void newGame()
@@ -164,6 +184,41 @@ public class GameManager : MonoBehaviour
         numGoldCoins += gold;
         numSilverCoins += silver;
         numBronzeCoins += bronze;
+    }
+
+    // Updates lastScene and currScene, returns the name of the scene to load
+    public string townToReturn()
+    {
+        // Should remove lastCoords update at some point
+        switch (lastScene)
+        {
+            case (travelDestination.CityTime):
+                lastScene = currScene;
+                currScene = travelDestination.CityTime;
+                //lastCoords = new Vector3(-13.75f, -0.0102060437f, -25.1299992f);
+                return "CityTime";
+            case (travelDestination.Egypt):
+                lastScene = currScene;
+                currScene = travelDestination.Egypt;
+                //lastCoords = new Vector3(-532.916992f, 16.6599998f, 632.41803f);
+                return "Egypt";
+            case (travelDestination.Forest):
+                lastScene = currScene;
+                currScene = travelDestination.Forest;
+                //lastCoords = new Vector3(428.04776f, -0.0199999511f, 381.833923f);
+                return "Forest";
+            case (travelDestination.HomeTown):
+                lastScene = currScene;
+                currScene = travelDestination.HomeTown;
+                //lastCoords = new Vector3(459.420013f, 0.0289999992f, 451.269989f);
+                return "NewHomeTown";
+            default:
+                // Same as HomeTown
+                lastScene = currScene;
+                currScene = travelDestination.HomeTown;
+                //lastCoords = new Vector3(459.420013f, 0.0289999992f, 451.269989f);
+                return "NewHomeTown";
+        }
     }
 
     // ------------ Yarn functions ------------

@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
         movementSpeed = GM.moveSpeed;
-        Debug.Log("current speed in the CityTime: " + movementSpeed);
+        //Debug.Log("current speed in the CityTime: " + movementSpeed);
         this.transform.position = GM.lastCoords;
         Debug.Log("Last coords: "+ GM.lastCoords);
 
