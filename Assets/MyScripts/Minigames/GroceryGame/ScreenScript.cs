@@ -7,7 +7,11 @@ using TMPro;
 public class ScreenScript : MonoBehaviour
 {
     public GameObject StartScreen;
+    public GameObject EndScreen;
 
+   private BasketMovement bm;
+
+    public TextMeshProUGUI caughtScores;
     public float totalTime = 60f;
     public TextMeshProUGUI timerText;
     private float timeRemaining;
@@ -16,17 +20,18 @@ public class ScreenScript : MonoBehaviour
 
     void Start()
     { 
+        
         timeRemaining = totalTime;
-  
         StartTimer();
-
+        StartScreen.SetActive(false);
+        EndScreen.SetActive(false);
+        bm = GameObject.FindObjectOfType<BasketMovement>();
     }
 
     void Update()
     {
         if (isRunning)
         {
-            
             timeRemaining -= Time.deltaTime;
             UpdateTimerText();
 
@@ -37,7 +42,9 @@ public class ScreenScript : MonoBehaviour
 
             if (timeRemaining <= 0f)
             {
-                isRunning = false;                
+                isRunning = false;
+                EndScreen.SetActive(true); 
+                caughtScores.text = "Chocolate Caught: " +  bm.chocCount + "Rye Caught: " + bm.ryeCount;          
 
             }
         } 

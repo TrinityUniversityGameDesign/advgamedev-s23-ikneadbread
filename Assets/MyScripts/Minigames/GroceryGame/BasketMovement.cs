@@ -6,12 +6,16 @@ using UnityEngine;
 public class BasketMovement : MonoBehaviour
 {
     private int speed = 5;
+    private GameManager globalManager;
+    public int chocCount;
+    public int ryeCount;
     public GameObject basket;
+    private List<Item> caughtIngrediants;
     public int ingrCount = 0;
     void Start()
     {
         basket = GameObject.Find("Basket");
-        //EndScreen.SetActive(false);
+        globalManager = GameObject.FindObjectOfType<GameManager>();
     }
    
         void OnCollisionEnter(Collision col)
@@ -20,6 +24,15 @@ public class BasketMovement : MonoBehaviour
         if (col.gameObject.CompareTag("Ingridient"))
         {
             ingrCount++;
+            if(col.gameObject.name == "Chocolate(Clone)")
+                chocCount++;
+            if(col.gameObject.name == "Rye(Clone)")
+                ryeCount++;
+            Debug.Log("here!");
+            Item newIngr = returnItem(col.gameObject.name);
+            
+
+//            caughtIngrediants.Add(newIngr);
             Destroy(col.gameObject); 
         }
     }
@@ -35,6 +48,29 @@ public class BasketMovement : MonoBehaviour
             basket.transform.Translate(Vector3.back * Time.deltaTime * speed);
         }
         
+    }
+
+    Item returnItem(string ingrName)
+    {
+        Item newItem = new Item();
+
+        if(ingrName == "Milk(Clone)")
+            newItem.itemType = Item.ItemType.Milk;
+        else if(ingrName == "Butter(Clone)")
+            newItem.itemType = Item.ItemType.Butter;
+        else if(ingrName == "Sugar(Clone)")
+            newItem.itemType = Item.ItemType.Sugar;
+        else if(ingrName == "Egg(Clone)")
+            newItem.itemType = Item.ItemType.Egg;
+        else if(ingrName == "Yeast(Clone)")
+            newItem.itemType = Item.ItemType.Yeast;
+        else if(ingrName == "Salt(Clone)")
+            newItem.itemType = Item.ItemType.Salt;
+        else
+            newItem.itemType = Item.ItemType.Flour;
+
+        return newItem;
+        Debug.Log("reaching");
     }
 }
 
