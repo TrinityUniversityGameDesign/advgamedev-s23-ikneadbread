@@ -135,25 +135,25 @@ public class KneadGameManager : MonoBehaviour
                 breadName = "Dinner Roll";
                 GM.numDinnerRoll++;
                 breadsOwned = GM.numDinnerRoll;
-                GM.numFlour = GM.numFlour - 2;
-                GM.numYeast--;
+                GM.inventory.RemoveItemNCnt(Item.ItemType.Flour, 2);
+                GM.inventory.RemoveItemNCnt(Item.ItemType.Yeast, 1);
                 break;
             case 1:
                 breadName = "Croissant";
                 GM.numCroissant++;
                 breadsOwned = GM.numCroissant;
-                GM.numFlour = GM.numFlour - 2;
-                GM.numYeast--;
-                GM.numCocoa--;
+                GM.inventory.RemoveItemNCnt(Item.ItemType.Flour, 2);
+                GM.inventory.RemoveItemNCnt(Item.ItemType.Yeast, 1);
+                GM.inventory.RemoveItemNCnt(Item.ItemType.Cocoa_Powder, 1);
                 break;
             case 2:
                 breadName = "Pumpernickel";
                 GM.numPumpernickel++;
                 breadsOwned = GM.numPumpernickel;
-                GM.numFlour--;
-                GM.numYeast--;
-                GM.numCocoa--;
-                GM.numRye--;
+                GM.inventory.RemoveItemNCnt(Item.ItemType.Flour, 1);
+                GM.inventory.RemoveItemNCnt(Item.ItemType.Yeast, 1);
+                GM.inventory.RemoveItemNCnt(Item.ItemType.Cocoa_Powder, 1);
+                GM.inventory.RemoveItemNCnt(Item.ItemType.Rye_Flour, 1);
                 break;
         }
         string plural = "s";
@@ -194,7 +194,7 @@ public class KneadGameManager : MonoBehaviour
 
     public void BackToTown()
     {
-        SceneManager.LoadScene("CityTime");
+        SceneManager.LoadScene(GM.townToReturn());
     }
 
     public int getLoavesKneaded()
@@ -244,19 +244,17 @@ public class KneadGameManager : MonoBehaviour
 
     public bool canBakeBread()
     {
-        int flour = GM.numFlour;
-        int yeast = GM.numYeast;
-        int cocoa = GM.numCocoa;
-        int rye = GM.numRye;
-
         switch (selectedBread)
         {
             case 0: 
-                return (flour >= 2 && yeast >= 1);
+                return (GM.inventory.CheckForItem(Item.ItemType.Flour, 2) && GM.inventory.CheckForItem(Item.ItemType.Yeast, 1));
             case 1: 
-                return (flour >= 2 && yeast >= 1 && cocoa >= 1);
+                return (GM.inventory.CheckForItem(Item.ItemType.Flour, 2) && GM.inventory.CheckForItem(Item.ItemType.Yeast, 1)
+                    && GM.inventory.CheckForItem(Item.ItemType.Cocoa_Powder, 1));
             case 2: 
-                return (flour >= 1 && yeast >= 1 && cocoa >= 1 && rye >= 1);
+                return (GM.inventory.CheckForItem(Item.ItemType.Flour, 1) && GM.inventory.CheckForItem(Item.ItemType.Yeast, 1)
+                    && GM.inventory.CheckForItem(Item.ItemType.Cocoa_Powder, 1) 
+                    && GM.inventory.CheckForItem(Item.ItemType.Rye_Flour, 1));
         }
 
         return false;
@@ -265,9 +263,9 @@ public class KneadGameManager : MonoBehaviour
     // For testing the Kneading Minigame, remove for full release
     public void DebugKneading()
     {
-        GM.numFlour += 9;
-        GM.numYeast += 9;
-        GM.numCocoa += 9;
-        GM.numRye += 9;
+        GM.inventory.AddItemNCnt(Item.ItemType.Flour, 9);
+        GM.inventory.AddItemNCnt(Item.ItemType.Yeast, 9);
+        GM.inventory.AddItemNCnt(Item.ItemType.Cocoa_Powder, 9);
+        GM.inventory.AddItemNCnt(Item.ItemType.Rye_Flour, 9);
     }
 }
