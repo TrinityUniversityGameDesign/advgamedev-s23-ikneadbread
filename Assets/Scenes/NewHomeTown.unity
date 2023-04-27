@@ -1948,7 +1948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 652220959}
-  moveSpeed: 5
+  moveSpeed: 3
   followDistance: 50
   stopDistance: 2
   playerRadius: 5
@@ -3097,6 +3097,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 2120316450}
+    - target: {fileID: 114021909445251090, guid: aa2d47f95b34fbe4d9cbe095f13585b5, type: 3}
+      propertyPath: movementSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa2d47f95b34fbe4d9cbe095f13585b5, type: 3}
 --- !u!1 &1117673274
