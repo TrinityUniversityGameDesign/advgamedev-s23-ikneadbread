@@ -32,6 +32,7 @@ title: acceptResponse
 Farmer: Thanks so much !! I'm so excited to eat your bread
 Farmer: Oh, let me give you a quick runthrough of how it all works.
 Farmer: Within this Town, there is a ingredients store! This is where we play a ingredients minigame where we catch goods from the sky
+    <<camera IngredientsMiningame>>
 Farmer: After we catch our ingredients, you can go to your bakery. This is where we can knead with the ingredients we got to make our bread.
 Farmer: Finally, you can give ME the bread so I can eat it. Tasteeyyyyy!
 ===

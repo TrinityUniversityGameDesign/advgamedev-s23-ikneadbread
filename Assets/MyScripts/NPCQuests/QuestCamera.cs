@@ -21,16 +21,18 @@ public class QuestCamera : MonoBehaviour
         zoomDistance = maxZoom;
         initialPosition = transform.position;
 
-
-        //bool questResponse = (bool)dialogueRunner.variableStorage.GetVariable("$questResponse").GetValue();
-
-        bool questResponse = (bool)dialogueRunner.get("$questResponse").GetValue();
     }
+
 
     void Update()
     {
         
+        movingCamera();
+        
+    }
 
+    public void movingCamera()
+    {
         // Check if the boolean is true and adjust the zoom distance accordingly
         if (isZoomed)
         {

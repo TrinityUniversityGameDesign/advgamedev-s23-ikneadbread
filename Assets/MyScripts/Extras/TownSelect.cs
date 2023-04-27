@@ -16,7 +16,7 @@ public class TownSelect : MonoBehaviour
         Vector3 homeTownPlanePos = new Vector3(474.100006f, 0.00699999928f, 371.799988f);
         GM.lastCoords = homeTownPlanePos;//set last coords to where you want to spawn in the next scene
         GM.lastScene = GM.currScene;
-        GM.currScene = GameManager.travelDestination.HomeTown;
+        GM.currScene = GameManager.travelDestination.NewHomeTown;
         SceneManager.LoadScene("NewHomeTown");
     }
 

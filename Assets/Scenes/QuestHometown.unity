@@ -2663,11 +2663,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecfdef0cdf9ae4f019cf477a06e8ce0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1238882920}
   zoomSpeed: 10
   maxZoom: 5
   minZoom: 2
   isZoomed: 0
+  dialogueRunner: {fileID: 0}
 --- !u!1 &819760458
 GameObject:
   m_ObjectHideFlags: 0
@@ -4020,6 +4021,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1079df542d4c74110ab4c8ea12e53239, type: 3}
+--- !u!4 &1238882920 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5778846317525321812, guid: 1079df542d4c74110ab4c8ea12e53239, type: 3}
+  m_PrefabInstance: {fileID: 1238882919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1240335580
 PrefabInstance:
   m_ObjectHideFlags: 0

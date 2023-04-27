@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     {
         //should be updated to make sure it includes any scenes we may go to
         Egypt,
-        HomeTown,
+        NewHomeTown,
         Forest,
         CityTime,
         InheritStore,
@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
             {
                 SceneManager.LoadScene(townToReturn());
             }
-            else if (currScene == travelDestination.HomeTown || currScene == travelDestination.Forest 
+            else if (currScene == travelDestination.NewHomeTown || currScene == travelDestination.Forest 
                 || currScene == travelDestination.Egypt || currScene == travelDestination.CityTime)
             {
                 lastScene = currScene;
@@ -249,15 +249,15 @@ public class GameManager : MonoBehaviour
                 currScene = travelDestination.Forest;
                 //lastCoords = new Vector3(428.04776f, -0.0199999511f, 381.833923f);
                 return "Forest";
-            case (travelDestination.HomeTown):
+            case (travelDestination.NewHomeTown):
                 lastScene = currScene;
-                currScene = travelDestination.HomeTown;
+                currScene = travelDestination.NewHomeTown;
                 //lastCoords = new Vector3(459.420013f, 0.0289999992f, 451.269989f);
                 return "NewHomeTown";
             default:
                 // Same as HomeTown
                 lastScene = currScene;
-                currScene = travelDestination.HomeTown;
+                currScene = travelDestination.NewHomeTown;
                 //lastCoords = new Vector3(459.420013f, 0.0289999992f, 451.269989f);
                 return "NewHomeTown";
         }
