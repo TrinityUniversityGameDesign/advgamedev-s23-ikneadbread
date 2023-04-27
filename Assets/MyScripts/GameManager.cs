@@ -5,9 +5,20 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    //NPC quest + scene checking
+    private string currentSceneName;
+    private bool isFirstVisit = true;
+
+    //popup panel for what scene you are on
+    public GameObject scenePanel;
+
+
+
     //add event
     public UnityEvent gameStarted = new UnityEvent();
     public UnityEvent boost1 = new UnityEvent();
@@ -45,7 +56,7 @@ public class GameManager : MonoBehaviour
     {
         //should be updated to make sure it includes any scenes we may go to
         Egypt,
-        HomeTown,
+        NewHomeTown,
         Forest,
         CityTime,
         InheritStore,
@@ -108,6 +119,37 @@ public class GameManager : MonoBehaviour
         accessory3.AddListener(BeretHatUpgrade);
         accessory4.AddListener(CowboyHatUpgrade);
         accessory5.AddListener(ChefHatUpgrade);
+
+        //for checking what scene you are in
+        currentSceneName = SceneManager.GetActiveScene().name;
+        Debug.Log("start, within: " + currentSceneName);
+        if (PlayerPrefs.HasKey(currentSceneName))
+        {
+            // If they have visited before, set isFirstVisit to false
+            Debug.Log("has visited");
+            //isFirstVisit = false;
+
+            //for brain sake
+            //isFirstVisit = true;
+            showSceneLabel();
+        }
+        //else
+        //{
+        //    Debug.Log("first visit");
+        //    // If this is the first time the player is visiting, show the UI panel
+        //    scenePanel.SetActive(true);
+        //    Debug.Log("should be showng panel");
+        //    // Set the PlayerPrefs key for this scene to indicate the player has visited before
+        //    PlayerPrefs.SetInt(currentSceneName, 1);
+        //    PlayerPrefs.Save();
+        //}
+
+    }
+
+    void showSceneLabel()
+    {
+        Debug.Log("scene is here!");
+        scenePanel.SetActive(true);
     }
 
     // Update is called once per frame
@@ -119,7 +161,7 @@ public class GameManager : MonoBehaviour
             {
                 SceneManager.LoadScene(townToReturn());
             }
-            else if (currScene == travelDestination.HomeTown || currScene == travelDestination.Forest 
+            else if (currScene == travelDestination.NewHomeTown || currScene == travelDestination.Forest 
                 || currScene == travelDestination.Egypt || currScene == travelDestination.CityTime)
             {
                 lastScene = currScene;
@@ -207,15 +249,15 @@ public class GameManager : MonoBehaviour
                 currScene = travelDestination.Forest;
                 //lastCoords = new Vector3(428.04776f, -0.0199999511f, 381.833923f);
                 return "Forest";
-            case (travelDestination.HomeTown):
+            case (travelDestination.NewHomeTown):
                 lastScene = currScene;
-                currScene = travelDestination.HomeTown;
+                currScene = travelDestination.NewHomeTown;
                 //lastCoords = new Vector3(459.420013f, 0.0289999992f, 451.269989f);
                 return "NewHomeTown";
             default:
                 // Same as HomeTown
                 lastScene = currScene;
-                currScene = travelDestination.HomeTown;
+                currScene = travelDestination.NewHomeTown;
                 //lastCoords = new Vector3(459.420013f, 0.0289999992f, 451.269989f);
                 return "NewHomeTown";
         }

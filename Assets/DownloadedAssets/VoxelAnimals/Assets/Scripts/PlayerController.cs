@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
         this.transform.position = GM.lastCoords;
         Debug.Log("Last coords: "+ GM.lastCoords);
 
-
         //Camera.main.GetComponent<CameraController>().AssignTarget(transform);
     }
 
