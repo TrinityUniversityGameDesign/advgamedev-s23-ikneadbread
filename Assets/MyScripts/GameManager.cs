@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using Yarn.Unity;
 using UnityEngine.SceneManagement;
 
@@ -23,12 +24,10 @@ public class GameManager : MonoBehaviour
 
     //global variables
     public GameObject playerCat;
-    // need variable for which town scene is loaded
 
     //ingredients info
-    public int numIngred1; //placeholder name
-    public int numIngred2; //placeholder name
-    public int numChocolate;
+    public int numFlour;
+    public int numYeast;
     public int numCocoa;
     public int numRye;
 
@@ -36,6 +35,9 @@ public class GameManager : MonoBehaviour
     public int numGoldCoins;
     public int numSilverCoins;
     public int numBronzeCoins;
+
+    //Inventory
+    public Inventory inventory;
 
     //upgrade info
     public string boostsOwned;
@@ -48,14 +50,26 @@ public class GameManager : MonoBehaviour
     public int numPumpernickel;
 
     //location info
-    public enum lastScene {
+    public enum travelDestination
+    {
         //should be updated to make sure it includes any scenes we may go to
         Egypt,
-        HomeTown,
+        NewHomeTown,
         Forest,
+        CityTime,
+        InheritStore,
+        Inventory,
+        Minigame2,
         KneadingGame,
+        StocksGame,
+        WinScene
     }
+    
     public Vector3 lastCoords;
+    public Vector3 planePos = new Vector3(0.150714532f, -0.020006299f, -27.3976288f);
+    public travelDestination lastScene;
+    public travelDestination currScene;
+    //minor change
 
     //yarn variables
     static bool introDone = false;
@@ -71,9 +85,8 @@ public class GameManager : MonoBehaviour
     static bool ovenDone = false;
     static bool dispDone = false;
     static bool stocksDone = false;
-    
-    public float moveSpeed = 3;
 
+    public float moveSpeed = 3;
     public UnityEvent onMiniGameCube = new UnityEvent();
 
 
@@ -84,9 +97,12 @@ public class GameManager : MonoBehaviour
     //this awake is necessary so we do not have duplicate GameManagers
     private void Awake()
     {
-        if (GameObject.FindObjectsOfType<GameManager>().Length > 1) {
+        if (GameObject.FindObjectsOfType<GameManager>().Length > 1)
+        {
             Destroy(this.gameObject);
         }
+
+        inventory = new Inventory();
     }
 
     // Start is called before the first frame update
@@ -138,45 +154,21 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-
-        //all NPC interactions
-        // Update xthe current scene name in case the player changes scenes
-        //if (currentSceneName != SceneManager.GetActiveScene().name)
-        //{
-        //    currentSceneName = SceneManager.GetActiveScene().name;
-
-        //    // Check if the player has visited this scene before
-        //    if(isFirstVisit == true)
-        //    {
-        //        //If this is the first time the player is visiting, show the UI panel
-        //        Debug.Log("should be showng panel");
-        //        scenePanel.SetActive(true);
-        //        // Set the PlayerPrefs key for this scene to indicate the player has visited before
-        //        Debug.Log("first time in: " + currentSceneName);
-        //        PlayerPrefs.SetInt(currentSceneName, 1);
-        //        PlayerPrefs.Save();
-
-        //    }
-            //if (PlayerPrefs.HasKey(currentSceneName))
-            //{
-            //    // If they have visited before, set isFirstVisit to false
-            //    isFirstVisit = false;
-            //}
-            //else
-            //{
-            //    // If this is the first time the player is visiting, show the UI panel
-            //    Debug.Log("should be showng panel");
-            //    scenePanel.SetActive(true);
-            //    // Set the PlayerPrefs key for this scene to indicate the player has visited before
-            //    Debug.Log("first time in: " + currentSceneName);
-            //    PlayerPrefs.SetInt(currentSceneName, 1);
-            //    PlayerPrefs.Save();
-            //}
-        //}
-
-
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (currScene == travelDestination.Inventory)
+            {
+                SceneManager.LoadScene(townToReturn());
+            }
+            else if (currScene == travelDestination.NewHomeTown || currScene == travelDestination.Forest 
+                || currScene == travelDestination.Egypt || currScene == travelDestination.CityTime)
+            {
+                lastScene = currScene;
+                currScene = travelDestination.Inventory;
+                Debug.Log(lastScene);
+                SceneManager.LoadScene("Inventory");
+            }
+        }
     }
 
     void newGame()
@@ -185,9 +177,8 @@ public class GameManager : MonoBehaviour
         numSilverCoins = 0;
         numBronzeCoins = 0;
 
-        numIngred1 = 0;
-        numIngred2 = 0;
-        numChocolate = 0;
+        numFlour = 0;
+        numYeast = 0;
         numCocoa = 0;
         numRye = 0;
 
@@ -234,6 +225,41 @@ public class GameManager : MonoBehaviour
         numGoldCoins += gold;
         numSilverCoins += silver;
         numBronzeCoins += bronze;
+    }
+
+    // Updates lastScene and currScene, returns the name of the scene to load
+    public string townToReturn()
+    {
+        // Should remove lastCoords update at some point
+        switch (lastScene)
+        {
+            case (travelDestination.CityTime):
+                lastScene = currScene;
+                currScene = travelDestination.CityTime;
+                //lastCoords = new Vector3(-13.75f, -0.0102060437f, -25.1299992f);
+                return "CityTime";
+            case (travelDestination.Egypt):
+                lastScene = currScene;
+                currScene = travelDestination.Egypt;
+                //lastCoords = new Vector3(-532.916992f, 16.6599998f, 632.41803f);
+                return "Egypt";
+            case (travelDestination.Forest):
+                lastScene = currScene;
+                currScene = travelDestination.Forest;
+                //lastCoords = new Vector3(428.04776f, -0.0199999511f, 381.833923f);
+                return "Forest";
+            case (travelDestination.NewHomeTown):
+                lastScene = currScene;
+                currScene = travelDestination.NewHomeTown;
+                //lastCoords = new Vector3(459.420013f, 0.0289999992f, 451.269989f);
+                return "NewHomeTown";
+            default:
+                // Same as HomeTown
+                lastScene = currScene;
+                currScene = travelDestination.NewHomeTown;
+                //lastCoords = new Vector3(459.420013f, 0.0289999992f, 451.269989f);
+                return "NewHomeTown";
+        }
     }
 
     // ------------ Yarn functions ------------
@@ -338,7 +364,7 @@ public class GameManager : MonoBehaviour
     {
         dispTutorial = val;
     }
-    
+
     // Add Hats to Inventory
     public void StrawHatUpgrade()
     {

@@ -19,4 +19,6 @@ public class ItemAssets : MonoBehaviour
     public Sprite milkSprite;
     public Sprite yeastSprite;
     public Sprite butterSprite;
+    public Sprite cocoaSprite;
+    public Sprite ryeSprite;
 }
