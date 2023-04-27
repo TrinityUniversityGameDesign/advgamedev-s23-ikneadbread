@@ -59,17 +59,17 @@ public class BasketMovement : MonoBehaviour
         Item newItem = new Item();
 
         if(ingrName == "Milk(Clone)")
-            newItem.itemType = Item.ItemType.Milk;
+            newItem.itemType = Item.ItemType.Yeast;
         else if(ingrName == "Butter(Clone)")
-            newItem.itemType = Item.ItemType.Butter;
+            newItem.itemType = Item.ItemType.Flour;
         else if(ingrName == "Sugar(Clone)")
-            newItem.itemType = Item.ItemType.Sugar;
+            newItem.itemType = Item.ItemType.Rye_Flour;
         else if(ingrName == "Egg(Clone)")
-            newItem.itemType = Item.ItemType.Egg;
+            newItem.itemType = Item.ItemType.Cocoa_Powder;
         else if(ingrName == "Yeast(Clone)")
             newItem.itemType = Item.ItemType.Yeast;
         else if(ingrName == "Salt(Clone)")
-            newItem.itemType = Item.ItemType.Salt;
+            newItem.itemType = Item.ItemType.Rye_Flour;
         else
             newItem.itemType = Item.ItemType.Flour;
 
