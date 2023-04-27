@@ -48,4 +48,5 @@ title: booResponse
 --- 
 Farmer: If your paws are ever itching for some kneading, come back to me.
 Farmer: I'm down to get dinner rolls anytime.
+    <<set $acceptFinished to true>>
 ===

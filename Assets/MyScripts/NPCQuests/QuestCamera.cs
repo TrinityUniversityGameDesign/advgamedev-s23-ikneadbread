@@ -52,8 +52,6 @@ public class QuestCamera : MonoBehaviour
             Debug.Log("within the talkFinished");
             townSelect.FlyTown();
             //GM.townToReturn();
-
-
         }
 
         if (vStorage.TryGetValue("$cameraShift", out isZoomed))
