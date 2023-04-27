@@ -9,12 +9,12 @@ public class BreadSelection : MonoBehaviour
     [SerializeField] GameObject uhohWindow;
     [SerializeField] GameObject exit;
 
-    GameManager GM; 
+    //GameManager GM; 
 
     private void Start()
     {
-        GM = GameObject.Find("globalGM").GetComponent<GameManager>();
-        GM.inventory = new Inventory();
+        //GM = GameObject.Find("globalGM").GetComponent<GameManager>();
+        //GM.inventory = new Inventory();
         uhohWindow.SetActive(false);
         exit.SetActive(false);
 
@@ -72,6 +72,7 @@ public class BreadSelection : MonoBehaviour
     {
         //Oh No You Don't Have Enough Ingrediants to Make This Bread
         //Current Invetory: ... 
+        /*
         if (index == 1)
         {
             if (GM.inventory.CheckForItem(Item.ItemType.Flour, 2))
@@ -95,7 +96,7 @@ public class BreadSelection : MonoBehaviour
         if (index == 3)
         {
 
-        }
+        }*/
     }
 
     public void leavePopup()
