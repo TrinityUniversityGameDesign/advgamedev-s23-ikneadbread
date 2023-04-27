@@ -44,7 +44,7 @@ public class ScreenScript : MonoBehaviour
             {
                 isRunning = false;
                 EndScreen.SetActive(true); 
-                caughtScores.text = "Chocolate Caught: " +  bm.chocCount + "Rye Caught: " + bm.ryeCount;          
+                caughtScores.text = "Chocolate Caught: " +  bm.chocCount + "\nRye Caught: " + bm.ryeCount;          
 
             }
         } 
