@@ -62,6 +62,8 @@ public class KneadGameManager : MonoBehaviour
         catPaw1 = GameObject.Find("catpaw1");
         catPaw2 = GameObject.Find("catpaw2");
 
+        GM.currScene = GameManager.travelDestination.KneadingGame;
+
         // Apply Flour Upgrade
         if (GM.boostsOwned.Substring(1, 1) == "t")
         {
@@ -267,5 +269,6 @@ public class KneadGameManager : MonoBehaviour
         GM.inventory.AddItemNCnt(Item.ItemType.Yeast, 9);
         GM.inventory.AddItemNCnt(Item.ItemType.Cocoa_Powder, 9);
         GM.inventory.AddItemNCnt(Item.ItemType.Rye_Flour, 9);
+        //Debug.Log(GM.inventory.CheckForItem(Item.ItemType.Flour, 5));
     }
 }

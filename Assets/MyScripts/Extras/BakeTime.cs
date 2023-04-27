@@ -30,6 +30,7 @@ public class BakeTime : MonoBehaviour
 
     public void switchScenes()
     {
+        GM.lastScene = GM.currScene;
         SceneManager.LoadScene(sceneLoad);
     }
 }

@@ -221,6 +221,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void loadScene(string sceneLoad)
+    {
+        lastScene = currScene;
+        SceneManager.LoadScene(sceneLoad);
+    }
+
     // ------------ Yarn functions ------------
 
     // Introduction Complete

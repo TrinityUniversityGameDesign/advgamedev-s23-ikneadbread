@@ -20,6 +20,7 @@ public class UI_Inventory : MonoBehaviour
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
         itemSlotContainer = transform.Find("ItemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
+        RefreshInventoryItems();
     }
 
     public void SetInventory(Inventory inventory)
