@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+
 
 public class QuestCamera : MonoBehaviour
 {
@@ -13,7 +16,12 @@ public class QuestCamera : MonoBehaviour
     private Vector3 initialPosition; // The initial position of the camera
 
 
+    //yarn stuff
     public DialogueRunner dialogueRunner;
+    public InMemoryVariableStorage vStorage;
+    //public float coins;
+
+    //bools for yarn
 
     void Start()
     {
@@ -21,56 +29,32 @@ public class QuestCamera : MonoBehaviour
         zoomDistance = maxZoom;
         initialPosition = transform.position;
 
+        vStorage = FindObjectOfType<InMemoryVariableStorage>();
     }
-
 
     void Update()
     {
-        
-        movingCamera();
-        
-    }
+        //movingCamera();
+        if(vStorage.TryGetValue("$cameraShift", out isZoomed))
+        {
+            if (isZoomed)
+            {
+                zoomDistance = Mathf.MoveTowards(zoomDistance, minZoom, zoomSpeed * Time.deltaTime);
+            }
+            else
+            {
+                zoomDistance = Mathf.MoveTowards(zoomDistance, maxZoom, zoomSpeed * Time.deltaTime);
+            }
 
-    public void movingCamera()
-    {
-        // Check if the boolean is true and adjust the zoom distance accordingly
-        if (isZoomed)
-        {
-            zoomDistance = Mathf.MoveTowards(zoomDistance, minZoom, zoomSpeed * Time.deltaTime);
-        }
-        else
-        {
-            zoomDistance = Mathf.MoveTowards(zoomDistance, maxZoom, zoomSpeed * Time.deltaTime);
-        }
-
-        // Update the camera position to match the target position and zoom distance
-        if (isZoomed)
-        {
-            transform.position = target.position - (transform.forward * zoomDistance);
-        }
-        else
-        {
-            transform.position = initialPosition;
+            // Update the camera position to match the target position and zoom distance
+            if (isZoomed)
+            {
+                transform.position = target.position - (transform.forward * zoomDistance);
+            }
+            else
+            {
+                transform.position = initialPosition;
+            }
         }
     }
 }
-
-
-//using Yarn;
-
-//// Accessing lastPromptChoice in a C# script
-
-//// Create a DialogueRunner instance
-//DialogueRunner dialogueRunner = new DialogueRunner();
-
-//// Start a dialogue
-//dialogueRunner.StartDialogue("MyDialogueNode");
-
-//// Get the result of the last prompt
-//Value result = dialogueRunner.dialogueUI.GetLastResult();
-
-//// Check if the last prompt choice was "No"
-//if (result.AsString == "No")
-//{
-//    // Do something
-//}

@@ -1,9 +1,9 @@
 ﻿title: QuestCat
-tags:
 ---
 Farmer: Oh meowdy there paw’ner. Hope ya doing well.
     -> I'm doing well, how are you paw'ner?
         Farmer: Awe, thanks for asking! I'm actually a little hungry right now.
+            // <<set $coins to 2>>
             <<jump questQuestion>>
      -> I'm doing okay --it's finals season
         Farmer: That's a bummer. Just a reminder, but you are the brightest and the most hardworking cat I've ever met.
@@ -32,9 +32,11 @@ title: acceptResponse
 Farmer: Thanks so much !! I'm so excited to eat your bread
 Farmer: Oh, let me give you a quick runthrough of how it all works.
 Farmer: Within this Town, there is a ingredients store! This is where we play a ingredients minigame where we catch goods from the sky
-    <<camera IngredientsMiningame>>
+    <<set $cameraShift to true>>
+    // <<camera IngredientsMiningame>>
 Farmer: After we catch our ingredients, you can go to your bakery. This is where we can knead with the ingredients we got to make our bread.
 Farmer: Finally, you can give ME the bread so I can eat it. Tasteeyyyyy!
+    <<set $cameraShift to false>>
 ===
 
 
