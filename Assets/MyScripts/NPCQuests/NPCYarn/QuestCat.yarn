@@ -35,8 +35,12 @@ Farmer: Within this Town, there is a ingredients store! This is where we play a 
     <<set $cameraShift to true>>
     // <<camera IngredientsMiningame>>
 Farmer: After we catch our ingredients, you can go to your bakery. This is where we can knead with the ingredients we got to make our bread.
-Farmer: Finally, you can give ME the bread so I can eat it. Tasteeyyyyy!
     <<set $cameraShift to false>>
+Farmer: Then, you can use the ingredients you caught and knead it to make bread! This happens at your bakery
+Farmer: I'm sure I don't need to tell you where the bakery is, it's your bakery afterall! 
+Farmer: Finally, you can give ME the bread so I can eat it. Tasteeyyyyy!
+Farmer: I'll be waiting!
+    <<set $acceptFinished to true>>
 ===
 
 

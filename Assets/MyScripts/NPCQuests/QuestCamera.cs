@@ -16,10 +16,15 @@ public class QuestCamera : MonoBehaviour
     private Vector3 initialPosition; // The initial position of the camera
 
 
+    public GameManager GM;
+
+
     //yarn stuff
     public DialogueRunner dialogueRunner;
     public InMemoryVariableStorage vStorage;
-    //public float coins;
+    public bool talkFinished = false;
+    public TownSelect townSelect;
+
 
     //bools for yarn
 
@@ -29,13 +34,29 @@ public class QuestCamera : MonoBehaviour
         zoomDistance = maxZoom;
         initialPosition = transform.position;
 
+        GM = GameObject.Find("globalGM").GetComponent<GameManager>();
+        townSelect = GameObject.Find("townSelect").GetComponent<TownSelect>();
+
+
         vStorage = FindObjectOfType<InMemoryVariableStorage>();
     }
 
     void Update()
     {
         //movingCamera();
-        if(vStorage.TryGetValue("$cameraShift", out isZoomed))
+        talkFinished = vStorage.TryGetValue("$acceptFinished", out talkFinished);
+        Debug.Log("talkFinished: " + talkFinished);
+
+        if(talkFinished == true)
+        {
+            Debug.Log("within the talkFinished");
+            townSelect.FlyTown();
+            //GM.townToReturn();
+
+
+        }
+
+        if (vStorage.TryGetValue("$cameraShift", out isZoomed))
         {
             if (isZoomed)
             {
@@ -56,5 +77,6 @@ public class QuestCamera : MonoBehaviour
                 transform.position = initialPosition;
             }
         }
+ 
     }
 }
