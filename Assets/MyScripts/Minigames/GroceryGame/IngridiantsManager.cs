@@ -20,17 +20,17 @@ public class IngridiantsManager: MonoBehaviour
     {
         this.transform.position = new Vector3(-7f,12.65f,13.71f);
         gm = GameObject.FindObjectOfType<GameManager>();
-       //setIngridiants();
+       setIngridiants();
     }
 
-    // void setIngridiants()
-    // {
-    //     GameManager.travelDestination location = gm.lastScene;
-    //     if(location == GameManager.travelDestination.Egypt)
-    //         ingrPrefabs[ingrPrefabs.Length] = specialIngr[0];
-    //     if(location == GameManager.travelDestination.Forest)
-    //         ingrPrefabs[ingrPrefabs.Length] = specialIngr[1];
-    // }
+    void setIngridiants()
+    {
+        GameManager.travelDestination location = gm.lastScene;
+        if(location == GameManager.travelDestination.Egypt)
+            ingrPrefabs[ingrPrefabs.Length-1] = specialIngr[0];
+        if(location == GameManager.travelDestination.Forest)
+            ingrPrefabs[ingrPrefabs.Length-1] = specialIngr[1];
+    }
 
     void dropFruit()
     {
