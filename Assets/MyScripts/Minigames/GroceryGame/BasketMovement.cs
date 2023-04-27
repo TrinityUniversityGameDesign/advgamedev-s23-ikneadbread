@@ -7,15 +7,17 @@ public class BasketMovement : MonoBehaviour
 {
     private int speed = 5;
     private GameManager globalManager;
+    private Inventory inventory;
     public int chocCount;
     public int ryeCount;
     public GameObject basket;
-    private List<Item> caughtIngrediants;
+    public List<Item> caughtIngrediants;
     public int ingrCount = 0;
     void Start()
     {
         basket = GameObject.Find("Basket");
         globalManager = GameObject.FindObjectOfType<GameManager>();
+        //inventory = GameObject.FindObjectOfType<Inventory>();
     }
    
         void OnCollisionEnter(Collision col)
@@ -30,9 +32,11 @@ public class BasketMovement : MonoBehaviour
                 ryeCount++;
             Debug.Log("here!");
             Item newIngr = returnItem(col.gameObject.name);
+            //nventory.AddItem(newIngr);
+            
             
 
-//            caughtIngrediants.Add(newIngr);
+            caughtIngrediants.Add(newIngr);
             Destroy(col.gameObject); 
         }
     }
