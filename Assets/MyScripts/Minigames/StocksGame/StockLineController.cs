@@ -182,6 +182,6 @@ public class StockLineController : MonoBehaviour
 
     public void BackToTown()
     {
-        SceneManager.LoadScene("CityTime");
+        SceneManager.LoadScene(GM.townToReturn());
     }
 }

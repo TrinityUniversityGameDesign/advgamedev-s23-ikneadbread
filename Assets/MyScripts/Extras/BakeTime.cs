@@ -20,16 +20,20 @@ public class BakeTime : MonoBehaviour
                 GM.lastCoords = GM.planePos;
             if (gameObject.transform.childCount >= 1) //has a child component
             {
-                GM.lastCoords = gameObject.transform.Find("respawn").transform.position;
+                GM.lastCoords = transform.Find("respawn").transform.position;
                 //if it has respawn gameObject, respawn there
             }
             Debug.Log("hit the box" + sceneLoad);
-            SceneManager.LoadScene(sceneLoad);
+            switchScenes();
         }
     }
 
     public void switchScenes()
     {
+        if (sceneLoad == "LastScene")
+        {
+            SceneManager.LoadScene(GM.townToReturn());
+        }
         GM.lastScene = GM.currScene;
         SceneManager.LoadScene(sceneLoad);
     }

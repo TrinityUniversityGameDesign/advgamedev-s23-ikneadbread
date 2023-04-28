@@ -2921,7 +2921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b877db79bf784528870ebf024c1a785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneLoad: CityTime
+  sceneLoad: LastScene
 --- !u!114 &968778977
 MonoBehaviour:
   m_ObjectHideFlags: 0
