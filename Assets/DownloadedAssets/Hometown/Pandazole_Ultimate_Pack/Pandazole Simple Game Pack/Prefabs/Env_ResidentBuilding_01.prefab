@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2756197510508251219}
   - component: {fileID: 133714089443196057}
   - component: {fileID: 6258014775879907065}
+  - component: {fileID: 5080329906043388539}
   m_Layer: 0
   m_Name: Env_ResidentBuilding_01
   m_TagString: Untagged
@@ -26,9 +27,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935404561151188300}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -91,8 +94,21 @@ MeshCollider:
   m_GameObject: {fileID: 1935404561151188300}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6040685055165959431, guid: d7ff47761c5cb9d4280359c0d7a91741, type: 3}
+--- !u!65 &5080329906043388539
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935404561151188300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.676834, y: 5.4575925, z: 6.9306583}
+  m_Center: {x: 1.0006912, y: 2.7269108, z: -0.64816946}

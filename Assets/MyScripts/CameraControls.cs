@@ -14,7 +14,7 @@ public class CameraControls : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private float distance = 3.0f;
     [SerializeField] private float height = 3.0f;
-    [SerializeField] private float rotationDamping = 3.0f;
+    [SerializeField] private float rotationDamping = 10.0f;
 
     private bool isFirstPersonView = false;
 
