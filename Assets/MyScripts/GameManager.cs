@@ -27,12 +27,6 @@ public class GameManager : MonoBehaviour
     //global variables
     public GameObject playerCat;
 
-    //ingredients info
-    public int numFlour;
-    public int numYeast;
-    public int numCocoa;
-    public int numRye;
-
     //coin info
     public int numGoldCoins;
     public int numSilverCoins;
@@ -64,6 +58,9 @@ public class GameManager : MonoBehaviour
         Minigame2,
         KneadingGame,
         StocksGame,
+        TownSelect,
+        UpgradeStore,
+        TitleScene,
         WinScene
     }
     
@@ -88,7 +85,7 @@ public class GameManager : MonoBehaviour
     static bool dispDone = false;
     static bool stocksDone = false;
 
-    public float moveSpeed = 3;
+    public float moveSpeed = 7;
     public UnityEvent onMiniGameCube = new UnityEvent();
 
 
@@ -156,6 +153,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerCat == null)
+        {
+            if (currScene == travelDestination.NewHomeTown || currScene == travelDestination.Forest
+                || currScene == travelDestination.Egypt || currScene == travelDestination.CityTime)
+            {
+                playerCat = GameObject.Find("Cat");
+            }
+        }
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (currScene == travelDestination.Inventory)
@@ -167,7 +172,8 @@ public class GameManager : MonoBehaviour
             {
                 lastScene = currScene;
                 currScene = travelDestination.Inventory;
-                Debug.Log(lastScene);
+                lastCoords = playerCat.transform.position;
+                //Debug.Log(lastScene);
                 SceneManager.LoadScene("Inventory");
             }
         }
@@ -178,11 +184,6 @@ public class GameManager : MonoBehaviour
         numGoldCoins = 0;
         numSilverCoins = 0;
         numBronzeCoins = 0;
-
-        numFlour = 0;
-        numYeast = 0;
-        numCocoa = 0;
-        numRye = 0;
 
         numDinnerRoll = 0;
         numCroissant = 0;
@@ -210,15 +211,8 @@ public class GameManager : MonoBehaviour
     {
         bootsBought = true;
         Debug.Log("update boots");
-        moveSpeed = 6;
-        Debug.Log("afterUpgrade (in scene) cat speed: " + moveSpeed);
-
-
-    }
-
-    // Call this function to change the number of ingredients
-    public void giveIngredients()
-    {
+        moveSpeed = 14;
+        //Debug.Log("afterUpgrade (in scene) cat speed: " + moveSpeed);
     }
 
     // Call this function to change the number of coins owned
@@ -232,7 +226,6 @@ public class GameManager : MonoBehaviour
     // Updates lastScene and currScene, returns the name of the scene to load
     public string townToReturn()
     {
-        // Should remove lastCoords update at some point
         switch (lastScene)
         {
             case (travelDestination.CityTime):
@@ -262,6 +255,12 @@ public class GameManager : MonoBehaviour
                 //lastCoords = new Vector3(459.420013f, 0.0289999992f, 451.269989f);
                 return "NewHomeTown";
         }
+    }
+
+    public void loadScene(string sceneLoad)
+    {
+        lastScene = currScene;
+        SceneManager.LoadScene(sceneLoad);
     }
 
     // ------------ Yarn functions ------------

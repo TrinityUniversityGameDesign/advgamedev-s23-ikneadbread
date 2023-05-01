@@ -66,6 +66,8 @@ public class UpgradeStoreManager : MonoBehaviour
         silverDisplay.text = GM.numSilverCoins.ToString();
         bronzeDisplay.text = GM.numBronzeCoins.ToString();
 
+        GM.currScene = GameManager.travelDestination.UpgradeStore;
+
         // Deactivate buttons for purchased upgrades
         for (int i = 0; i < 5; i++)
         {
@@ -258,6 +260,7 @@ public class UpgradeStoreManager : MonoBehaviour
 
     public void backToGame()
     {
+        GM.currScene = GM.lastScene;
         SceneManager.LoadScene(GM.townToReturn());
     }
 }

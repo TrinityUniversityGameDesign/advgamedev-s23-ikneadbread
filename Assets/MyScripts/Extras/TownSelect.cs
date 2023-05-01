@@ -7,9 +7,26 @@ public class TownSelect : MonoBehaviour
 {
     public GameManager GM;
 
+    public GameObject forestButton;
+    public GameObject forestLock;
+    public GameObject egyptButton;
+    public GameObject egyptLock;
+
     private void Start()
     {
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
+
+        // Apply Ticket Upgrades
+        if (GM.ticketsOwned.Substring(0, 1) == "t")
+        {
+            forestLock.SetActive(false);
+        }
+        else forestButton.SetActive(false);
+        if (GM.ticketsOwned.Substring(1, 1) == "t")
+        {
+            egyptLock.SetActive(false);
+        }
+        else egyptButton.SetActive(false);
     }
 
     public void FlyTown() {

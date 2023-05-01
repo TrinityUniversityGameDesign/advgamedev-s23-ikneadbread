@@ -6,6 +6,10 @@ using TMPro;
 
 public class UI_Inventory : MonoBehaviour
 {
+    public GameObject goldDisplay;
+    public GameObject silverDisplay;
+    public GameObject bronzeDisplay;
+
     private Inventory inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
@@ -16,11 +20,14 @@ public class UI_Inventory : MonoBehaviour
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
         itemSlotContainer = transform.Find("ItemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
+        RefreshInventoryItems();
     }
 
     public void SetInventory(Inventory inventory)
     {
-        //GM.numGoldCoins 
+        goldDisplay.GetComponent<Text>().text = GM.numGoldCoins.ToString();
+        silverDisplay.GetComponent<Text>().text = GM.numSilverCoins.ToString();
+        bronzeDisplay.GetComponent<Text>().text = GM.numBronzeCoins.ToString();
         this.inventory = inventory;
         inventory.OnItemListChanged += Inventory_OnItemListChanged;
         RefreshInventoryItems();
@@ -65,7 +72,4 @@ public class UI_Inventory : MonoBehaviour
             }
         }
     }
-    
-    
-    
 }
