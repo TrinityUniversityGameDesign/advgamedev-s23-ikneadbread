@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IngridiantsManager: MonoBehaviour
 {
@@ -14,13 +15,12 @@ public class IngridiantsManager: MonoBehaviour
     private float spawnRate = 4f; // The rate at which to spawn new fruits
     private float nextSpawnTime = 2f; // The time at which to spawn the next fruit
 
-    
-
     void Start()
     {
         this.transform.position = new Vector3(-7f,12.65f,13.71f);
         gm = GameObject.FindObjectOfType<GameManager>();
-       setIngridiants();
+        gm.currScene = GameManager.travelDestination.Minigame2;
+        setIngridiants();
     }
 
     void setIngridiants()
@@ -54,6 +54,11 @@ public class IngridiantsManager: MonoBehaviour
     {
         transform.position =new Vector3(transform.position.x, transform.position.y, Mathf.PingPong(Time.time*2,max-min)+min);
         dropFruit();
+    }
+
+    public void BackToTown()
+    {
+        SceneManager.LoadScene(gm.townToReturn());
     }
 }
 

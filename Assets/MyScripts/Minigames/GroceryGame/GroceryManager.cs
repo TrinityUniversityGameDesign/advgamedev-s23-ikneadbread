@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class GroceryManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void BackToCity(){
+    public void BackToCity()
+    {
       SceneManager.LoadScene("CityTime");  
     }
      
