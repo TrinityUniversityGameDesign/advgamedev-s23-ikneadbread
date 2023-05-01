@@ -1,6 +1,11 @@
 ﻿title: Quest3
 tags:
 ---
+<<if $numPump >= 1 && $quest3Resp == true>>
+    <<jump Quest3Complete>>
+<<elseif $numPump < 1 && $quest3Resp == true>>
+    EgyptCat: You got that Pumpernickel yet? My tummy's <b>grrrowling</b>!
+<<else>>
 EgyptCat: Feline good?
     -> This heat is scorching my fur <b>furreal</b>.
         EgyptCat: Get used to it, <b>kitten</b>.
@@ -9,6 +14,7 @@ EgyptCat: Feline good?
         EgyptCat: They're this town's <b>purride</b> and joy. 
         EgyptCat: If only you could see the Sphinx from here too.
             <<jump Quest3Q>>
+<<endif>>
 ===
 
 title: Quest3Q
@@ -17,7 +23,7 @@ EgyptCat: Would you mind helping me out with getting me some Pumpernickel?
 EgyptCat: If you do, I’ll give you something better then <b>catnip</b>.
  -> Accept
     EgyptCat: <b>Furreal?</b> Thank you!
-    <<jump Quest3A>>
+    EgyptCat: You're much nicer than <b>Meowpatra</b> and <b>Julius Fleaser</b>. 
     <<set $quest3Resp = true>>
  -> Deny
     EgyptCat: Oh, thats <b>clawful</b> but ok.
@@ -25,13 +31,10 @@ EgyptCat: If you do, I’ll give you something better then <b>catnip</b>.
     <<set $quest3Resp = false>>
 ===
 
-title: Quest3A
----
-EgyptCat: Thank you for the help, a lot better than <b>Meowpatra</b> and <b>Julius Fleaser</b>. 
-<<set $accept3Fin to true>>
-===
-
 title: Quest3Complete
 ---
+EgyptCat: Wow! What a <b>meowsterfully</b> baked Pumpernickel!
+EgyptCat: I'll be sure to let <b>everynyan</b> know about your bakery.
 EgyptCat: <b>Catgratulations</b> on making <b>Whiskerlicious</b> a worldwide <b>nyame</b>!
+<<set $winnerWinnerChickenDinner = true>>
 ===
