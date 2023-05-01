@@ -18,14 +18,17 @@ EgyptCat: If you do, I’ll give you something better then <b>catnip</b>.
  -> Accept
     EgyptCat: <b>Furreal?</b> Thank you!
     <<jump Quest3A>>
+    <<set $quest3Resp = true>>
  -> Deny
     EgyptCat: Oh, thats <b>clawful</b> but ok.
     EgyptCat: My <b>purr</b> has turned into a <b>meow</b> of sadness.
+    <<set $quest3Resp = false>>
 ===
 
 title: Quest3A
 ---
 EgyptCat: Thank you for the help, a lot better than <b>Meowpatra</b> and <b>Julius Fleaser</b>. 
+<<set $accept3Fin to true>>
 ===
 
 title: Quest3Complete
