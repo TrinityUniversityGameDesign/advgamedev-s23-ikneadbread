@@ -9,11 +9,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    //[SerializeField]
+    public TownSelect townSelect;
+
 
     //NPC quest + scene checking
     private string currentSceneName;
     private bool isFirstVisit = true;
     public bool homesceneTalked;
+
+    //FirstQuest =
+    public static bool deniedQ;
+
 
     //popup panel for what scene you are on
     public GameObject scenePanel;
@@ -152,6 +159,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (deniedQ)
+        {
+            Debug.Log("attack justin");
+            townSelect.FlyTown();
+        }
+
+
         if (playerCat == null)
         {
             if (currScene == travelDestination.NewHomeTown || currScene == travelDestination.Forest
@@ -407,6 +422,24 @@ public class GameManager : MonoBehaviour
     }
 
     // ------------ Yarn functions ------------
+
+
+    //for the first quest
+
+    [YarnFunction("getDeniedQuest")]
+    public static bool GetDeniedQuest()
+    {
+        return deniedQ;
+    }
+
+
+    [YarnCommand("setDeniedQuest")]
+    public static void SetDeniedQuest(bool val)
+    {
+        deniedQ = val;
+    }
+
+
 
     // Introduction Complete
     [YarnFunction("getIntroDone")]

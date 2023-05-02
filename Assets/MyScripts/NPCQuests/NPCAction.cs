@@ -44,6 +44,7 @@ public class NPCAction : MonoBehaviour
 
     void LoadScene()
     {
+        GM.lastCoords = player.transform.position;
         SceneManager.LoadScene(sceneName);
     }
 

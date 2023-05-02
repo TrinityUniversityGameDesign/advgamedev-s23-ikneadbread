@@ -1068,7 +1068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3579681405068720530, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
       propertyPath: startNode
-      value: QuestCat
+      value: MainNode
       objectReference: {fileID: 0}
     - target: {fileID: 3579681405068720530, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
       propertyPath: yarnProject
@@ -1184,6 +1184,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
+--- !u!114 &225869633 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3579681405068720530, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
+  m_PrefabInstance: {fileID: 225869632}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &230948401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7311,6 +7322,7 @@ GameObject:
   - component: {fileID: 1157448353734825997}
   - component: {fileID: 3489437059129474375}
   - component: {fileID: 2901740263542010395}
+  - component: {fileID: 3489437059129474376}
   m_Layer: 0
   m_Name: backL
   m_TagString: Untagged
@@ -7368,6 +7380,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3170901346313756767}
   m_Mesh: {fileID: -4651630604857233314, guid: 9b24586c8c5db44d9a159107050671cc, type: 3}
+--- !u!114 &3489437059129474376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170901346313756767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfdef0cdf9ae4f019cf477a06e8ce0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 354285858}
+  zoomSpeed: 10
+  maxZoom: 5
+  minZoom: 2
+  isZoomed: 0
+  GM: {fileID: 282330659}
+  dialogueRunner: {fileID: 225869633}
+  vStorage: {fileID: 0}
+  talkFinished: 0
+  questResponse: 0
+  townSelect: {fileID: 1088027044}
 --- !u!33 &3606788374313737117
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7504,22 +7539,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4728846480316161688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4728846480316161691}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40079260bda69f14c80332a04d1632a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 5
-  jumpForce: 300
-  timeBeforeNextJump: 1.2
-  cam: {fileID: 0}
 --- !u!54 &4728846480316161689
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7560,7 +7579,6 @@ GameObject:
   - component: {fileID: 5398668601461408801}
   - component: {fileID: 4728846480316161689}
   - component: {fileID: 4728846480316161690}
-  - component: {fileID: 4728846480316161688}
   m_Layer: 0
   m_Name: FinalCat
   m_TagString: Player

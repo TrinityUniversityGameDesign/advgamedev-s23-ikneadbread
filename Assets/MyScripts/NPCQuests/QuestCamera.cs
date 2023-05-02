@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+using UnityEngine.SceneManagement;
+
 
 
 public class QuestCamera : MonoBehaviour
@@ -25,7 +27,9 @@ public class QuestCamera : MonoBehaviour
     public bool talkFinished;
     public bool questResponse;
 
+
     public TownSelect townSelect;
+
 
 
     void Start()
@@ -45,23 +49,22 @@ public class QuestCamera : MonoBehaviour
     {
         //movingCamera();
         talkFinished = vStorage.TryGetValue("$acceptFinished", out talkFinished);
-        questResponse = vStorage.TryGetValue("$denyQuest", out questResponse);
+        //questResponse = vStorage.TryGetValue("$denyQuest", out questResponse);
         Debug.Log("talkFinished: " + talkFinished);
         Debug.Log("questResponse: " + questResponse);
+        
 
-        if (questResponse == true)
-        {
-            Debug.Log("they said no :(( ");
-            vStorage.SetValue("$denyQuest", true);
-            questResponse = true;
-            townSelect.FlyTown();
-        }
+        //if (GM.deniedQ == true)
+        //{
+        //    Debug.Log("they said no :(( ");
+        //    townSelect.FlyTown();
+        //}
 
         if (talkFinished == true)
         {
             GM.homesceneTalked = true;
             Debug.Log("within the talkFinished");
-            townSelect.FlyTown();
+            SceneManager.LoadScene("NewHomeTown");
         } else
         {
             GM.homesceneTalked = false;
@@ -88,6 +91,6 @@ public class QuestCamera : MonoBehaviour
                 transform.position = initialPosition;
             }
         }
- 
     }
+
 }
