@@ -40,6 +40,8 @@ public class StockLineController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         profitBar.GetComponent<Slider>().value = startingValue;
 
+        GM.currScene = GameManager.travelDestination.StocksGame;
+
         // Apply Flour Upgrade
         if (GM.boostsOwned.Substring(1, 1) == "t")
         {
@@ -180,6 +182,6 @@ public class StockLineController : MonoBehaviour
 
     public void BackToTown()
     {
-        SceneManager.LoadScene("CityTime");
+        SceneManager.LoadScene(GM.townToReturn());
     }
 }

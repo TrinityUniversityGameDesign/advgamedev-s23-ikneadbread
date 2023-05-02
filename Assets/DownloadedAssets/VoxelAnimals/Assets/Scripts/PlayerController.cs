@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 300;
     public float timeBeforeNextJump = 1.2f;
     private float canJump = 0f;
-    Animator anim;
+    //Animator anim;
     Rigidbody rb;
 
     private float angleVelocity;
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
         movementSpeed = GM.moveSpeed;
@@ -55,11 +55,11 @@ public class PlayerController : MonoBehaviour
             movement = Quaternion.Euler(0f, inputAngle, 0f) * Vector3.forward;
 
 
-            anim.SetInteger("Walk", 1);
+            //anim.SetInteger("Walk", 1);
         }
         else
         {
-            anim.SetInteger("Walk", 0);
+            //anim.SetInteger("Walk", 0);
         }
 
         transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(0, jumpForce, 0);
             canJump = Time.time + timeBeforeNextJump;
-            anim.SetTrigger("jump");
+            //anim.SetTrigger("jump");
         }
     }
 }
