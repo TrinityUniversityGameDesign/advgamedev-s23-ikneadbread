@@ -27,8 +27,8 @@ public class LumpManager : MonoBehaviour
     private float minLmpScale, maxLmpScale;
 
     private int lumpsRemaining;
+    private float squishPerClick = -0.1f;
     private bool fullyKneaded = false;
-
 
     public GameObject KneadGameManager;
 
@@ -88,7 +88,6 @@ public class LumpManager : MonoBehaviour
 
     public void breadGame()
     {
-
         //Debug.Log("catPaw1 position z" + catPaw1.transform.position.z);
         //Debug.Log("catPaw2 position z" + catPaw2.transform.position.z);
         if (Input.GetMouseButtonDown(0))
@@ -185,5 +184,10 @@ public class LumpManager : MonoBehaviour
             lumps[i].transform.localScale = new Vector3(Random.Range(minLmpScale, maxLmpScale),
                 Random.Range(minLmpScale, maxLmpScale), Random.Range(minLmpScale, maxLmpScale));
         }
+    }
+
+    public void changeSquishPerClick(float val)
+    {
+        squishPerClick = val;
     }
 }
