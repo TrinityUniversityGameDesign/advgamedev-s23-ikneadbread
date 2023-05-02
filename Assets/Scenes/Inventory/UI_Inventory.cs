@@ -6,7 +6,7 @@ using TMPro;
 
 public class UI_Inventory : MonoBehaviour
 {
-    private Inventory inventory;
+    //private Inventory inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private GameManager GM;
@@ -14,15 +14,22 @@ public class UI_Inventory : MonoBehaviour
     private void Awake()
     {
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
+        if (GM.inventory == null)
+        {
+            GM.inventory = new Inventory();
+        }
+
         itemSlotContainer = transform.Find("ItemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
+        //SetInventory(GM.inventory);
     }
 
-    public void SetInventory(Inventory inventory)
+    
+    public void SetInventory() //Inventory inventory)
     {
         //GM.numGoldCoins 
-        this.inventory = inventory;
-        inventory.OnItemListChanged += Inventory_OnItemListChanged;
+        //this.inventory = inventory;
+        //GM.inventory.OnItemListChanged += Inventory_OnItemListChanged;
         RefreshInventoryItems();
     }
 
@@ -43,8 +50,10 @@ public class UI_Inventory : MonoBehaviour
         float y = 0f;
         float x_itemSlotCellSize = 135f;
         float y_itemSlotCellSize = -140f;
-        foreach (Item item in inventory.GetItemList())
+        Debug.Log("Before foreach loop in Refresh");
+        foreach (Item item in GM.inventory.GetItemList())
         {
+            Debug.Log("In RefreshInv: " + item);
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
             
