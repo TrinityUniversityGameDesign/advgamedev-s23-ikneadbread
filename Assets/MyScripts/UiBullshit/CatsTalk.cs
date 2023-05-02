@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class CatsTalk : MonoBehaviour
 {
-    //private DialogueRunner dlr;
-    public string Starts;
-    // Start is called before the first frame update
+    int firsttime = 0;
     public void Start()
     {
-        //dlr = FindObjectOfType<Yarn.Unity.DialogueRunner>();
-    }
-    private void StartConvo(){
-        //dlr.StartDialogue(Starts);
     }
 }

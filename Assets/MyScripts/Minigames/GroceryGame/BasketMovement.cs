@@ -5,39 +5,35 @@ using UnityEngine;
 
 public class BasketMovement : MonoBehaviour
 {
-    private int speed = 5;
+    private int speed = 8;
     private GameManager globalManager;
-    private Inventory inventory;
-    public int chocCount;
-    public int ryeCount;
     public GameObject basket;
     public List<Item> caughtIngrediants;
     public int ingrCount = 0;
+    public GameObject bagIcon;
+
     void Start()
     {
         basket = GameObject.Find("Basket");
         globalManager = GameObject.FindObjectOfType<GameManager>();
+
         //inventory = GameObject.FindObjectOfType<Inventory>();
+
+        // Apply Tote Bag Upgrade
+        if (globalManager.boostsOwned.Substring(3, 1) == "t")
+        {
+            basket.transform.localScale = new Vector3(basket.transform.localScale.x, basket.transform.localScale.y,
+                basket.transform.localScale.z * 2);
+            bagIcon.SetActive(true);
+        }
     }
    
-        void OnCollisionEnter(Collision col)
+    void OnCollisionEnter(Collision col)
     {
-        // Check if collided object is a fruit
         if (col.gameObject.CompareTag("Ingridient"))
         {
             ingrCount++;
-            if(col.gameObject.name == "Chocolate(Clone)")
-                chocCount++;
-            if(col.gameObject.name == "Rye(Clone)")
-                ryeCount++;
-            Debug.Log("here!");
-            Item newIngr = returnItem(col.gameObject.name);
-            //nventory.AddItem(newIngr);
-            
-            
-
-            caughtIngrediants.Add(newIngr);
-            Destroy(col.gameObject); 
+            Destroy(col.gameObject);
         }
     }
 
@@ -54,7 +50,7 @@ public class BasketMovement : MonoBehaviour
         
     }
 
-    Item returnItem(string ingrName)
+    /*Item returnItem(string ingrName)
     {
         Item newItem = new Item();
 
@@ -75,6 +71,6 @@ public class BasketMovement : MonoBehaviour
 
         return newItem;
         Debug.Log("reaching");
-    }
+    }*/
 }
 

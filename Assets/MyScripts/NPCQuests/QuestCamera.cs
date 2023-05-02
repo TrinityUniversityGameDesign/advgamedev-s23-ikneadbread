@@ -22,11 +22,11 @@ public class QuestCamera : MonoBehaviour
     //yarn stuff
     public DialogueRunner dialogueRunner;
     public InMemoryVariableStorage vStorage;
-    public bool talkFinished = false;
+    public bool talkFinished;
+    public bool questResponse;
+
     public TownSelect townSelect;
 
-
-    //bools for yarn
 
     void Start()
     {
@@ -36,7 +36,7 @@ public class QuestCamera : MonoBehaviour
 
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
         townSelect = GameObject.Find("townSelect").GetComponent<TownSelect>();
-
+        talkFinished = false;
 
         vStorage = FindObjectOfType<InMemoryVariableStorage>();
     }
@@ -45,13 +45,26 @@ public class QuestCamera : MonoBehaviour
     {
         //movingCamera();
         talkFinished = vStorage.TryGetValue("$acceptFinished", out talkFinished);
+        questResponse = vStorage.TryGetValue("$denyQuest", out questResponse);
         Debug.Log("talkFinished: " + talkFinished);
+        Debug.Log("questResponse: " + questResponse);
 
-        if(talkFinished == true)
+        if (questResponse == true)
         {
+            Debug.Log("they said no :(( ");
+            vStorage.SetValue("$denyQuest", true);
+            questResponse = true;
+            townSelect.FlyTown();
+        }
+
+        if (talkFinished == true)
+        {
+            GM.homesceneTalked = true;
             Debug.Log("within the talkFinished");
             townSelect.FlyTown();
-            //GM.townToReturn();
+        } else
+        {
+            GM.homesceneTalked = false;
         }
 
         if (vStorage.TryGetValue("$cameraShift", out isZoomed))

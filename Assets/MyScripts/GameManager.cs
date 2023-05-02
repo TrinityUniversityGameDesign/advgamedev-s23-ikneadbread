@@ -12,9 +12,11 @@ public class GameManager : MonoBehaviour
     //NPC quest + scene checking
     private string currentSceneName;
     private bool isFirstVisit = true;
+    public bool homesceneTalked;
 
     //popup panel for what scene you are on
     public GameObject scenePanel;
+
 
 
     //add event
@@ -53,7 +55,7 @@ public class GameManager : MonoBehaviour
         CityTime,
         InheritStore,
         Inventory,
-        Minigame2,
+        GroceryGame,
         KneadingGame,
         StocksGame,
         TownSelect,
@@ -92,7 +94,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        newGame(); // Temporary until Continuing Game is added
+        //newGame(); // Temporary until Continuing Game is added
         gameStarted.AddListener(GlobalGameStart);
         Debug.Log("within the start with listeners");
         boost1.AddListener(ApplyBootiesUpgrade);
@@ -163,7 +165,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void newGame()
+    public void newGame()
     {
         numGoldCoins = 0;
         numSilverCoins = 0;
@@ -180,9 +182,153 @@ public class GameManager : MonoBehaviour
         //THE COORDINATES BELOW DETERMINE DEFAULT COORDINATES
         lastCoords = new Vector3(-0.1499996f, -0.01020604f, 42.2f);
 
+        PlayerPrefs.SetInt("savedGameExists", 0);
+
+        // Reset Coins
+        PlayerPrefs.SetInt("numGold", numGoldCoins);
+        PlayerPrefs.SetInt("numSilver", numSilverCoins);
+        PlayerPrefs.SetInt("numBronze", numBronzeCoins);
+
+        // Reset Breads Owned
+        PlayerPrefs.SetInt("numDinnerRoll", numDinnerRoll);
+        PlayerPrefs.SetInt("numCroissant", numCroissant);
+        PlayerPrefs.SetInt("numPumpernickel", numPumpernickel);
+
+        // Reset Ingredients in Inventory
+        PlayerPrefs.SetInt("numFlour", 0);
+        PlayerPrefs.SetInt("numYeast", 0);
+        PlayerPrefs.SetInt("numCocoa", 0);
+        PlayerPrefs.SetInt("numRye", 0);
+
+        // Reset Upgrades
         PlayerPrefs.SetString("boostsOwned", boostsOwned);
         PlayerPrefs.SetString("accessoriesOwned", accessoriesOwned);
         PlayerPrefs.SetString("ticketsOwned", ticketsOwned);
+
+        // Reset Quest Status
+        PlayerPrefs.SetInt("townQuestStarted", 0);
+        PlayerPrefs.SetInt("townQuestDone", 0);
+        PlayerPrefs.SetInt("forestQuestStarted", 0);
+        PlayerPrefs.SetInt("forestQuestDone", 0);
+        PlayerPrefs.SetInt("egyptQuestStarted", 0);
+        PlayerPrefs.SetInt("egyptQuestDone", 0);
+
+        // Reset Location
+        PlayerPrefs.SetString("currentSceneName", "NewHomeTown");
+        PlayerPrefs.SetFloat("lastX", lastCoords.x);
+        PlayerPrefs.SetFloat("lastY", lastCoords.y);
+        PlayerPrefs.SetFloat("lastZ", lastCoords.z);
+    }
+
+    public void loadGame()
+    {
+        // Load Coins
+        numGoldCoins = PlayerPrefs.GetInt("numGold");
+        numSilverCoins = PlayerPrefs.GetInt("numSilver");
+        numBronzeCoins = PlayerPrefs.GetInt("numBronze");
+
+        // Load Breads Owned
+        numDinnerRoll = PlayerPrefs.GetInt("numDinnerRoll");
+        numCroissant = PlayerPrefs.GetInt("numCroissant");
+        numPumpernickel = PlayerPrefs.GetInt("numPumpernickel");
+
+        // Load Inventory
+        inventory.AddItemNCnt(Item.ItemType.Flour, PlayerPrefs.GetInt("numFlour"));
+        inventory.AddItemNCnt(Item.ItemType.Yeast, PlayerPrefs.GetInt("numYeast"));
+        inventory.AddItemNCnt(Item.ItemType.Cocoa_Powder, PlayerPrefs.GetInt("numCocoa"));
+        inventory.AddItemNCnt(Item.ItemType.Rye_Flour, PlayerPrefs.GetInt("numRye"));
+
+        // Load Upgrades
+        boostsOwned = PlayerPrefs.GetString("boostsOwned");
+        Debug.Log(boostsOwned);
+        if (boostsOwned[0] == 't')
+            boost1.Invoke();
+        accessoriesOwned = PlayerPrefs.GetString("accessoriesOwned");
+        for (int i = 0; i < accessoriesOwned.Length; i++)
+        {
+            if (accessoriesOwned[i] == 't')
+            {
+                switch (i)
+                {
+                    case 0:
+                        accessory1.Invoke();
+                        break;
+                    case 1:
+                        accessory2.Invoke();
+                        break;
+                    case 2:
+                        accessory3.Invoke();
+                        break;
+                    case 3:
+                        accessory4.Invoke();
+                        break;
+                    case 4:
+                        accessory5.Invoke();
+                        break;
+                }
+            }
+        }
+        ticketsOwned = PlayerPrefs.GetString("ticketsOwned");
+
+        // Load Quest Status (Not Done)
+
+        // Load Location
+        lastCoords = new Vector3(PlayerPrefs.GetFloat("lastX"), PlayerPrefs.GetFloat("lastY"), PlayerPrefs.GetFloat("lastZ"));
+
+        SceneManager.LoadScene(PlayerPrefs.GetString("currentSceneName"));
+    }
+
+    public void saveGame()
+    {
+        PlayerPrefs.SetInt("savedGameExists", 1);
+
+        // Set Coins
+        PlayerPrefs.SetInt("numGold", numGoldCoins);
+        PlayerPrefs.SetInt("numSilver", numSilverCoins);
+        PlayerPrefs.SetInt("numBronze", numBronzeCoins);
+
+        // Set Breads Owned
+        PlayerPrefs.SetInt("numDinnerRoll", numDinnerRoll);
+        PlayerPrefs.SetInt("numCroissant", numCroissant);
+        PlayerPrefs.SetInt("numPumpernickel", numPumpernickel);
+
+        // Set Ingredients in Inventory
+        List<Item> itemList = inventory.GetItemList();
+        for (int i = 0; i < itemList.Count; i++)
+        {
+            Item it = itemList[i];
+            switch (it.itemType)
+            {
+                case (Item.ItemType.Flour):
+                    PlayerPrefs.SetInt("numFlour", it.amount);
+                    break;
+                case (Item.ItemType.Yeast):
+                    PlayerPrefs.SetInt("numYeast", it.amount);
+                    break;
+                case (Item.ItemType.Cocoa_Powder):
+                    PlayerPrefs.SetInt("numCocoa", it.amount);
+                    break;
+                case (Item.ItemType.Rye_Flour):
+                    PlayerPrefs.SetInt("numRye", it.amount);
+                    break;
+            }
+        }
+
+        // Set Upgrades
+        Debug.Log(boostsOwned);
+        PlayerPrefs.SetString("boostsOwned", boostsOwned);
+        PlayerPrefs.SetString("accessoriesOwned", accessoriesOwned);
+        PlayerPrefs.SetString("ticketsOwned", ticketsOwned);
+
+        // Reset Quest Status (Not Done)
+
+        // Set Location
+        PlayerPrefs.SetString("currentSceneName", lastScene.ToString()); // Save button is in Inventory
+        PlayerPrefs.SetFloat("lastX", lastCoords.x);
+        PlayerPrefs.SetFloat("lastY", lastCoords.y);
+        PlayerPrefs.SetFloat("lastZ", lastCoords.z);
+
+        Debug.Log("Game Is Saved");
     }
 
     public void GlobalGameStart()
