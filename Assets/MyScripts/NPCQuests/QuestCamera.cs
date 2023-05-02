@@ -22,7 +22,7 @@ public class QuestCamera : MonoBehaviour
     //yarn stuff
     public DialogueRunner dialogueRunner;
     public InMemoryVariableStorage vStorage;
-    public bool talkFinished = false;
+    public bool talkFinished;
     public TownSelect townSelect;
 
 
@@ -36,7 +36,7 @@ public class QuestCamera : MonoBehaviour
 
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
         townSelect = GameObject.Find("townSelect").GetComponent<TownSelect>();
-
+        talkFinished = false;
 
         vStorage = FindObjectOfType<InMemoryVariableStorage>();
     }
@@ -49,9 +49,13 @@ public class QuestCamera : MonoBehaviour
 
         if(talkFinished == true)
         {
+
+            GM.homesceneTalked = true;
             Debug.Log("within the talkFinished");
             townSelect.FlyTown();
-            //GM.townToReturn();
+        } else
+        {
+            GM.homesceneTalked = false;
         }
 
         if (vStorage.TryGetValue("$cameraShift", out isZoomed))
