@@ -5,10 +5,10 @@ using TMPro;
 
 public class GroceryTimer : MonoBehaviour
 {
-    public float timeRemaining = 60;
+    public float timeRemaining = 30;
     public bool timeIsRunning = true;
     public TMP_Text timeText;
-    public ScreenScript controller;
+    public GameObject controller;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class GroceryTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controller.gameStarted == true)
+        if (controller.GetComponent<ScreenScript>().gameStarted == true)
         {
             if (timeIsRunning)
             {
@@ -32,9 +32,9 @@ public class GroceryTimer : MonoBehaviour
                     timeRemaining -= Time.deltaTime;
                     DisplayTime(timeRemaining);
                 }
-                else controller.endGame();
+                else controller.GetComponent<ScreenScript>().endGame();
             }
-            if (controller.gameEnded == true)
+            if (controller.GetComponent<ScreenScript>().gameEnded == true)
             {
                 timeIsRunning = false;
                 DisplayTime(timeRemaining);

@@ -10,6 +10,7 @@ public class UI_Inventory : MonoBehaviour
     public GameObject goldDisplay;
     public GameObject silverDisplay;
     public GameObject bronzeDisplay;
+    public GameObject saveButton;
 
     private Inventory inventory;
     private Transform itemSlotContainer;
@@ -79,5 +80,11 @@ public class UI_Inventory : MonoBehaviour
                 y++;
             }
         }
+    }
+
+    public void saveButtonClick()
+    {
+        GM.saveGame();
+        saveButton.SetActive(false);
     }
 }
