@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
     //popup panel for what scene you are on
     public GameObject scenePanel;
 
-
+    //quest 3 variables
+    public bool quest3Accept;
 
     //add event
     public UnityEvent gameStarted = new UnityEvent();

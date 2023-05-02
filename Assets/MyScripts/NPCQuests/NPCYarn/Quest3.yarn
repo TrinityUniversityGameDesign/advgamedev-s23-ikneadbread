@@ -24,10 +24,12 @@ EgyptCat: If you do, I’ll give you something better then <b>catnip</b>.
  -> Accept
     EgyptCat: <b>Furreal?</b> Thank you!
     EgyptCat: You're much nicer than <b>Meowpatra</b> and <b>Julius Fleaser</b>. 
+    <<set $dialogueFin = true>>
     <<set $quest3Resp = true>>
  -> Deny
     EgyptCat: Oh, thats <b>clawful</b> but ok.
     EgyptCat: My <b>purr</b> has turned into a <b>meow</b> of sadness.
+    <<set $dialogueFin = true>>
     <<set $quest3Resp = false>>
 ===
 
