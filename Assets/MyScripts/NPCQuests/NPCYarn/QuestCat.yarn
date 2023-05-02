@@ -24,7 +24,7 @@ Farmer: If you give me the bread, it's a good gift! I promise.
     <<set $questResponse = true>>
  -> Deny
     Farmer: Boooo
-    <<set $questResponse = false>>
+    <<set $denyQuest = true>>
 ===
 
 title: acceptResponse

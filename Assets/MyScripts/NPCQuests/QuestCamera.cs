@@ -23,10 +23,10 @@ public class QuestCamera : MonoBehaviour
     public DialogueRunner dialogueRunner;
     public InMemoryVariableStorage vStorage;
     public bool talkFinished;
+    public bool questResponse;
+
     public TownSelect townSelect;
 
-
-    //bools for yarn
 
     void Start()
     {
@@ -45,11 +45,17 @@ public class QuestCamera : MonoBehaviour
     {
         //movingCamera();
         talkFinished = vStorage.TryGetValue("$acceptFinished", out talkFinished);
+        questResponse = vStorage.TryGetValue("$denyQuest", out questResponse);
         Debug.Log("talkFinished: " + talkFinished);
 
-        if(talkFinished == true)
+        if (questResponse == true)
         {
+            Debug.Log("they said no :(( ");
+            townSelect.FlyTown();
+        }
 
+        if (talkFinished == true)
+        {
             GM.homesceneTalked = true;
             Debug.Log("within the talkFinished");
             townSelect.FlyTown();

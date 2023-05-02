@@ -38,7 +38,6 @@ public class NPCAction : MonoBehaviour
     void Update()
     {
         transform.LookAt(player);
-        Debug.Log("GM.Homescene: " + GM.homesceneTalked);
         firstDialogue();
     }
 
@@ -52,7 +51,6 @@ public class NPCAction : MonoBehaviour
     {
         if(GM.homesceneTalked == false)
         {
-            Debug.Log("false, GM.Homescene: " + GM.homesceneTalked);
             // Calculate the distance between the enemy and the player
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -86,8 +84,13 @@ public class NPCAction : MonoBehaviour
                 }
             }
         } else {
-            Debug.Log("true, GM.Homescene: " + GM.homesceneTalked);
-            Debug.Log("already talked");
+            questPopUp(false);
         }
+    }
+
+    void questPopUp(bool qBool)
+    {
+        uiElement.gameObject.SetActive(qBool);
+        uiButton.gameObject.SetActive(qBool);
     }
 }
