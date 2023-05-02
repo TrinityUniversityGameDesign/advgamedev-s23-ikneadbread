@@ -6,6 +6,7 @@ using TMPro;
 
 public class UI_Inventory : MonoBehaviour
 {
+    //private Inventory inventory;
     public GameObject goldDisplay;
     public GameObject silverDisplay;
     public GameObject bronzeDisplay;
@@ -18,18 +19,23 @@ public class UI_Inventory : MonoBehaviour
     private void Awake()
     {
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
+        if (GM.inventory == null)
+        {
+            GM.inventory = new Inventory();
+        }
+
         itemSlotContainer = transform.Find("ItemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
+        //SetInventory(GM.inventory);
         RefreshInventoryItems();
     }
 
-    public void SetInventory(Inventory inventory)
+    
+    public void SetInventory() //Inventory inventory)
     {
-        goldDisplay.GetComponent<Text>().text = GM.numGoldCoins.ToString();
-        silverDisplay.GetComponent<Text>().text = GM.numSilverCoins.ToString();
-        bronzeDisplay.GetComponent<Text>().text = GM.numBronzeCoins.ToString();
-        this.inventory = inventory;
-        inventory.OnItemListChanged += Inventory_OnItemListChanged;
+        //GM.numGoldCoins 
+        //this.inventory = inventory;
+        //GM.inventory.OnItemListChanged += Inventory_OnItemListChanged;
         RefreshInventoryItems();
     }
 
@@ -50,8 +56,10 @@ public class UI_Inventory : MonoBehaviour
         float y = 0f;
         float x_itemSlotCellSize = 135f;
         float y_itemSlotCellSize = -140f;
-        foreach (Item item in inventory.GetItemList())
+        Debug.Log("Before foreach loop in Refresh");
+        foreach (Item item in GM.inventory.GetItemList())
         {
+            Debug.Log("In RefreshInv: " + item);
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
             

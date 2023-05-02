@@ -18,8 +18,13 @@ public class Player : MonoBehaviour
     void Start()
     {
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
-        GM.inventory = new Inventory();
-        uiInventory.SetInventory(GM.inventory);
+        if (GM.inventory == null)
+        {
+            GM.inventory = new Inventory();
+        }
+        
+        uiInventory.SetInventory();
+        
         //GM.inventory = new Inventory();
         //uiGM.inventory.SetGM.inventory(GM.inventory);
         Button addBtn = addItem.GetComponent<Button>();
