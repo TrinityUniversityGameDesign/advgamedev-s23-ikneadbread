@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
     static bool dispDone = false;
     static bool stocksDone = false;
     
-    public float moveSpeed = 3;
+    public float moveSpeed = 7;
 
     public UnityEvent onMiniGameCube = new UnityEvent();
 

@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 public class FromInherit : MonoBehaviour
 {
     void OnTriggerEnter(Collider collide){
-        SceneManager.LoadScene("CityTime");
+        SceneManager.LoadScene("NewHomeTown");
     }
 }
