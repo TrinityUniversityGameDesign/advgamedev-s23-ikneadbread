@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using static GameManager;
 
 public class UpgradeStoreManager : MonoBehaviour
 {
@@ -14,23 +15,28 @@ public class UpgradeStoreManager : MonoBehaviour
     public GameObject confirmPanel;
 
     public string[] boostNameDesc;
+    public int[] boostPrices;
     public string[] accessoryNameDesc;
+    public int[] accessoryPrices;
     public string[] ticketNameDesc;
+    public int[] ticketPrices;
 
     public TMP_Dropdown category;
     public TMP_Text upgradeNameText;
     public TMP_Text upgradeDescText;
     public TMP_Text confirmPanelUpgrade;
+    public GameObject confirmPurchaseButton;
+
+    public TMP_Text goldDisplay;
+    public TMP_Text silverDisplay;
+    public TMP_Text bronzeDisplay;
 
     public GameManager GM;
-
-    private int goldCoins;
-    private int silverCoins;
-    private int bronzeCoins;
 
     private char activeCategory = 'b';
     private GameObject upgradeInCart;
     private int upgradeIndex;
+    private int selectedPrice;
     private GameObject catDisplay;
 
     private string boostsOwned;
@@ -55,6 +61,12 @@ public class UpgradeStoreManager : MonoBehaviour
         boostsOwned = PlayerPrefs.GetString("boostsOwned");
         accessoriesOwned = PlayerPrefs.GetString("accessoriesOwned");
         ticketsOwned = PlayerPrefs.GetString("ticketsOwned");
+
+        goldDisplay.text = GM.numGoldCoins.ToString();
+        silverDisplay.text = GM.numSilverCoins.ToString();
+        bronzeDisplay.text = GM.numBronzeCoins.ToString();
+
+        GM.currScene = GameManager.travelDestination.UpgradeStore;
 
         // Deactivate buttons for purchased upgrades
         for (int i = 0; i < 5; i++)
@@ -122,16 +134,19 @@ public class UpgradeStoreManager : MonoBehaviour
                 Debug.Log("case b: " + upgradeNameText.text);
                 upgradeNameText.text = boostNameDesc[upgradeNum];
                 upgradeDescText.text = boostNameDesc[upgradeNum + 1];
+                selectedPrice = boostPrices[upgradeIndex];
                 break;
             case 'a':
                 Debug.Log("case a: " + upgradeNameText.text);
                 upgradeNameText.text = accessoryNameDesc[upgradeNum];
                 upgradeDescText.text = accessoryNameDesc[upgradeNum + 1];
+                selectedPrice = accessoryPrices[upgradeIndex];
                 break;
             case 't':
                 Debug.Log("case t: " + upgradeNameText.text);
                 upgradeNameText.text = ticketNameDesc[upgradeNum];
                 upgradeDescText.text = ticketNameDesc[upgradeNum + 1];
+                selectedPrice = ticketPrices[upgradeIndex];
                 break;
         }
     }
@@ -140,7 +155,30 @@ public class UpgradeStoreManager : MonoBehaviour
     {
         confirmPanel.SetActive(true);
         catDisplay.SetActive(false);
-        confirmPanelUpgrade.text = upgradeNameText.text + "?";
+        if (canBuy())
+        {
+            confirmPanelUpgrade.text = "Are you sure you want to buy " + upgradeNameText.text + "?";
+            confirmPurchaseButton.SetActive(true);
+        }
+        else
+        {
+            confirmPanelUpgrade.text = "Not enough money!";
+            confirmPurchaseButton.SetActive(false);
+        }
+    }
+
+    public bool canBuy()
+    {
+        switch (activeCategory)
+        {
+            case 'b':
+                return (GM.numSilverCoins >= selectedPrice);
+            case 'a':
+                return (GM.numBronzeCoins >= selectedPrice);
+            case 't':
+                return (GM.numGoldCoins >= selectedPrice);
+        }
+        return false;
     }
 
     public void cancelPurchase()
@@ -189,14 +227,16 @@ public class UpgradeStoreManager : MonoBehaviour
                 string updatedBoosts = boostsOwned.Substring(0,upgradeIndex) + 't' + boostsOwned.Substring(upgradeIndex + 1);
                 boostsOwned = updatedBoosts;
                 PlayerPrefs.SetString("boostsOwned", updatedBoosts);
-                if (GM) GM.boostsOwned = updatedBoosts;
+                GM.boostsOwned = updatedBoosts;
+                GM.giveCoins(0, -selectedPrice, 0);
                 break;
             case 'a':
                 string updatedAccs = accessoriesOwned.Substring(0, upgradeIndex) + 't' + 
                     accessoriesOwned.Substring(upgradeIndex + 1);
                 accessoriesOwned = updatedAccs;
                 PlayerPrefs.SetString("accessoriesOwned", updatedAccs);
-                if (GM) GM.accessoriesOwned = updatedAccs;
+                GM.accessoriesOwned = updatedAccs;
+                GM.giveCoins(0, 0, -selectedPrice);
                 break;
             case 't':
                 string updatedTickets = ticketsOwned.Substring(0, upgradeIndex) + 't' + 
@@ -204,8 +244,14 @@ public class UpgradeStoreManager : MonoBehaviour
                 ticketsOwned = updatedTickets;
                 PlayerPrefs.SetString("ticketsOwned", updatedTickets);
                 if (GM) GM.ticketsOwned = updatedTickets;
+                GM.giveCoins(-selectedPrice, 0, 0);
                 break;
         }
+
+        goldDisplay.text = GM.numGoldCoins.ToString();
+        silverDisplay.text = GM.numSilverCoins.ToString();
+        bronzeDisplay.text = GM.numBronzeCoins.ToString();
+
         Debug.Log(boostsOwned);
         Debug.Log(accessoriesOwned);
         Debug.Log(ticketsOwned);
@@ -214,6 +260,7 @@ public class UpgradeStoreManager : MonoBehaviour
 
     public void backToGame()
     {
-        SceneManager.LoadScene("CityTime");
+        GM.currScene = GM.lastScene;
+        SceneManager.LoadScene(GM.townToReturn());
     }
 }

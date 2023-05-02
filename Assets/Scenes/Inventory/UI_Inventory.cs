@@ -7,6 +7,11 @@ using TMPro;
 public class UI_Inventory : MonoBehaviour
 {
     //private Inventory inventory;
+    public GameObject goldDisplay;
+    public GameObject silverDisplay;
+    public GameObject bronzeDisplay;
+
+    private Inventory inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private GameManager GM;
@@ -22,6 +27,7 @@ public class UI_Inventory : MonoBehaviour
         itemSlotContainer = transform.Find("ItemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
         //SetInventory(GM.inventory);
+        RefreshInventoryItems();
     }
 
     
@@ -74,7 +80,4 @@ public class UI_Inventory : MonoBehaviour
             }
         }
     }
-    
-    
-    
 }
