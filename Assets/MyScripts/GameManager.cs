@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     //FirstQuest =
     public static bool deniedQ;
+    public static bool finishQuest1;
 
 
     //popup panel for what scene you are on
@@ -50,6 +51,11 @@ public class GameManager : MonoBehaviour
     public int numDinnerRoll;
     public int numCroissant;
     public int numPumpernickel;
+
+
+    //bread int number
+    public static int questDinnerRoll;
+
 
     //location info
     public enum travelDestination
@@ -159,11 +165,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (deniedQ)
+        if(finishQuest1)
         {
-            Debug.Log("attack justin");
-            townSelect.FlyTown();
+            numDinnerRoll -= 1;
+            Debug.Log("finished quest");
         }
 
 
@@ -199,7 +204,7 @@ public class GameManager : MonoBehaviour
         numSilverCoins = 0;
         numBronzeCoins = 0;
 
-        numDinnerRoll = 0;
+        numDinnerRoll = 2;
         numCroissant = 0;
         numPumpernickel = 0;
 
@@ -438,6 +443,27 @@ public class GameManager : MonoBehaviour
     {
         deniedQ = val;
     }
+
+    [YarnFunction("getFinishQuest1")]
+    public static bool GetFinishQuest1()
+    {
+        return finishQuest1;
+    }
+
+    [YarnCommand("setFinishQuest1")]
+    public static void SetFinishQuest1(bool val)
+    {
+        finishQuest1 = val;
+    }
+
+    //[YarnCommand("GetDinnerRoll")]
+    //public static void GetDinnerRoll(int numDinnerRoll)
+    //{
+    //    return questDinnerRoll;
+    //}
+
+
+
 
 
 

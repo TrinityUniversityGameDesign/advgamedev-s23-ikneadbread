@@ -1,20 +1,29 @@
 ﻿title: MainNode
 --- 
-<<if getDeniedQuest() == true >>
-Farmer: You know, I used to help your grandpawder build that bakery
-Farmer: What would happen if he found out you denied kneading me bread.
-    -> Accept
-        <<jump acceptResponse>>
-        <<set $questResponse = true>>
-        <<setDeniedQuest false>>
-<<elseif $dinnerRoll > 1 >>
-Farmer: Oh meow God! Do you have a bread to give me? 
-    -> Yes!! This is for you.
-    -> No, Starve.
+<<if $numDinnerRoll >= 1>>
+    Farmer: Oh meow God! Do you have a bread to give me? 
+        -> Yes!! This is for you.
+            <<jump finishDinnerRoll>>
+<<elseif getDeniedQuest() == true >>
+    Farmer: You know, I used to help your grandpawder build that bakery
+    Farmer: What would happen if he found out you denied kneading me bread.
+        -> Accept
+            <<set $questResponse = true>>
+            <<setFinishQuest1 false>>
+            <<setDeniedQuest false>>
+            <<jump acceptResponse>>
 <<else>>
     <<jump QuestCat>>
 <<endif>>
 ===
+
+title: finishDinnerRoll
+--- 
+Farmer: Thank you so meow!! 
+Farmer: Take this, it's used to be my Grandmao's favorite recipe
+    <<setFinishQuest1 true>>
+===
+
 
 title: QuestCat
 ---

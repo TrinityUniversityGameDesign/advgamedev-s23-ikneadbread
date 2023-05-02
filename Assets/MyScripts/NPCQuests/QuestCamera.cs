@@ -27,10 +27,9 @@ public class QuestCamera : MonoBehaviour
     public bool talkFinished;
     public bool questResponse;
 
-
     public TownSelect townSelect;
 
-
+    //public float dinRolls;
 
     void Start()
     {
@@ -43,22 +42,17 @@ public class QuestCamera : MonoBehaviour
         talkFinished = false;
 
         vStorage = FindObjectOfType<InMemoryVariableStorage>();
+
+
+        //for the dinner roll 
+        vStorage.SetValue("$numDinnerRoll", GM.numDinnerRoll);
     }
 
     void Update()
     {
-        //movingCamera();
+        Debug.Log("number of breads in numDinnerRoll: " + GM.numDinnerRoll);
         talkFinished = vStorage.TryGetValue("$acceptFinished", out talkFinished);
-        //questResponse = vStorage.TryGetValue("$denyQuest", out questResponse);
-        Debug.Log("talkFinished: " + talkFinished);
-        Debug.Log("questResponse: " + questResponse);
-        
 
-        //if (GM.deniedQ == true)
-        //{
-        //    Debug.Log("they said no :(( ");
-        //    townSelect.FlyTown();
-        //}
 
         if (talkFinished == true)
         {
