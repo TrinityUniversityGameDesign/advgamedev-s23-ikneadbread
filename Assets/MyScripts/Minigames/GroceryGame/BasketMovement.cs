@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BasketMovement : MonoBehaviour
 {
-    private int speed = 5;
+    private int speed = 8;
     private GameManager globalManager;
     private Inventory inventory;
     public int chocCount;
@@ -19,6 +19,7 @@ public class BasketMovement : MonoBehaviour
     {
         basket = GameObject.Find("Basket");
         globalManager = GameObject.FindObjectOfType<GameManager>();
+
         //inventory = GameObject.FindObjectOfType<Inventory>();
 
         // Apply Tote Bag Upgrade
@@ -30,8 +31,9 @@ public class BasketMovement : MonoBehaviour
         }
     }
    
-        void OnCollisionEnter(Collision col)
+    void OnCollisionEnter(Collision col)
     {
+        bool inInventory = false;
         // Check if collided object is a fruit
         if (col.gameObject.CompareTag("Ingridient"))
         {
@@ -42,12 +44,8 @@ public class BasketMovement : MonoBehaviour
                 ryeCount++;
             Debug.Log("here!");
             Item newIngr = returnItem(col.gameObject.name);
-            //nventory.AddItem(newIngr);
-            
-            
-
-            caughtIngrediants.Add(newIngr);
-            Destroy(col.gameObject); 
+            Destroy(col.gameObject);
+            globalManager.inventory.AddItem(newIngr);
         }
     }
 
