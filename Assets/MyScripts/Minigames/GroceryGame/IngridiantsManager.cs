@@ -13,7 +13,7 @@ public class IngridiantsManager: MonoBehaviour
     public Vector3 startPosition = new Vector3(-7, 8, 16); // Starting position of movement
     public Vector3 endPosition = new Vector3(-7, 8, 5); // End position of movement
     public float lerpDuration = 2.0f; // Time taken to move from start to end position
-    public float speed = 5.0f; 
+    public float speed = 2.0f; 
     private float lerpTimer = 0.0f; // Time elapsed since starting movement
     private bool moveToEnd = true;
     public float minInterval = 1.0f; // Minimum time between drops
@@ -30,7 +30,7 @@ public class IngridiantsManager: MonoBehaviour
         setIngridiants();
         nextDropTime = Time.time + Random.Range(minInterval, maxInterval);
 
-        gm.currScene = GameManager.travelDestination.Minigame2;
+        gm.currScene = GameManager.travelDestination.GroceryGame;
     }
 
     void setIngridiants()
@@ -49,7 +49,7 @@ public class IngridiantsManager: MonoBehaviour
             nextSpawnTime = Time.time + spawnRate;
 
             // Generate a random speed for the fruit
-            float speed = Random.Range(8, 19);
+            float speed = Random.Range(5, 11);
             int ran = Random.Range(0,8);
            
             // Generate a new fruit and set its speed

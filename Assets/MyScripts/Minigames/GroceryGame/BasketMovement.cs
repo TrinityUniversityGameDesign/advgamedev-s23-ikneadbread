@@ -7,9 +7,6 @@ public class BasketMovement : MonoBehaviour
 {
     private int speed = 8;
     private GameManager globalManager;
-    private Inventory inventory;
-    public int chocCount;
-    public int ryeCount;
     public GameObject basket;
     public List<Item> caughtIngrediants;
     public int ingrCount = 0;
@@ -33,19 +30,10 @@ public class BasketMovement : MonoBehaviour
    
     void OnCollisionEnter(Collision col)
     {
-        bool inInventory = false;
-        // Check if collided object is a fruit
         if (col.gameObject.CompareTag("Ingridient"))
         {
             ingrCount++;
-            if(col.gameObject.name == "Chocolate(Clone)")
-                chocCount++;
-            if(col.gameObject.name == "Rye(Clone)")
-                ryeCount++;
-            Debug.Log("here!");
-            Item newIngr = returnItem(col.gameObject.name);
             Destroy(col.gameObject);
-            globalManager.inventory.AddItem(newIngr);
         }
     }
 
@@ -62,7 +50,7 @@ public class BasketMovement : MonoBehaviour
         
     }
 
-    Item returnItem(string ingrName)
+    /*Item returnItem(string ingrName)
     {
         Item newItem = new Item();
 
@@ -83,6 +71,6 @@ public class BasketMovement : MonoBehaviour
 
         return newItem;
         Debug.Log("reaching");
-    }
+    }*/
 }
 

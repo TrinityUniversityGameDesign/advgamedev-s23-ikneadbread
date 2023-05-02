@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         CityTime,
         InheritStore,
         Inventory,
-        Minigame2,
+        GroceryGame,
         KneadingGame,
         StocksGame,
         TownSelect,
