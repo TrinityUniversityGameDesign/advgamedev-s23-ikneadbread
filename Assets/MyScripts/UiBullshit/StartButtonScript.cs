@@ -23,7 +23,7 @@ public class StartButtonScript : MonoBehaviour
     {
         GM.newGame();
         GM.lastCoords = new Vector3(3.501f, 0f, 3.504f);//set last coords to where you want to spawn in the next scene
-        SceneManager.LoadScene("InheritStore");   
+        SceneManager.LoadScene("CopyBecauseImSilly");   
     }
 
     public void LoadGame()
