@@ -47,10 +47,13 @@ public class QuestCamera : MonoBehaviour
         talkFinished = vStorage.TryGetValue("$acceptFinished", out talkFinished);
         questResponse = vStorage.TryGetValue("$denyQuest", out questResponse);
         Debug.Log("talkFinished: " + talkFinished);
+        Debug.Log("questResponse: " + questResponse);
 
         if (questResponse == true)
         {
             Debug.Log("they said no :(( ");
+            vStorage.SetValue("$denyQuest", true);
+            questResponse = true;
             townSelect.FlyTown();
         }
 
