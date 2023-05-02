@@ -10,6 +10,7 @@ public class ScreenScript : MonoBehaviour
     public GameObject EndScreen;
 
    private BasketMovement bm;
+   private GameManager gm;
 
     public TextMeshProUGUI caughtScores;
     public float totalTime = 60f;
@@ -26,6 +27,8 @@ public class ScreenScript : MonoBehaviour
         StartScreen.SetActive(false);
         EndScreen.SetActive(false);
         bm = GameObject.FindObjectOfType<BasketMovement>();
+        gm = GameObject.FindObjectOfType<GameManager>();
+        
     }
 
     void Update()
@@ -44,7 +47,7 @@ public class ScreenScript : MonoBehaviour
             {
                 isRunning = false;
                 EndScreen.SetActive(true); 
-                caughtScores.text = "Chocolate Caught: " +  bm.chocCount + "\nRye Caught: " + bm.ryeCount;          
+                caughtScores.text = "Chocolate Caught: " +  bm.chocCount + "\nRye Caught: " + bm.ryeCount;      
 
             }
         } 
