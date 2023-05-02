@@ -7897,8 +7897,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c1c060a065642718ffd6a12ee29d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 2
-  activateKey: 32
+  uiElement: {fileID: 0}
+  fadeDuration: 1
+  delay: 1
+  displayDuration: 2
 --- !u!114 &1631854446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10308,6 +10310,14 @@ PrefabInstance:
     - target: {fileID: 2864781488269295601, guid: 5cacaee8ea96c4bed9d83f76425573c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864781488269295602, guid: 5cacaee8ea96c4bed9d83f76425573c0, type: 3}
+      propertyPath: currScene
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864781488269295602, guid: 5cacaee8ea96c4bed9d83f76425573c0, type: 3}
+      propertyPath: lastScene
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2864781488269295602, guid: 5cacaee8ea96c4bed9d83f76425573c0, type: 3}
       propertyPath: playerCat

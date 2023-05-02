@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IngridiantsManager: MonoBehaviour
 {
@@ -22,8 +23,6 @@ public class IngridiantsManager: MonoBehaviour
 
     private bool moveRight = true; // Whether the object is moving right
 
-    
-
     void Start()
     {
         this.transform.position = new Vector3(-7f,12.65f,13.71f);
@@ -31,6 +30,7 @@ public class IngridiantsManager: MonoBehaviour
         setIngridiants();
         nextDropTime = Time.time + Random.Range(minInterval, maxInterval);
 
+        gm.currScene = GameManager.travelDestination.Minigame2;
     }
 
     void setIngridiants()
@@ -90,6 +90,11 @@ public class IngridiantsManager: MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
 
 
+    }
+
+    public void BackToTown()
+    {
+        SceneManager.LoadScene(gm.townToReturn());
     }
 }
 

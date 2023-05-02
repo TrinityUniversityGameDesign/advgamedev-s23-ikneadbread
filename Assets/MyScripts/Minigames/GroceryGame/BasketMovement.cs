@@ -13,12 +13,22 @@ public class BasketMovement : MonoBehaviour
     public GameObject basket;
     public List<Item> caughtIngrediants;
     public int ingrCount = 0;
+    public GameObject bagIcon;
+
     void Start()
     {
         basket = GameObject.Find("Basket");
         globalManager = GameObject.FindObjectOfType<GameManager>();
-        
-       
+
+        //inventory = GameObject.FindObjectOfType<Inventory>();
+
+        // Apply Tote Bag Upgrade
+        if (globalManager.boostsOwned.Substring(3, 1) == "t")
+        {
+            basket.transform.localScale = new Vector3(basket.transform.localScale.x, basket.transform.localScale.y,
+                basket.transform.localScale.z * 2);
+            bagIcon.SetActive(true);
+        }
     }
    
     void OnCollisionEnter(Collision col)

@@ -18,26 +18,21 @@ public class ScreenScript : MonoBehaviour
     private float timeRemaining;
     public bool isRunning = false;
 
+    public bool gameStarted = false;
+    public bool gameEnded = false;
 
     void Start()
     { 
-        
-        timeRemaining = totalTime;
-        StartTimer();
         StartScreen.SetActive(false);
         EndScreen.SetActive(false);
         bm = GameObject.FindObjectOfType<BasketMovement>();
         gm = GameObject.FindObjectOfType<GameManager>();
-        
+
+        gameStarted = true;
     }
 
     void Update()
     {
-        if (isRunning)
-        {
-            timeRemaining -= Time.deltaTime;
-            UpdateTimerText();
-
             if (timeRemaining <= 10f)
             {
                 timerText.color = Color.red;
@@ -60,14 +55,10 @@ public class ScreenScript : MonoBehaviour
         UpdateTimerText();
     }
 
-    private void UpdateTimerText()
+    public void endGame()
     {
-        int minutes = Mathf.FloorToInt(timeRemaining / 60f);
-        int seconds = Mathf.FloorToInt(timeRemaining % 60f);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        isRunning = false;
+        EndScreen.SetActive(true);
+        caughtScores.text = "Chocolate Caught: " + bm.chocCount + "\nRye Caught: " + bm.ryeCount;
     }
-
-
-
-
 }
