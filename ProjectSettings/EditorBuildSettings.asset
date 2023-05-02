@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QuestHometown.unity
     guid: 158eef7219052442f8a251842b533598
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: f0c24d75a366c7b458a10ea5ddccf1f3
   m_configObjects: {}
