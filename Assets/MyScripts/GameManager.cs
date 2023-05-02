@@ -44,6 +44,14 @@ public class GameManager : MonoBehaviour
     public int numCroissant;
     public int numPumpernickel;
 
+    //Quest info
+    public bool townQuestStarted;
+    public bool townQuestDone;
+    public bool forestQuestStarted;
+    public bool forestQuestDone;
+    public bool egyptQuestStarted;
+    public bool egyptQuestDone;
+
     //location info
     public enum travelDestination
     {
@@ -283,7 +291,13 @@ public class GameManager : MonoBehaviour
         }
         ticketsOwned = PlayerPrefs.GetString("ticketsOwned");
 
-        // Load Quest Status (Not Done)
+        // Load Quest Status
+        townQuestStarted = PlayerPrefs.GetInt("townQuestStarted") == 1;
+        townQuestDone = PlayerPrefs.GetInt("townQuestDone") == 1;
+        forestQuestStarted = PlayerPrefs.GetInt("forestQuestStarted") == 1;
+        forestQuestDone = PlayerPrefs.GetInt("forestQuestDone") == 1;
+        egyptQuestStarted = PlayerPrefs.GetInt("egyptQuestStarted") == 1;
+        egyptQuestDone = PlayerPrefs.GetInt("egyptQuestDone") == 1;
 
         // Load Location
         lastCoords = new Vector3(PlayerPrefs.GetFloat("lastX"), PlayerPrefs.GetFloat("lastY"), PlayerPrefs.GetFloat("lastZ"));
@@ -333,12 +347,31 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetString("accessoriesOwned", accessoriesOwned);
         PlayerPrefs.SetString("ticketsOwned", ticketsOwned);
 
-        // Reset Quest Status (Not Done)
+        // Set Quest Status
+        if (townQuestStarted) PlayerPrefs.SetInt("townQuestStarted", 1);
+        else PlayerPrefs.SetInt("townQuestStarted", 0);
+
+        if (townQuestDone) PlayerPrefs.SetInt("townQuestDone", 1);
+        else PlayerPrefs.SetInt("townQuestDone", 0);
+
+        if (forestQuestStarted) PlayerPrefs.SetInt("forestQuestStarted", 1);
+        else PlayerPrefs.SetInt("forestQuestStarted", 0);
+
+        if (forestQuestDone) PlayerPrefs.SetInt("forestQuestDone", 1);
+        else PlayerPrefs.SetInt("forestQuestDone", 0);
+
+        if (egyptQuestStarted) PlayerPrefs.SetInt("egyptQuestStarted", 1);
+        else PlayerPrefs.SetInt("egyptQuestStarted", 0);
+
+        if (egyptQuestDone) PlayerPrefs.SetInt("egyptQuestDone", 1);
+        else PlayerPrefs.SetInt("egyptQuestDone", 0);
 
         // Set Location
         PlayerPrefs.SetString("currentSceneName", lastScene.ToString()); // Save button is in Inventory
         PlayerPrefs.SetFloat("lastX", lastCoords.x);
-        PlayerPrefs.SetFloat("lastY", lastCoords.y);
+        if (lastCoords.y < 0.25f)
+            PlayerPrefs.SetFloat("lastY", 0.25f);
+        else PlayerPrefs.SetFloat("lastY", lastCoords.y);
         PlayerPrefs.SetFloat("lastZ", lastCoords.z);
 
         Debug.Log("Game Is Saved");
