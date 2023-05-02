@@ -1195,16 +1195,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f98b3d62fa3143ff84c43745525a785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flourSprite: {fileID: -1087719158, guid: a398d8e6087c44b33b4c067c0cd790a0, type: 3}
+  flourSprite: {fileID: -823131409, guid: a398d8e6087c44b33b4c067c0cd790a0, type: 3}
   riceSprite: {fileID: -823131409, guid: a398d8e6087c44b33b4c067c0cd790a0, type: 3}
   saltSprite: {fileID: 1195140146, guid: a398d8e6087c44b33b4c067c0cd790a0, type: 3}
   sugarSprite: {fileID: -1961865218, guid: a398d8e6087c44b33b4c067c0cd790a0, type: 3}
   eggSprite: {fileID: 434419041, guid: a398d8e6087c44b33b4c067c0cd790a0, type: 3}
   milkSprite: {fileID: -1252673665, guid: a398d8e6087c44b33b4c067c0cd790a0, type: 3}
-  yeastSprite: {fileID: 1707216920, guid: a398d8e6087c44b33b4c067c0cd790a0, type: 3}
+  yeastSprite: {fileID: 1124067456, guid: a398d8e6087c44b33b4c067c0cd790a0, type: 3}
   butterSprite: {fileID: -872193192, guid: a398d8e6087c44b33b4c067c0cd790a0, type: 3}
-  cocoaSprite: {fileID: 0}
-  ryeSprite: {fileID: 0}
+  cocoaSprite: {fileID: 28263586, guid: a398d8e6087c44b33b4c067c0cd790a0, type: 3}
+  ryeSprite: {fileID: -1087719158, guid: a398d8e6087c44b33b4c067c0cd790a0, type: 3}
 --- !u!4 &320042085
 Transform:
   m_ObjectHideFlags: 0

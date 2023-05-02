@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
     //NPC quest + scene checking
     private string currentSceneName;
     private bool isFirstVisit = true;
@@ -17,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     //popup panel for what scene you are on
     public GameObject scenePanel;
+
+    //quest 3 variables
+    public bool quest3Accept;
 
     //add event
     public UnityEvent gameStarted = new UnityEvent();
@@ -44,6 +46,14 @@ public class GameManager : MonoBehaviour
     public int numCroissant;
     public int numPumpernickel;
 
+    //Quest info
+    public bool townQuestStarted;
+    public bool townQuestDone;
+    public bool forestQuestStarted;
+    public bool forestQuestDone;
+    public bool egyptQuestStarted;
+    public bool egyptQuestDone;
+
     //location info
     public enum travelDestination
     {
@@ -69,20 +79,6 @@ public class GameManager : MonoBehaviour
     public travelDestination currScene;
     //minor change
 
-    //yarn variables
-    static bool introDone = false;
-
-    public static bool ingTutorial = false;
-    public static bool kneadTutorial = false;
-    public static bool ovenTutorial = false;
-    public static bool dispTutorial = false;
-    public static bool stocksTutorial = false;
-
-    static bool ingDone = false;
-    static bool kneadDone = false;
-    static bool ovenDone = false;
-    static bool dispDone = false;
-    static bool stocksDone = false;
 
     public float moveSpeed = 7;
     public UnityEvent onMiniGameCube = new UnityEvent();
@@ -283,7 +279,13 @@ public class GameManager : MonoBehaviour
         }
         ticketsOwned = PlayerPrefs.GetString("ticketsOwned");
 
-        // Load Quest Status (Not Done)
+        // Load Quest Status
+        townQuestStarted = PlayerPrefs.GetInt("townQuestStarted") == 1;
+        townQuestDone = PlayerPrefs.GetInt("townQuestDone") == 1;
+        forestQuestStarted = PlayerPrefs.GetInt("forestQuestStarted") == 1;
+        forestQuestDone = PlayerPrefs.GetInt("forestQuestDone") == 1;
+        egyptQuestStarted = PlayerPrefs.GetInt("egyptQuestStarted") == 1;
+        egyptQuestDone = PlayerPrefs.GetInt("egyptQuestDone") == 1;
 
         // Load Location
         lastCoords = new Vector3(PlayerPrefs.GetFloat("lastX"), PlayerPrefs.GetFloat("lastY"), PlayerPrefs.GetFloat("lastZ"));
@@ -333,12 +335,31 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetString("accessoriesOwned", accessoriesOwned);
         PlayerPrefs.SetString("ticketsOwned", ticketsOwned);
 
-        // Reset Quest Status (Not Done)
+        // Set Quest Status
+        if (townQuestStarted) PlayerPrefs.SetInt("townQuestStarted", 1);
+        else PlayerPrefs.SetInt("townQuestStarted", 0);
+
+        if (townQuestDone) PlayerPrefs.SetInt("townQuestDone", 1);
+        else PlayerPrefs.SetInt("townQuestDone", 0);
+
+        if (forestQuestStarted) PlayerPrefs.SetInt("forestQuestStarted", 1);
+        else PlayerPrefs.SetInt("forestQuestStarted", 0);
+
+        if (forestQuestDone) PlayerPrefs.SetInt("forestQuestDone", 1);
+        else PlayerPrefs.SetInt("forestQuestDone", 0);
+
+        if (egyptQuestStarted) PlayerPrefs.SetInt("egyptQuestStarted", 1);
+        else PlayerPrefs.SetInt("egyptQuestStarted", 0);
+
+        if (egyptQuestDone) PlayerPrefs.SetInt("egyptQuestDone", 1);
+        else PlayerPrefs.SetInt("egyptQuestDone", 0);
 
         // Set Location
         PlayerPrefs.SetString("currentSceneName", lastScene.ToString()); // Save button is in Inventory
         PlayerPrefs.SetFloat("lastX", lastCoords.x);
-        PlayerPrefs.SetFloat("lastY", lastCoords.y);
+        if (lastCoords.y < 0.25f)
+            PlayerPrefs.SetFloat("lastY", 0.25f);
+        else PlayerPrefs.SetFloat("lastY", lastCoords.y);
         PlayerPrefs.SetFloat("lastZ", lastCoords.z);
 
         Debug.Log("Game Is Saved");
@@ -406,109 +427,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneLoad);
     }
 
-    // ------------ Yarn functions ------------
-
-    // Introduction Complete
-    [YarnFunction("getIntroDone")]
-    public static bool GetIntroDone()
-    {
-        return introDone;
-    }
-
-    [YarnCommand("setIntroDone")]
-    public static void SetIntroDone(bool val)
-    {
-        introDone = val;
-    }
-
-    // Ingredient Tutorial
-    [YarnFunction("getIngTutorial")]
-    public static bool GetIngTutorial()
-    {
-        return ingTutorial;
-    }
-
-    [YarnCommand("setIngTutorial")]
-    public static void SetIngTutorial(bool val)
-    {
-        ingTutorial = val;
-    }
-
-    [YarnFunction("getIngDone")]
-    public static bool GetIngDone()
-    {
-        return ingDone;
-    }
-
-    [YarnCommand("setIngDone")]
-    public static void SetIngDone(bool val)
-    {
-        ingDone = val;
-    }
-
-    // Kneading Tutorial
-    [YarnFunction("getKneadTutorial")]
-    public static bool GetKneadTutorial()
-    {
-        return kneadTutorial;
-    }
-
-    [YarnCommand("setKneadTutorial")]
-    public static void SetKneadTutorial(bool val)
-    {
-        kneadTutorial = val;
-    }
-
-    [YarnFunction("getKneadDone")]
-    public static bool GetKneadDone()
-    {
-        return kneadDone;
-    }
-
-    [YarnCommand("setKneadDone")]
-    public static void SetKneadDone(bool val)
-    {
-        kneadDone = val;
-    }
-
-    // Oven Tutorial
-    [YarnFunction("getOvenTutorial")]
-    public static bool GetOvenTutorial()
-    {
-        return ovenTutorial;
-    }
-
-    [YarnCommand("setOvenTutorial")]
-    public static void SetOvenTutorial(bool val)
-    {
-        ovenTutorial = val;
-    }
-
-    [YarnFunction("getOvenDone")]
-    public static bool GetOvenDone()
-    {
-        return ovenDone;
-    }
-
-    [YarnCommand("setOvenDone")]
-    public static void SetOvenDone(bool val)
-    {
-        ovenDone = val;
-    }
-
-    // Display Tutorial
-    [YarnFunction("getDispTutorial")]
-    public static bool GetDispTutorial()
-    {
-        return dispTutorial;
-    }
-
-    [YarnCommand("setDispTutorial")]
-    public static void SetDispTutorial(bool val)
-    {
-        dispTutorial = val;
-    }
-
     // Add Hats to Inventory
     public void StrawHatUpgrade()
     {
@@ -533,42 +451,5 @@ public class GameManager : MonoBehaviour
     public void ChefHatUpgrade()
     {
         // Add Chef's Hat to Inventory
-    }
-
-    [YarnFunction("getDispDone")]
-    public static bool GetDispDone()
-    {
-        return dispDone;
-    }
-
-    [YarnCommand("setDispDone")]
-    public static void SetDispDone(bool val)
-    {
-        dispDone = val;
-    }
-
-    // Stocks Tutorial
-    [YarnFunction("getStocksTutorial")]
-    public static bool GetStocksTutorial()
-    {
-        return stocksTutorial;
-    }
-
-    [YarnCommand("setStocksTutorial")]
-    public static void SetStocksTutorial(bool val)
-    {
-        stocksTutorial = val;
-    }
-
-    [YarnFunction("getStocksDone")]
-    public static bool GetStocksDone()
-    {
-        return stocksDone;
-    }
-
-    [YarnCommand("setStocksDone")]
-    public static void SetStocksDone(bool val)
-    {
-        stocksDone = val;
     }
 }
