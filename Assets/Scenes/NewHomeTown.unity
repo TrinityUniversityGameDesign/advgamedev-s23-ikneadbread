@@ -1985,7 +1985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4db23c4f53e4720932756cb628199d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1427923331}
   moveSpeed: 3
   followDistance: 50
   stopDistance: 2
