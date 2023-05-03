@@ -244,9 +244,9 @@ public class GameManager : MonoBehaviour
 
     public void newGame()
     {
-        numGoldCoins = 100;
-        numSilverCoins = 100;
-        numBronzeCoins = 100;
+        numGoldCoins = 1000;
+        numSilverCoins = 1000;
+        numBronzeCoins = 1000;
 
         numDinnerRoll = 2;
         numCroissant = 2;
