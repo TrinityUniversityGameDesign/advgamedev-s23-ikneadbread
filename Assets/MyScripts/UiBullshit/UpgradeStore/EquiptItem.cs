@@ -17,11 +17,11 @@ public class EquiptItem : MonoBehaviour
 
 
     //hats
-    private GameObject StrawHat;
-    private GameObject TopHat;
-    private GameObject Beret;
-    private GameObject CowboyHat;
-    private GameObject ChefHat;
+    public GameObject StrawHat;
+    public GameObject TopHat;
+    public GameObject Beret;
+    public GameObject CowboyHat;
+    public GameObject ChefHat;
 
     private GameManager GM;
     private UpgradeStoreManager updateStoreManager;
@@ -40,11 +40,11 @@ public class EquiptItem : MonoBehaviour
         Mittens = GameObject.Find("Mittens");
 
         //hats
-        StrawHat = GameObject.Find("StrawHat");
-        TopHat = GameObject.Find("TopHat");
-        Beret = GameObject.Find("VikingHelmet");
-        CowboyHat = GameObject.Find("CowboyHat");
-        ChefHat = GameObject.Find("ChefHat");
+        // StrawHat = GameObject.Find("StrawHat");
+        // TopHat = GameObject.Find("TopHat");
+        // Beret = GameObject.Find("VikingHelmet");
+        // CowboyHat = GameObject.Find("CowboyHat");
+        // ChefHat = GameObject.Find("ChefHat");
 
         allHats[0] = StrawHat;
         allHats[1] = TopHat;
@@ -112,6 +112,7 @@ public class EquiptItem : MonoBehaviour
         {
             DeEquiptItems(bakeMittens);
             DeEquiptS(Flour);
+            DeEquiptItems(allHats);
             showGatito = true;
             EquiptS(Cat);
             EquiptItems(allBoots);
@@ -119,6 +120,7 @@ public class EquiptItem : MonoBehaviour
             showGatito = false;
             DeEquiptS(Cat);
             DeEquiptItems(allBoots);
+            DeEquiptItems(allHats);
         }
 
         //hat time
@@ -218,12 +220,14 @@ public class EquiptItem : MonoBehaviour
         foreach (Transform child in item.transform)
         {
             MeshRenderer renderer = child.GetComponent<MeshRenderer>();
+
             if (renderer != null)
             {
                 renderer.enabled = false;
             }
         }
         showGatito = false;
+
     }
 
     public void EquiptS(GameObject item)
