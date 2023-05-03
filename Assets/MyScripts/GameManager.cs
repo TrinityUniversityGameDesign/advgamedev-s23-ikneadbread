@@ -248,9 +248,9 @@ public class GameManager : MonoBehaviour
         numSilverCoins = 0;
         numBronzeCoins = 0;
 
-        numDinnerRoll = 2;
-        numCroissant = 2;
-        numPumpernickel = 2;
+        numDinnerRoll = 0;
+        numCroissant = 0;
+        numPumpernickel = 0;
 
         boostsOwned = "fffff";
         accessoriesOwned = "fffff";
