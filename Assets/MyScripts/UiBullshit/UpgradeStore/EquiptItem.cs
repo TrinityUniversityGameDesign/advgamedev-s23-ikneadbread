@@ -86,7 +86,7 @@ public class EquiptItem : MonoBehaviour
             {
                 //shows flour
                 EquiptS(Flour);
-                Flour.transform.Rotate(0, 1, 0);
+                Flour.transform.Rotate(0, .5f, 0);
                 DeEquiptS(Mittens);
             }
         }
@@ -102,7 +102,7 @@ public class EquiptItem : MonoBehaviour
             {
                 //shows mittens
                 EquiptItems(bakeMittens);
-                Mittens.transform.Rotate(0, 1, 0);
+                Mittens.transform.Rotate(0, .5f, 0);
                 DeEquiptS(Flour);
 
             }
@@ -110,17 +110,30 @@ public class EquiptItem : MonoBehaviour
 
         if (GM.bootsBought || (updateStoreManager.upgradeNameText.text == "Cat Booties"))
         {
+            if(isRender(allHats)) {
+                Debug.Log("hats show");
+            }
+        
             DeEquiptItems(bakeMittens);
             DeEquiptS(Flour);
             DeEquiptItems(allHats);
             showGatito = true;
             EquiptS(Cat);
             EquiptItems(allBoots);
+
+            if(isRender(allHats)) {
+                 Debug.Log("hats still show");
+            }
+
         } else {
             showGatito = false;
             DeEquiptS(Cat);
             DeEquiptItems(allBoots);
             DeEquiptItems(allHats);
+
+            if(isRender(allHats)) {
+                 Debug.Log("hats still show again");
+            }
         }
 
         //hat time
@@ -242,6 +255,16 @@ public class EquiptItem : MonoBehaviour
             }
         }
         showGatito = true;
+    }
+
+    public bool isRender(GameObject [] items) {
+        foreach (GameObject obj in items) {
+            MeshRenderer renderer = obj.GetComponent<MeshRenderer>();
+            if (renderer != null) { 
+                return true;
+            }
+        }
+        return false;
     }
 
 

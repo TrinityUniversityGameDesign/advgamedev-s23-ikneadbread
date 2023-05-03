@@ -38,6 +38,8 @@ public class UpgradeStoreManager : MonoBehaviour
     private int upgradeIndex;
     private int selectedPrice;
     private GameObject catDisplay;
+    private GameObject mittens;
+    private GameObject flour;
 
     private string boostsOwned;
     private string accessoriesOwned;
@@ -52,6 +54,8 @@ public class UpgradeStoreManager : MonoBehaviour
     {
         GM = GameObject.FindObjectOfType<GameManager>();
         catDisplay = GameObject.Find("CatDisplay");
+        mittens = GameObject.Find("Mittens");
+        flour = GameObject.Find("flour");
         upgradeInCart = GameObject.Find("Boost (1)");
         upgradeIndex = 0;
         activeCategory = 'b';
@@ -93,7 +97,7 @@ public class UpgradeStoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        catDisplay.transform.Rotate(0, 1, 0);
+        catDisplay.transform.Rotate(0, .5f, 0);
     }
 
     public void changeProducts()
@@ -155,6 +159,9 @@ public class UpgradeStoreManager : MonoBehaviour
     {
         confirmPanel.SetActive(true);
         catDisplay.SetActive(false);
+        mittens.SetActive(false);
+        flour.SetActive(false);
+
         if (canBuy())
         {
             confirmPanelUpgrade.text = "Are you sure you want to buy " + upgradeNameText.text + "?";
@@ -185,12 +192,16 @@ public class UpgradeStoreManager : MonoBehaviour
     {
         confirmPanel.SetActive(false);
         catDisplay.SetActive(true);
+        mittens.SetActive(true);
+        flour.SetActive(true);
     }
 
     public void purchaseUpgrade()
     {
         confirmPanel.SetActive(false);
         catDisplay.SetActive(true);
+        mittens.SetActive(true);
+        flour.SetActive(true);
         upgradeInCart.GetComponent<Button>().interactable = false;
 
         // Maybe use events to implement upgrades
