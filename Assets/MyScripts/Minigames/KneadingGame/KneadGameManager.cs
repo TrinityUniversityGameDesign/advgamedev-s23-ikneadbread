@@ -112,7 +112,6 @@ public class KneadGameManager : MonoBehaviour
 
             //starts the kneading game
             gameStarted = true;
-            GameManager.kneadTutorial = true;
         }
         else Debug.Log("Not Enough Ingredients!");
     }
@@ -179,7 +178,6 @@ public class KneadGameManager : MonoBehaviour
         int totalBronze = GM.numBronzeCoins;
         numTotalCoinsText.text = totalGold + " G" + spaces + totalSilver + " S" + spaces + totalBronze + " B";
 
-        GameManager.kneadTutorial = false;
     }
 
     public void Restart()
