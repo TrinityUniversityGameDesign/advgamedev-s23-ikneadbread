@@ -1,11 +1,14 @@
 ﻿title: Quest2
 --- 
 <<if getCroissants() == true>>
-    Farmer: Bread?
-        -> Yes!!
+    ForestCat: Wow! What a <b>pawsome</b> looking Chocolate Croissant!
+    ForestCat: Is this for me?
+        -> Yuhhh shawty
             <<jump finishCroissant>>
 <<elseif getForestDenied() == true >>
-    Farmer: Fr?
+    ForestCat: Whoever is generous to the poor lends to the Lord, and he will repay him for his deed.
+    ForestCat: Proverbs 19:17 
+    ForestCat: Be careful.
         -> Accept
         <<set $forestQuestResponse = true>>
             <<setFinishQuest2 false>>
@@ -18,7 +21,9 @@
 
 title: finishCroissant
 --- 
-Farmer: recipe
+FarmerCat: I'll be sure to let <b>everynyan</b> know about your bakery.
+FarmerCat: Here's the my second favorite recipe.
+FarmerCat: For your benevolance, I have also snuck in a few coin, go buy tickets and travel the world!
     //invoke UI popup!
     <<set $pumpRec to true>>
     <<setFinishQuest2 true>>
@@ -27,18 +32,21 @@ Farmer: recipe
 
 title: ForestQuestCat
 ---
-ForestCat: Oh meowdy there paw’ner. Hope ya doing well.
-    -> bruh
-        ForestCat: bruh
+Forest Cat: Why hello there traveler. I hope your journey is going well. 
+    -> It's going well! Thank you for asking!
+        Forest Cat: Of course! I will mention that I'm actually a little hungry right now.
             <<jump croissantQuestQuestion>>
-     -> guh
-        ForestCat: guh
+    -> I'm doing okay, ups and downs. Not to mention  --it's finals season.
+        Forest Cat: That's a bummer. Just a reminder, but you are highly skilled, loaded with talent, and capable of anything you put your mind to.
+        Forest Cat: Also on a side note, I'm like really hungry        ForestCat: guh
             <<jump croissantQuestQuestion>>
 ===
 
 title: croissantQuestQuestion
 ---
-Farmer: Gimme da bread?
+Forest Cat: I've been in this forest for quite some time now.
+Forest Cat: It's been a very long time since ive gotten my <b>paws</b> on a Chocolate Croissant.
+Forest Cat: Young Traveler, it would be <b>purrfect</b> if you could bring one to me.
  -> Accept
     <<jump acceptForestResponse>>
     <<set $forestQuestResponse = true>>

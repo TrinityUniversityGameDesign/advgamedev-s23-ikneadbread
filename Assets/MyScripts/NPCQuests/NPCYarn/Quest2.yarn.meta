@@ -11,24 +11,4 @@ ScriptedImporter:
   LastImportHadImplicitStringIDs: 1
   LastImportHadAnyStrings: 1
   isSuccessfullyParsed: 1
-  parseErrorMessages:
-  - '20:0: Error: More than one node is named finishDinnerRoll
-
-    title: finishDinnerRoll
-
-'
-  - '30:0: Error: More than one node is named QuestCat
-
-    title: QuestCat
-
-'
-  - '46:0: Error: More than one node is named questQuestion
-
-    title: questQuestion
-
-'
-  - '60:0: Error: More than one node is named acceptResponse
-
-    title: acceptResponse
-
-'
+  parseErrorMessages: []
