@@ -95,25 +95,25 @@ public class PlayerController : MonoBehaviour
         switch (GM.boostsOwned) {
             case "tffff":
                 //show the boots
-                Debug.Log("got boots");
+                //Debug.Log("got boots");
                 DeEquiptItems(allMittens);
                 EquiptItems(allBoots);
                 break;
             case "tftff":
                 //show boots and mitten
-                Debug.Log("got boots and mittens");
+                //Debug.Log("got boots and mittens");
                 EquiptItems(allBoots);
                 EquiptItems(allMittens);
                 break;
             case "fftff":
                 EquiptItems(allMittens);
                 DeEquiptItems(allBoots);
-                Debug.Log("just mittens");
+                //Debug.Log("just mittens");
                 break;
             default:
                 DeEquiptItems(allBoots);
                 DeEquiptItems(allMittens);
-                Debug.Log("nothing to showcase");
+                //Debug.Log("nothing to showcase");
                 break;
         }
 

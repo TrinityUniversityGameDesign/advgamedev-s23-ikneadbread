@@ -64,7 +64,7 @@ public class NPCAction : MonoBehaviour
                 if (distanceToPlayer > stopDistance)
                 {
 
-                    Debug.Log("o lord he walking");
+                    //Debug.Log("o lord he walking");
                     anim.SetInteger("Walk", 1);
                     transform.position += directionToPlayer * moveSpeed * Time.deltaTime;
                 }
@@ -80,7 +80,7 @@ public class NPCAction : MonoBehaviour
                     // Move towards the player
                     transform.position += directionToPlayer * moveSpeed * Time.deltaTime;
 
-                    Debug.Log("stops walking");
+                    //Debug.Log("stops walking");
                 }
             }
         } else {

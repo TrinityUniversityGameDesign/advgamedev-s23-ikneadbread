@@ -214,6 +214,7 @@ public class GameManager : MonoBehaviour
                 currScene = travelDestination.Inventory;
                 lastCoords = playerCat.transform.position;
                 //Debug.Log(lastScene);
+                Debug.Log("Opening Inventory");
                 SceneManager.LoadScene("Inventory");
             }
         }
@@ -358,7 +359,24 @@ public class GameManager : MonoBehaviour
         // Load Location
         lastCoords = new Vector3(PlayerPrefs.GetFloat("lastX"), PlayerPrefs.GetFloat("lastY"), PlayerPrefs.GetFloat("lastZ"));
 
-        SceneManager.LoadScene(PlayerPrefs.GetString("currentSceneName"));
+        string sceneName = PlayerPrefs.GetString("currentSceneName");
+        switch (sceneName)
+        {
+            case "NewHomeTown":
+                currScene = travelDestination.NewHomeTown;
+                break;
+            case "Forest":
+                currScene = travelDestination.Forest;
+                break;
+            case "Egypt":
+                currScene = travelDestination.Egypt;
+                break;
+            default:
+                currScene = travelDestination.NewHomeTown;
+                break;
+        }
+
+        SceneManager.LoadScene(sceneName);
     }
 
     public void saveGame()
@@ -442,7 +460,7 @@ public class GameManager : MonoBehaviour
     public void ApplyBootiesUpgrade()
     {
         bootsBought = true;
-        Debug.Log("update boots");
+        //Debug.Log("update boots");
         moveSpeed = 14;
         //Debug.Log("afterUpgrade (in scene) cat speed: " + moveSpeed);
     }
