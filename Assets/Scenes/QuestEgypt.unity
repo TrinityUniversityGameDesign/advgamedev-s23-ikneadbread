@@ -4614,7 +4614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 628592865}
-  player: {fileID: 0}
+  player: {fileID: 933112765}
   dialogueRunner: {fileID: 0}
   vStorage: {fileID: 0}
   winner: 0
@@ -5167,6 +5167,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76d9bd27d955e4e50bbd2eb797dcf310, type: 3}
+--- !u!1 &933112765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305353826285491212, guid: 76d9bd27d955e4e50bbd2eb797dcf310, type: 3}
+  m_PrefabInstance: {fileID: 933112764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &933915351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7695,7 +7700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1463646049
 MonoBehaviour:
   m_ObjectHideFlags: 0
