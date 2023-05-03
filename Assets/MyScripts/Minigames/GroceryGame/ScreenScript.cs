@@ -23,6 +23,9 @@ public class ScreenScript : MonoBehaviour
     public bool gameStarted = false;
     public bool gameEnded = false;
 
+    [SerializeField] private AudioSource winSoundEffect;
+
+
     void Start()
     { 
         StartScreen.SetActive(true);
@@ -49,6 +52,7 @@ public class ScreenScript : MonoBehaviour
         calculateRewards();
         string world = GM.lastScene.ToString();
 
+        winSoundEffect.Play();
         // Add World-Specific Ingredients to Inventory, Show Rewards Text
         switch (world)
         {
