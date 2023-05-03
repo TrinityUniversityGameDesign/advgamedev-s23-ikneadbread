@@ -244,12 +244,12 @@ public class GameManager : MonoBehaviour
 
     public void newGame()
     {
-        numGoldCoins = 1000;
-        numSilverCoins = 1000;
-        numBronzeCoins = 1000;
+        numGoldCoins = 0;
+        numSilverCoins = 0;
+        numBronzeCoins = 0;
 
-        numDinnerRoll = 2;
-        numCroissant = 2;
+        numDinnerRoll = 0;
+        numCroissant = 0;
         numPumpernickel = 0;
 
         boostsOwned = "fffff";
