@@ -1,0 +1,34 @@
+fileFormatVersion: 2
+guid: ed035f83c071d46fe9bf034045d86aa2
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  LastImportHadImplicitStringIDs: 1
+  LastImportHadAnyStrings: 1
+  isSuccessfullyParsed: 1
+  parseErrorMessages:
+  - '20:0: Error: More than one node is named finishDinnerRoll
+
+    title: finishDinnerRoll
+
+'
+  - '30:0: Error: More than one node is named QuestCat
+
+    title: QuestCat
+
+'
+  - '46:0: Error: More than one node is named questQuestion
+
+    title: questQuestion
+
+'
+  - '60:0: Error: More than one node is named acceptResponse
+
+    title: acceptResponse
+
+'

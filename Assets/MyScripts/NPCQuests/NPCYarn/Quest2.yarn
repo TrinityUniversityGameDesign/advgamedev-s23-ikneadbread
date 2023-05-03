@@ -1,0 +1,55 @@
+﻿title: Quest2
+--- 
+<<if getCroissants() == true>>
+    Farmer: Bread?
+        -> Yes!!
+            <<jump finishCroissant>>
+<<elseif getForestDenied() == true >>
+    Farmer: Fr?
+        -> Accept
+        <<set $forestQuestResponse = true>>
+            <<setFinishQuest2 false>>
+            <<setForestDenied false>>
+            <<jump acceptForestResponse>>
+<<else>>
+    <<jump ForestQuestCat>>
+<<endif>>
+===
+
+title: finishCroissant
+--- 
+Farmer: recipe
+    //invoke UI popup!
+    <<set $pumpRec to true>>
+    <<setFinishQuest2 true>>
+===
+
+
+title: ForestQuestCat
+---
+ForestCat: Oh meowdy there paw’ner. Hope ya doing well.
+    -> bruh
+        ForestCat: bruh
+            <<jump croissantQuestQuestion>>
+     -> guh
+        ForestCat: guh
+            <<jump croissantQuestQuestion>>
+===
+
+title: croissantQuestQuestion
+---
+Farmer: Gimme da bread?
+ -> Accept
+    <<jump acceptForestResponse>>
+    <<set $forestQuestResponse = true>>
+ -> Deny
+    Farmer: you are cringe
+        <<set $noCroissantBread to true>>
+        <<setForestDenied true>>
+===
+
+title: acceptForestResponse
+---
+ForestCat: Gimme the bread soon.
+    <<set $acceptCroissantFinished to true>>
+===

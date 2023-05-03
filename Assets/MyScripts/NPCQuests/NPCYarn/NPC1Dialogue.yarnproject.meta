@@ -11,45 +11,103 @@ ScriptedImporter:
   sourceScripts:
   - {fileID: 6391573757903218779, guid: 814bdfcde84b549ea9dfeb79568136e8, type: 3}
   - {fileID: 6391573757903218779, guid: 68dc48167375fe441b3ab74eeed59c88, type: 3}
+  - {fileID: 6391573757903218779, guid: ed035f83c071d46fe9bf034045d86aa2, type: 3}
   compileErrors: []
-  serializedDeclarations: []
+  serializedDeclarations:
+  - name: $questResponse
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in QuestCat.yarn, node MainNode
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 814bdfcde84b549ea9dfeb79568136e8, type: 3}
+  - name: $croissantRec
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in QuestCat.yarn, node finishDinnerRoll
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 814bdfcde84b549ea9dfeb79568136e8, type: 3}
+  - name: $noBread
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in QuestCat.yarn, node questQuestion
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 814bdfcde84b549ea9dfeb79568136e8, type: 3}
+  - name: $cameraShift
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in QuestCat.yarn, node acceptResponse
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 814bdfcde84b549ea9dfeb79568136e8, type: 3}
+  - name: $acceptFinished
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in QuestCat.yarn, node acceptResponse
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 814bdfcde84b549ea9dfeb79568136e8, type: 3}
+  - name: $numPump
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Quest3.yarn, node Quest3
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 68dc48167375fe441b3ab74eeed59c88, type: 3}
+  - name: $quest3Resp
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Quest3.yarn, node Quest3
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 68dc48167375fe441b3ab74eeed59c88, type: 3}
+  - name: $dialogueFin
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Quest3.yarn, node Quest3Q
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 68dc48167375fe441b3ab74eeed59c88, type: 3}
+  - name: $winnerWinnerChickenDinner
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Quest3.yarn, node Quest3Complete
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 68dc48167375fe441b3ab74eeed59c88, type: 3}
   defaultLanguage: en-US
   languagesToSourceAssets: []
   useAddressableAssets: 0
   searchAllAssembliesForActions: 1
   assembliesToSearch: []
   ListOfFunctions:
-  - Name: GetIntroDone
+  - Name: GetDinnerRoll
     ReturnType: -> Boolean
     Parameters: []
-  - Name: GetIngTutorial
+  - Name: GetDeniedQuest
     ReturnType: -> Boolean
     Parameters: []
-  - Name: GetIngDone
+  - Name: GetFinishQuest1
     ReturnType: -> Boolean
     Parameters: []
-  - Name: GetKneadTutorial
+  - Name: GetCroissants
     ReturnType: -> Boolean
     Parameters: []
-  - Name: GetKneadDone
+  - Name: GetForestDenied
     ReturnType: -> Boolean
     Parameters: []
-  - Name: GetOvenTutorial
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetOvenDone
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetDispTutorial
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetDispDone
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetStocksTutorial
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetStocksDone
+  - Name: GetFinishQuest2
     ReturnType: -> Boolean
     Parameters: []
   - Name: Random
