@@ -38,6 +38,11 @@ public class QuestCamera : MonoBehaviour
 
     //public float dinRolls;
 
+    public bool getInfo()
+    {
+        return gainedCroissant;
+    }
+
     void Start()
     {
         dialogueRunner = FindObjectOfType<DialogueRunner>();
