@@ -20,7 +20,7 @@ public class NPCQuest3 : MonoBehaviour
     {
         dialogueRunner = FindObjectOfType<DialogueRunner>();
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
-        player = GameObject.Find("PlayerCat");
+        player = GameObject.Find("Cat");
         vStorage = FindObjectOfType<InMemoryVariableStorage>();
 
         GM.lastCoords = player.transform.position;
