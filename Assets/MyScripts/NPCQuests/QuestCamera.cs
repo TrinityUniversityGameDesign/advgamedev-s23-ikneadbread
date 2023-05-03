@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+using UnityEngine.SceneManagement;
+
 
 
 public class QuestCamera : MonoBehaviour
@@ -22,11 +24,19 @@ public class QuestCamera : MonoBehaviour
     //yarn stuff
     public DialogueRunner dialogueRunner;
     public InMemoryVariableStorage vStorage;
-    public bool talkFinished;
+    public bool gainedCroissant;
+    public bool alreadySeen;
+
+    public CanvasGroup RecipeCanvas;
+
+
+    public bool talkFinished; //this is for accepting quest
+    public bool deniedTalk; //this is for refusing quests
+
     public bool questResponse;
 
-    public TownSelect townSelect;
 
+    //public float dinRolls;
 
     void Start()
     {
@@ -35,38 +45,58 @@ public class QuestCamera : MonoBehaviour
         initialPosition = transform.position;
 
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
-        townSelect = GameObject.Find("townSelect").GetComponent<TownSelect>();
         talkFinished = false;
 
         vStorage = FindObjectOfType<InMemoryVariableStorage>();
+
+        //for the dinner roll 
+        vStorage.SetValue("$numDinnerRoll", GM.numDinnerRoll);
+
+        RecipeCanvas.alpha = 0;
+        RecipeCanvas.interactable = false;
+        RecipeCanvas.blocksRaycasts = false;
     }
 
     void Update()
     {
-        //movingCamera();
         talkFinished = vStorage.TryGetValue("$acceptFinished", out talkFinished);
-        questResponse = vStorage.TryGetValue("$denyQuest", out questResponse);
-        Debug.Log("talkFinished: " + talkFinished);
-        Debug.Log("questResponse: " + questResponse);
+        deniedTalk = vStorage.TryGetValue("$noBread", out deniedTalk);
+        gainedCroissant = vStorage.TryGetValue("$croissantRec", out gainedCroissant);
 
-        if (questResponse == true)
-        {
-            Debug.Log("they said no :(( ");
-            vStorage.SetValue("$denyQuest", true);
-            questResponse = true;
-            townSelect.FlyTown();
-        }
-
+        //This is for accepting the quest
         if (talkFinished == true)
         {
             GM.homesceneTalked = true;
             Debug.Log("within the talkFinished");
-            townSelect.FlyTown();
-        } else
+            SceneManager.LoadScene("NewHomeTown");
+        }
+        //this is for denying the quest
+        if(deniedTalk == true)
         {
-            GM.homesceneTalked = false;
+            SceneManager.LoadScene("NewHomeTown");
         }
 
+        //this if when you finished the quest
+        if(gainedCroissant)
+        {
+            GM.homesceneTalked = true;
+            Debug.Log("finished quest 1!");
+
+
+            Debug.Log("gold before: " + GM.numGoldCoins);
+            GM.numGoldCoins += 10;
+            Debug.Log("gold after: " + GM.numGoldCoins);
+
+
+            Debug.Log("rolls before: " + GM.numDinnerRoll);
+            GM.numDinnerRoll -= 1;
+            Debug.Log("rolls after: " + GM.numDinnerRoll);
+
+
+            SceneManager.LoadScene("NewHomeTown");
+        }
+
+        //this is fancy camera things
         if (vStorage.TryGetValue("$cameraShift", out isZoomed))
         {
             if (isZoomed)
@@ -88,6 +118,5 @@ public class QuestCamera : MonoBehaviour
                 transform.position = initialPosition;
             }
         }
- 
     }
 }

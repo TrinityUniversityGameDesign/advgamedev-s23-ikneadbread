@@ -9,10 +9,22 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    //[SerializeField]
+    public TownSelect townSelect;
+
+
     //NPC quest + scene checking
     private string currentSceneName;
     private bool isFirstVisit = true;
     public bool homesceneTalked;
+
+    //FirstQuest =
+    public static bool deniedQ;
+    public static bool finishQuest1;
+    public static bool enoughRolls;
+
+
+
 
     //popup panel for what scene you are on
     public GameObject scenePanel;
@@ -45,6 +57,10 @@ public class GameManager : MonoBehaviour
     public int numDinnerRoll;
     public int numCroissant;
     public int numPumpernickel;
+
+
+    //bread int number
+    public static int questDinnerRoll;
 
     //Quest info
     public bool townQuestStarted;
@@ -102,6 +118,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         DontDestroyOnLoad(this.gameObject);
         //newGame(); // Temporary until Continuing Game is added
         gameStarted.AddListener(GlobalGameStart);
@@ -148,6 +165,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(numDinnerRoll >= 1)
+        {
+            enoughRolls = true;
+        }
+
         if (playerCat == null)
         {
             if (currScene == travelDestination.NewHomeTown || currScene == travelDestination.Forest
@@ -180,7 +202,7 @@ public class GameManager : MonoBehaviour
         numSilverCoins = 0;
         numBronzeCoins = 0;
 
-        numDinnerRoll = 0;
+        numDinnerRoll = 2;
         numCroissant = 0;
         numPumpernickel = 0;
 
@@ -426,6 +448,44 @@ public class GameManager : MonoBehaviour
         lastScene = currScene;
         SceneManager.LoadScene(sceneLoad);
     }
+
+    // ------------ Yarn functions ------------
+
+
+    //for the first quest
+
+    [YarnFunction("getDinnerRoll")]
+    public static bool GetDinnerRoll()
+    {
+        return enoughRolls;
+    }
+
+
+    [YarnFunction("getDeniedQuest")]
+    public static bool GetDeniedQuest()
+    {
+        return deniedQ;
+    }
+
+
+    [YarnCommand("setDeniedQuest")]
+    public static void SetDeniedQuest(bool val)
+    {
+        deniedQ = val;
+    }
+
+    [YarnFunction("getFinishQuest1")]
+    public static bool GetFinishQuest1()
+    {
+        return finishQuest1;
+    }
+
+    [YarnCommand("setFinishQuest1")]
+    public static void SetFinishQuest1(bool val)
+    {
+        finishQuest1 = val;
+    }
+
 
     // Add Hats to Inventory
     public void StrawHatUpgrade()
