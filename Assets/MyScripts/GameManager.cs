@@ -5,13 +5,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //[SerializeField]
-    public TownSelect townSelect;
-
 
     //NPC quest + scene checking
     private string currentSceneName;
@@ -22,6 +18,13 @@ public class GameManager : MonoBehaviour
     public static bool deniedQ;
     public static bool finishQuest1;
     public static bool enoughRolls;
+
+    //Second Quest
+    public static bool deniedF;
+    public static bool finishQuest2;
+    public static bool enoughCroissants;
+
+    public bool forestTalked;
 
 
 
@@ -169,6 +172,10 @@ public class GameManager : MonoBehaviour
         {
             enoughRolls = true;
         }
+        if(numCroissant >= 1)
+        {
+            enoughCroissants = true;
+        }
 
         if (playerCat == null)
         {
@@ -203,8 +210,8 @@ public class GameManager : MonoBehaviour
         numBronzeCoins = 0;
 
         numDinnerRoll = 2;
-        numCroissant = 0;
-        numPumpernickel = 0;
+        numCroissant = 2;
+        numPumpernickel = 2;
 
         boostsOwned = "fffff";
         accessoriesOwned = "fffff";
@@ -485,6 +492,41 @@ public class GameManager : MonoBehaviour
     {
         finishQuest1 = val;
     }
+
+
+    //for the second quest
+
+    [YarnFunction("getCroissants")]
+    public static bool GetCroissants()
+    {
+        return enoughCroissants;
+    }
+
+    [YarnFunction("getForestDenied")]
+    public static bool GetForestDenied()
+    {
+        return deniedF;
+    }
+
+    [YarnCommand("setForestDenied")]
+    public static void SetForestDenied(bool val)
+    {
+        deniedF = val;
+    }
+
+    [YarnCommand("setFinishQuest2")]
+    public static void SetFinishQuest2(bool val)
+    {
+        finishQuest2 = val;
+    }
+
+    [YarnFunction("getFinishQuest2")]
+    public static bool GetFinishQuest2()
+    {
+        return finishQuest2;
+    }
+
+
 
 
     // Add Hats to Inventory

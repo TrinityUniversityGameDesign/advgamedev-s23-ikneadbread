@@ -52,9 +52,9 @@ public class QuestCamera : MonoBehaviour
         //for the dinner roll 
         vStorage.SetValue("$numDinnerRoll", GM.numDinnerRoll);
 
-        RecipeCanvas.alpha = 0;
-        RecipeCanvas.interactable = false;
-        RecipeCanvas.blocksRaycasts = false;
+        //RecipeCanvas.alpha = 0;
+        //RecipeCanvas.interactable = false;
+        //RecipeCanvas.blocksRaycasts = false;
     }
 
     void Update()

@@ -3038,6 +3038,7 @@ MonoBehaviour:
   dialogueRunner: {fileID: 0}
   vStorage: {fileID: 0}
   gainedCroissant: 0
+  alreadySeen: 0
   RecipeCanvas: {fileID: 0}
   talkFinished: 0
   deniedTalk: 0
@@ -4607,7 +4608,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1247326040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4837,6 +4838,7 @@ MonoBehaviour:
   dialogueRunner: {fileID: 0}
   vStorage: {fileID: 0}
   gainedCroissant: 0
+  alreadySeen: 0
   RecipeCanvas: {fileID: 1247326044}
   talkFinished: 0
   deniedTalk: 0
@@ -8066,6 +8068,7 @@ MonoBehaviour:
   dialogueRunner: {fileID: 225869633}
   vStorage: {fileID: 0}
   gainedCroissant: 0
+  alreadySeen: 0
   RecipeCanvas: {fileID: 0}
   talkFinished: 0
   deniedTalk: 0
