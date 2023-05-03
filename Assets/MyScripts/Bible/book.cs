@@ -20,7 +20,7 @@ public class book : MonoBehaviour
 
     public void returnScene()
     {
-        SceneManager.LoadScene("CityTime");
+        SceneManager.LoadScene("Inventory");
     }
 
     public void InitialState()

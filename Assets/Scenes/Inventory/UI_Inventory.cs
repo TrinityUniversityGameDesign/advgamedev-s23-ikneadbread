@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class UI_Inventory : MonoBehaviour
 {
@@ -10,6 +12,12 @@ public class UI_Inventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private GameManager GM;
+
+    public void openBible()
+    {
+        SceneManager.LoadScene("Bible");
+    }
+
 
     private void Awake()
     {
