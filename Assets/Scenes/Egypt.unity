@@ -5476,10 +5476,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1463646053}
     m_Modifications:
-    - target: {fileID: 3366338855749032587, guid: a2571137e90c84c99ab07f5e5d42e693, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3366338855749032590, guid: a2571137e90c84c99ab07f5e5d42e693, type: 3}
       propertyPath: m_Name
       value: CanvasWorld0
@@ -6750,11 +6746,7 @@ PrefabInstance:
     - target: {fileID: 7644038297891561523, guid: 7b563bbc72244364b942e868fc344c47, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7644038297891561523, guid: 7b563bbc72244364b942e868fc344c47, type: 3}
-      propertyPath: sceneName
-      value: QuestEgypt
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 821239674}
     - target: {fileID: 7645547684742667388, guid: 7b563bbc72244364b942e868fc344c47, type: 3}
       propertyPath: m_RootOrder
       value: 2
