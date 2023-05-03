@@ -69,7 +69,7 @@ Farmer: Within this Town, there is a ingredients store! This is where we play a 
 Farmer: After we catch our ingredients, you can go to your bakery. This is where we can knead with the ingredients we got to make our bread.
     <<set $cameraShift to false>>
 Farmer: Then, you can use the ingredients you caught and knead it to make bread! This happens at your bakery
-Farmer: Make sure to click on the lumps to get a smooth dough! 
+Farmer: Make sure to click on the lumps to get the smoothest dough! 
 Farmer: Finally, you can give ME the bread so I can eat it. Tasteeyyyyy!
     <<set $acceptFinished to true>>
 ===
