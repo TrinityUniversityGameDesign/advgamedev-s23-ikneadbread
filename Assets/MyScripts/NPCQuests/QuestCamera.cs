@@ -24,7 +24,10 @@ public class QuestCamera : MonoBehaviour
     //yarn stuff
     public DialogueRunner dialogueRunner;
     public InMemoryVariableStorage vStorage;
+    public bool gainedCroissant;
+    public bool alreadySeen;
 
+    public CanvasGroup RecipeCanvas;
 
 
     public bool talkFinished; //this is for accepting quest
@@ -46,31 +49,54 @@ public class QuestCamera : MonoBehaviour
 
         vStorage = FindObjectOfType<InMemoryVariableStorage>();
 
-
         //for the dinner roll 
         vStorage.SetValue("$numDinnerRoll", GM.numDinnerRoll);
+
+        RecipeCanvas.alpha = 0;
+        RecipeCanvas.interactable = false;
+        RecipeCanvas.blocksRaycasts = false;
     }
 
     void Update()
     {
-        Debug.Log("number of breads in numDinnerRoll: " + GM.numDinnerRoll);
         talkFinished = vStorage.TryGetValue("$acceptFinished", out talkFinished);
         deniedTalk = vStorage.TryGetValue("$noBread", out deniedTalk);
+        gainedCroissant = vStorage.TryGetValue("$croissantRec", out gainedCroissant);
 
-
-
+        //This is for accepting the quest
         if (talkFinished == true)
         {
             GM.homesceneTalked = true;
             Debug.Log("within the talkFinished");
             SceneManager.LoadScene("NewHomeTown");
         }
+        //this is for denying the quest
         if(deniedTalk == true)
         {
             SceneManager.LoadScene("NewHomeTown");
         }
-        
 
+        //this if when you finished the quest
+        if(gainedCroissant)
+        {
+            GM.homesceneTalked = true;
+            Debug.Log("finished quest 1!");
+
+
+            Debug.Log("gold before: " + GM.numGoldCoins);
+            GM.numGoldCoins += 10;
+            Debug.Log("gold after: " + GM.numGoldCoins);
+
+
+            Debug.Log("rolls before: " + GM.numDinnerRoll);
+            GM.numDinnerRoll -= 1;
+            Debug.Log("rolls after: " + GM.numDinnerRoll);
+
+
+            SceneManager.LoadScene("NewHomeTown");
+        }
+
+        //this is fancy camera things
         if (vStorage.TryGetValue("$cameraShift", out isZoomed))
         {
             if (isZoomed)
@@ -93,5 +119,4 @@ public class QuestCamera : MonoBehaviour
             }
         }
     }
-
 }

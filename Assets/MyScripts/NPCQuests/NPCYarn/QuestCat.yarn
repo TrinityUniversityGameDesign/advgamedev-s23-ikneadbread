@@ -22,7 +22,7 @@ title: finishDinnerRoll
 Farmer: Thank you so meow!! 
 Farmer: Take this, it's used to be my Grandmao's favorite recipe
     //invoke UI popup!
-    
+    <<set $croissantRec to true>>
     <<setFinishQuest1 true>>
 ===
 
