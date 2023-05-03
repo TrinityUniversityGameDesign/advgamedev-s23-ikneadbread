@@ -24,10 +24,14 @@ public class QuestCamera : MonoBehaviour
     //yarn stuff
     public DialogueRunner dialogueRunner;
     public InMemoryVariableStorage vStorage;
-    public bool talkFinished;
+
+
+
+    public bool talkFinished; //this is for accepting quest
+    public bool deniedTalk; //this is for refusing quests
+
     public bool questResponse;
 
-    public TownSelect townSelect;
 
     //public float dinRolls;
 
@@ -38,7 +42,6 @@ public class QuestCamera : MonoBehaviour
         initialPosition = transform.position;
 
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
-        townSelect = GameObject.Find("townSelect").GetComponent<TownSelect>();
         talkFinished = false;
 
         vStorage = FindObjectOfType<InMemoryVariableStorage>();
@@ -52,6 +55,8 @@ public class QuestCamera : MonoBehaviour
     {
         Debug.Log("number of breads in numDinnerRoll: " + GM.numDinnerRoll);
         talkFinished = vStorage.TryGetValue("$acceptFinished", out talkFinished);
+        deniedTalk = vStorage.TryGetValue("$noBread", out deniedTalk);
+
 
 
         if (talkFinished == true)
@@ -59,10 +64,12 @@ public class QuestCamera : MonoBehaviour
             GM.homesceneTalked = true;
             Debug.Log("within the talkFinished");
             SceneManager.LoadScene("NewHomeTown");
-        } else
-        {
-            GM.homesceneTalked = false;
         }
+        if(deniedTalk == true)
+        {
+            SceneManager.LoadScene("NewHomeTown");
+        }
+        
 
         if (vStorage.TryGetValue("$cameraShift", out isZoomed))
         {

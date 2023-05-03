@@ -49,7 +49,9 @@ Farmer: If you give me the bread, it's a good gift! I promise.
     <<jump acceptResponse>>
     <<set $questResponse = true>>
  -> Deny
-    Farmer: Boooo
+    Farmer: If your paws are ever itching for some kneading, come back to me.
+    Farmer: I'm down to get dinner rolls anytime.
+        <<set $noBread to true>>
         <<setDeniedQuest true>>
 ===
 
@@ -66,13 +68,5 @@ Farmer: Then, you can use the ingredients you caught and knead it to make bread!
 Farmer: I'm sure I don't need to tell you where the bakery is, it's your bakery afterall! 
 Farmer: Finally, you can give ME the bread so I can eat it. Tasteeyyyyy!
 Farmer: I'll be waiting!
-    <<set $acceptFinished to true>>
-===
-
-
-title: booResponse
---- 
-Farmer: If your paws are ever itching for some kneading, come back to me.
-Farmer: I'm down to get dinner rolls anytime.
     <<set $acceptFinished to true>>
 ===
