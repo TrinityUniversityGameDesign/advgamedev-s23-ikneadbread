@@ -113,7 +113,9 @@ public class EquiptItem : MonoBehaviour
             if(isRender(allHats)) {
                 Debug.Log("hats show");
             }
-        
+            foreach(GameObject hat in allHats){
+                hat.SetActive(false);
+            }
             DeEquiptItems(bakeMittens);
             DeEquiptS(Flour);
             DeEquiptItems(allHats);
@@ -130,6 +132,9 @@ public class EquiptItem : MonoBehaviour
             DeEquiptS(Cat);
             DeEquiptItems(allBoots);
             DeEquiptItems(allHats);
+            foreach(GameObject hat in allHats){
+                hat.SetActive(true);
+            }
 
             if(isRender(allHats)) {
                  Debug.Log("hats still show again");
