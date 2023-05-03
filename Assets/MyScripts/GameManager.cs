@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public static bool finishQuest2;
     public static bool enoughCroissants;
 
+    public bool forestTalked;
+
 
 
 
@@ -208,8 +210,8 @@ public class GameManager : MonoBehaviour
         numBronzeCoins = 0;
 
         numDinnerRoll = 2;
-        numCroissant = 0;
-        numPumpernickel = 0;
+        numCroissant = 2;
+        numPumpernickel = 2;
 
         boostsOwned = "fffff";
         accessoriesOwned = "fffff";

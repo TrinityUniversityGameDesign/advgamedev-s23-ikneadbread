@@ -50,8 +50,10 @@ public class NPCQuest2 : MonoBehaviour
 
     void firstDialogue()
     {
-        if (GM.homesceneTalked == false)
+        Debug.Log("within the first Dia");
+        if (GM.forestTalked == false)
         {
+            Debug.Log("within the if statement");
             // Calculate the distance between the enemy and the player
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 

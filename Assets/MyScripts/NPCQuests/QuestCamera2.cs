@@ -59,7 +59,7 @@ public class QuestCamera2 : MonoBehaviour
         //this if when you finished the quest
         if (gainedPump)
         {
-            GM.homesceneTalked = true;
+            GM.forestTalked = true;
             Debug.Log("finished quest 2!");
 
 
@@ -68,9 +68,9 @@ public class QuestCamera2 : MonoBehaviour
             Debug.Log("gold after: " + GM.numGoldCoins);
 
 
-            Debug.Log("crois before: " + GM.numDinnerRoll);
+            Debug.Log("crois before: " + GM.numCroissant);
             GM.numCroissant -= 1;
-            Debug.Log("crois after: " + GM.numDinnerRoll);
+            Debug.Log("crois after: " + GM.numCroissant);
 
 
             SceneManager.LoadScene("Forest");

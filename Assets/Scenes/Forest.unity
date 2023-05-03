@@ -273,7 +273,7 @@ MonoBehaviour:
   followDistance: 50
   stopDistance: 2
   playerRadius: 5
-  uiElement: {fileID: 1196422055}
+  uiElement: {fileID: 1127081518}
   sceneName: QuestForest
   uiButton: {fileID: 20615674}
 --- !u!1 &85244727
@@ -1094,6 +1094,10 @@ PrefabInstance:
       propertyPath: playerCat
       value: 
       objectReference: {fileID: 135751453}
+    - target: {fileID: 2864781488269295602, guid: 5cacaee8ea96c4bed9d83f76425573c0, type: 3}
+      propertyPath: scenePanel
+      value: 
+      objectReference: {fileID: 1196422054}
     - target: {fileID: 2864781488269295602, guid: 5cacaee8ea96c4bed9d83f76425573c0, type: 3}
       propertyPath: lastCoords.x
       value: 404.67
@@ -2052,6 +2056,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084886448}
   m_CullTransparentMesh: 1
+--- !u!225 &1127081518 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 7644038299275815560, guid: 7b563bbc72244364b942e868fc344c47, type: 3}
+  m_PrefabInstance: {fileID: 20615672}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1196422054
 GameObject:
   m_ObjectHideFlags: 0
