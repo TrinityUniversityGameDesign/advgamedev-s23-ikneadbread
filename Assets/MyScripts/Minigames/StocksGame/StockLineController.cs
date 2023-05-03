@@ -33,6 +33,11 @@ public class StockLineController : MonoBehaviour
     private float shrinkRate = -0.25f;
     private bool flourUpgradeOwned;
 
+    [SerializeField] private AudioSource failSoundEffect;
+    [SerializeField] private AudioSource goodSoundEffect;
+    [SerializeField] private AudioSource finishedSoundEffect;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -111,6 +116,7 @@ public class StockLineController : MonoBehaviour
     // Called from StocksTimer
     public void endGame()
     {
+        finishedSoundEffect.Play();
         gameEnded = true;
         endScreen.SetActive(true);
         rb.velocity = Vector2.zero;
@@ -157,15 +163,19 @@ public class StockLineController : MonoBehaviour
         {
             case 1:
                 addStockValue(-35);
+                failSoundEffect.Play();
                 break;
             case 2:
                 shrinkRate -= 0.25f;
                 break;
             case 3:
                 addStockValue(15);
+                goodSoundEffect.Play();
                 break;
         }
         Debug.Log("Obstacle Hit!");
+
+
     }
 
     public void Restart()
