@@ -6750,7 +6750,7 @@ PrefabInstance:
     - target: {fileID: 7644038297891561523, guid: 7b563bbc72244364b942e868fc344c47, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 821239674}
     - target: {fileID: 7644038297891561523, guid: 7b563bbc72244364b942e868fc344c47, type: 3}
       propertyPath: sceneName
       value: QuestEgypt
