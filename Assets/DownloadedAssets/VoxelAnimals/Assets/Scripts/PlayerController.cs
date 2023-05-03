@@ -18,22 +18,116 @@ public class PlayerController : MonoBehaviour
 
     public Transform cam = null;
 
+
+    private GameObject Cat;
+    private GameObject Mittens;
+
+    //allboots
+    private GameObject BootBL, BootBR, BootFL, BootFR;
+    private GameObject[] allBoots = new GameObject[4];
+    private GameObject[] allMittens = new GameObject[1];
+
+    //hats
+    public GameObject StrawHat;
+    public GameObject TopHat;
+    public GameObject Beret;
+    public GameObject CowboyHat;
+    public GameObject ChefHat;
+
+
     void Start()
     {
-        //anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
         movementSpeed = GM.moveSpeed;
-        //Debug.Log("current speed in the CityTime: " + movementSpeed);
         this.transform.position = GM.lastCoords;
-        Debug.Log("Last coords: "+ GM.lastCoords);
+        Debug.Log("Last coords: " + GM.lastCoords);
+        Debug.Log("boots owned?: " + GM.boostsOwned);
 
-        //Camera.main.GetComponent<CameraController>().AssignTarget(transform);
+
+        //boots accessories
+        Mittens = GameObject.Find("Mittens");
+        allBoots[0] = GameObject.Find("shoe");
+        allBoots[1] = GameObject.Find("shoe (1)");
+        allBoots[2] = GameObject.Find("shoe (2)");
+        allBoots[3] = GameObject.Find("shoe (3)");
+        allMittens[0] = GameObject.Find("Mitten_fbx");
+
+
+        //hats
+        StrawHat = GameObject.Find("StrawHat");
+        TopHat = GameObject.Find("MagicianHat");
+        Beret = GameObject.Find("VikingHelmet");
+        CowboyHat = GameObject.Find("CowboyHat");
+        ChefHat = GameObject.Find("ChefHat");
+
+        StrawHat.GetComponent<Renderer>().enabled = false;
+        TopHat.GetComponent<Renderer>().enabled = false;
+        Beret.GetComponent<Renderer>().enabled = false;
+        CowboyHat.GetComponent<Renderer>().enabled = false;
+        ChefHat.GetComponent<Renderer>().enabled = false;
     }
 
     void Update()
     {
         ControllPlayer();
+
+        CheckBought();
+
+    }
+
+    void CheckBought()
+    {
+        //boostsOwned = PlayerPrefs.GetString("boostsOwned");
+        //accessoriesOwned = PlayerPrefs.GetString("accessoriesOwned");
+
+        switch (GM.boostsOwned)
+        {
+            case "tffff":
+                //show the boots
+                Debug.Log("got boots");
+                break;
+            case "tftff":
+                //show boots and mitten
+                Debug.Log("got boots and mittens");
+                break;
+            case "fftff":
+                Debug.Log("just mittens");
+                break;
+            default:
+                Debug.Log("nothing to showcase");
+                break;
+        }
+
+        switch (GM.accessoriesOwned)
+        {
+            case "tffff":
+                //show the strawhat
+                Debug.Log("got starhat");
+                this.StrawHat.GetComponent<Renderer>().enabled = true;
+                break;
+            case "ftfff":
+                //show top hat
+                Debug.Log("tophat");
+                this.TopHat.GetComponent<Renderer>().enabled = true;
+                break;
+            case "fftff":
+                Debug.Log("beret ig");
+                this.Beret.GetComponent<Renderer>().enabled = true;
+                break;
+            case "ffftf":
+                Debug.Log("cowboy hat");
+                this.CowboyHat.GetComponent<Renderer>().enabled = true;
+                break;
+            case "fffft":
+                Debug.Log("chefhat");
+                this.ChefHat.GetComponent<Renderer>().enabled = true;
+                break;
+            default:
+                Debug.Log("nothing to showcase");
+                break;
+        }
+
     }
 
     void ControllPlayer()

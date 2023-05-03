@@ -118,6 +118,11 @@ MonoBehaviour:
   jumpForce: 200
   timeBeforeNextJump: 1.2
   cam: {fileID: 0}
+  StrawHat: {fileID: 716016321525288292}
+  TopHat: {fileID: 3579746262624372802}
+  Beret: {fileID: 6256943139848671982}
+  CowboyHat: {fileID: 6433105622113482669}
+  ChefHat: {fileID: 1331906783293972431}
 --- !u!1 &542774529783238603
 GameObject:
   m_ObjectHideFlags: 0
