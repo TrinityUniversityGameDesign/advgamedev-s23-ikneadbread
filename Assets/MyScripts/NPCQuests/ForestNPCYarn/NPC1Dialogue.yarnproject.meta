@@ -1,0 +1,104 @@
+fileFormatVersion: 2
+guid: 7af77bf64b349114ea9c59fe1e8047b5
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 053561912b1654d80a424bb0696a74ae, type: 3}
+  sourceScripts:
+  - {fileID: 6391573757903218779, guid: 814bdfcde84b549ea9dfeb79568136e8, type: 3}
+  compileErrors:
+  - 'Parse errors exist in the following files:
+
+    Assets/MyScripts/NPCQuests/NPCYarn/QuestCat.yarn'
+  serializedDeclarations: []
+  defaultLanguage: en-US
+  languagesToSourceAssets: []
+  useAddressableAssets: 0
+  searchAllAssembliesForActions: 1
+  assembliesToSearch: []
+  ListOfFunctions:
+  - Name: GetIntroDone
+    ReturnType: -> Boolean
+    Parameters: []
+  - Name: GetIngTutorial
+    ReturnType: -> Boolean
+    Parameters: []
+  - Name: GetIngDone
+    ReturnType: -> Boolean
+    Parameters: []
+  - Name: GetKneadTutorial
+    ReturnType: -> Boolean
+    Parameters: []
+  - Name: GetKneadDone
+    ReturnType: -> Boolean
+    Parameters: []
+  - Name: GetOvenTutorial
+    ReturnType: -> Boolean
+    Parameters: []
+  - Name: GetOvenDone
+    ReturnType: -> Boolean
+    Parameters: []
+  - Name: GetDispTutorial
+    ReturnType: -> Boolean
+    Parameters: []
+  - Name: GetDispDone
+    ReturnType: -> Boolean
+    Parameters: []
+  - Name: GetStocksTutorial
+    ReturnType: -> Boolean
+    Parameters: []
+  - Name: GetStocksDone
+    ReturnType: -> Boolean
+    Parameters: []
+  - Name: Random
+    ReturnType: -> Single
+    Parameters: []
+  - Name: RandomRange
+    ReturnType: -> Single
+    Parameters:
+    - minInclusive
+    - maxInclusive
+  - Name: Dice
+    ReturnType: -> Int32
+    Parameters:
+    - sides
+  - Name: Round
+    ReturnType: -> Int32
+    Parameters:
+    - num
+  - Name: RoundPlaces
+    ReturnType: -> Single
+    Parameters:
+    - num
+    - places
+  - Name: Floor
+    ReturnType: -> Int32
+    Parameters:
+    - num
+  - Name: Ceil
+    ReturnType: -> Int32
+    Parameters:
+    - num
+  - Name: Inc
+    ReturnType: -> Int32
+    Parameters:
+    - num
+  - Name: Dec
+    ReturnType: -> Int32
+    Parameters:
+    - num
+  - Name: Decimal
+    ReturnType: -> Single
+    Parameters:
+    - num
+  - Name: Int
+    ReturnType: -> Int32
+    Parameters:
+    - num
+  - Name: CoolFunction
+    ReturnType: -> Int32
+    Parameters: []

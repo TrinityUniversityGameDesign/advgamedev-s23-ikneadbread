@@ -11,47 +11,79 @@ ScriptedImporter:
   sourceScripts:
   - {fileID: 6391573757903218779, guid: 814bdfcde84b549ea9dfeb79568136e8, type: 3}
   - {fileID: 6391573757903218779, guid: 68dc48167375fe441b3ab74eeed59c88, type: 3}
+  - {fileID: 6391573757903218779, guid: 65ab6e9031088ba43917bd795e0203cf, type: 3}
   compileErrors: []
-  serializedDeclarations: []
+  serializedDeclarations:
+  - name: $denyQuest
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in QuestCat.yarn, node MainNode
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 814bdfcde84b549ea9dfeb79568136e8, type: 3}
+  - name: $questResponse
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in QuestCat.yarn, node MainNode
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 814bdfcde84b549ea9dfeb79568136e8, type: 3}
+  - name: $cameraShift
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in QuestCat.yarn, node acceptResponse
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 814bdfcde84b549ea9dfeb79568136e8, type: 3}
+  - name: $acceptFinished
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in QuestCat.yarn, node acceptResponse
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 814bdfcde84b549ea9dfeb79568136e8, type: 3}
+  - name: $numPump
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Quest3.yarn, node Quest3
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 68dc48167375fe441b3ab74eeed59c88, type: 3}
+  - name: $quest3Resp
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Quest3.yarn, node Quest3
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 68dc48167375fe441b3ab74eeed59c88, type: 3}
+  - name: $dialogueFin
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Quest3.yarn, node Quest3Q
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 68dc48167375fe441b3ab74eeed59c88, type: 3}
+  - name: $winnerWinnerChickenDinner
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Quest3.yarn, node Quest3Complete
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 68dc48167375fe441b3ab74eeed59c88, type: 3}
   defaultLanguage: en-US
   languagesToSourceAssets: []
   useAddressableAssets: 0
   searchAllAssembliesForActions: 1
   assembliesToSearch: []
   ListOfFunctions:
-  - Name: GetIntroDone
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetIngTutorial
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetIngDone
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetKneadTutorial
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetKneadDone
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetOvenTutorial
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetOvenDone
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetDispTutorial
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetDispDone
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetStocksTutorial
-    ReturnType: -> Boolean
-    Parameters: []
-  - Name: GetStocksDone
-    ReturnType: -> Boolean
-    Parameters: []
   - Name: Random
     ReturnType: -> Single
     Parameters: []

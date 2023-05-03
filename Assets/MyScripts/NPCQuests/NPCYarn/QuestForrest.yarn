@@ -1,0 +1,39 @@
+﻿title: QuestForrest
+---
+Forest Cat: Why hello there traveler. I hope your journey is going well. 
+    -> It's going well! Thank you for asking!
+        Forest Cat: Of course! I will mention that I'm actually a little hungry right now.
+            // <<set $coins to 2>>
+            <<jump Quest2Q>>
+     -> I'm doing okay, ups and downs. Not to mention  --it's finals season.
+        Forest Cat: That's a bummer. Just a reminder, but you are highly skilled, loaded with talent, and capable of anything you put your mind to.
+        Forest Cat: Also on a side note, I'm like really hungry
+            <<jump Quest2Q>>
+===
+
+title: Quest2Q
+---
+
+Forest Cat: I've been in this forest for quite some time now.
+Forest Cat: It's been a very long time since ive gotten my <b>paws</b> on a Chocolate Croissant.
+Forest Cat: Young Traveler, it would be <b>purrfect</b> if you could bring one to me.
+ -> Accept
+    Forest Cat: Thanks so much !! I'm so excited to eat your bread
+    <<set $questResponse = true>>
+ -> Deny
+    Forest Cat: Oh, I understand. 
+    Forest Cat: Please go on with your journey.
+    Forest Cat: I be here playing with my meow-compass.
+        -> Accept
+            <<set $questResponse = true>>
+            <<set $denyQuest = true>>
+===
+
+title: Quest2Complete
+---
+EgyptCat: Wow! What a <b>pawsome</b> looking Chocolate Croissant!
+EgyptCat: I'll be sure to let <b>everynyan</b> know about your bakery.
+EgyptCat: Here's the my second favorite recipe.
+//<<set $winnerWinnerChickenDinner = true>>
+===
+
