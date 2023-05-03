@@ -1,6 +1,6 @@
 ﻿title: MainNode
 --- 
-<<if $numDinnerRoll >= 1>>
+<<if getDinnerRoll() == true>>
     Farmer: Oh meow God! Do you have a bread to give me? 
         -> Yes!! This is for you.
             <<jump finishDinnerRoll>>

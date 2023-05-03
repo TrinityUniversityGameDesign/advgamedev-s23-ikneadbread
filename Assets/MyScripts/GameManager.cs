@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     //FirstQuest =
     public static bool deniedQ;
     public static bool finishQuest1;
+    public static bool enoughRolls;
+
+
 
 
     //popup panel for what scene you are on
@@ -119,6 +122,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         DontDestroyOnLoad(this.gameObject);
         //newGame(); // Temporary until Continuing Game is added
         gameStarted.AddListener(GlobalGameStart);
@@ -165,12 +169,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(finishQuest1)
+        if(numDinnerRoll >= 1)
         {
-            numDinnerRoll -= 1;
-            Debug.Log("finished quest");
+            enoughRolls = true;
         }
-
 
         if (playerCat == null)
         {
@@ -430,6 +432,13 @@ public class GameManager : MonoBehaviour
 
 
     //for the first quest
+
+    [YarnFunction("getDinnerRoll")]
+    public static bool GetDinnerRoll()
+    {
+        return enoughRolls;
+    }
+
 
     [YarnFunction("getDeniedQuest")]
     public static bool GetDeniedQuest()
