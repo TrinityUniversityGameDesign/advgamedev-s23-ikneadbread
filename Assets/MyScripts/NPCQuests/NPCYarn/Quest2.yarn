@@ -23,7 +23,8 @@ title: finishCroissant
 --- 
 FarmerCat: I'll be sure to let <b>everynyan</b> know about your bakery.
 FarmerCat: Here's the my second favorite recipe.
-FarmerCat: For your benevolance, I have also snuck in a few coin, go buy tickets and travel the world!
+Forest Cat: Also, if you go to the house with the "dollar" sign, you can increase the stocks of your game and commit white collared crimes
+Forest Cat: That's my little tip! with that money, make sure you go to the store and travel the world!! 
     //invoke UI popup!
     <<set $pumpRec to true>>
     <<setFinishQuest2 true>>
@@ -44,20 +45,21 @@ Forest Cat: Why hello there traveler. I hope your journey is going well.
 
 title: croissantQuestQuestion
 ---
-Forest Cat: I've been in this forest for quite some time now.
+Forest Cat: Here's my tip: Within each new World, if you play the `ingredients minigame`, you get a unique ingredient
+Forest Cat: This world, you can get Cocoa Powder!
 Forest Cat: It's been a very long time since ive gotten my <b>paws</b> on a Chocolate Croissant.
 Forest Cat: Young Traveler, it would be <b>purrfect</b> if you could bring one to me.
  -> Accept
     <<jump acceptForestResponse>>
     <<set $forestQuestResponse = true>>
  -> Deny
-    Farmer: you are cringe
+    Farmer: That is dissapointing... truly
         <<set $noCroissantBread to true>>
         <<setForestDenied true>>
 ===
 
 title: acceptForestResponse
 ---
-ForestCat: Gimme the bread soon.
+ForestCat: Please give me the bread soon.
     <<set $acceptCroissantFinished to true>>
 ===
