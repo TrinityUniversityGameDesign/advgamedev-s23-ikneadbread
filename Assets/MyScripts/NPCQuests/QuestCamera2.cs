@@ -23,6 +23,10 @@ public class QuestCamera2 : MonoBehaviour
 
     public bool questResponse;
 
+    public bool getInfo()
+    {
+        return gainedPump;
+    }
 
 
     void Start()

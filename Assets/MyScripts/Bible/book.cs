@@ -12,9 +12,17 @@ public class book : MonoBehaviour
     bool rotate = false;
     [SerializeField] GameObject backButton;
     [SerializeField] GameObject forwardButton;
+    [SerializeField] GameObject popUp;
+
+    QuestCamera Bread1;
+    QuestCamera2 Bread2;
+    int pageCount = 1;
 
     private void Start()
     {
+
+        Bread1 = FindObjectOfType<QuestCamera>();
+        Bread2 = FindObjectOfType<QuestCamera2>();
         InitialState();
     }
 
@@ -31,7 +39,7 @@ public class book : MonoBehaviour
         }
         pages[0].SetAsLastSibling();
         backButton.SetActive(false);
-
+        popUp.SetActive(false);
     }
 
     public void RotateForward()
@@ -51,7 +59,7 @@ public class book : MonoBehaviour
         {
             backButton.SetActive(true); //every time we turn the page forward, the back button should be activated
         }
-        if (index == pages.Count - 1)
+        if (index == pages.Count - 1 || (index == 0 && Bread1.getInfo() == false) || (index == 1 && Bread1.getInfo() == false))
         {
             forwardButton.SetActive(false); //if the page is last then we turn off the forward button
         }
