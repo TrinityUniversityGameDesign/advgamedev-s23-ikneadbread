@@ -33,7 +33,11 @@ public class GameManager : MonoBehaviour
     public static bool enoughCroissants;
     public bool forestTalked;
 
-
+    //Third Quest
+    public static bool acceptE;
+    public static bool finishQuest3;
+    public static bool enoughPumps;
+    public bool egyptTalked;
 
 
     //popup panel for what scene you are on
@@ -240,6 +244,10 @@ public class GameManager : MonoBehaviour
         if (numCroissant >= 1)
         {
             enoughCroissants = true;
+        }
+        if (numPumpernickel >= 1)
+        {
+            enoughPumps = true;
         }
     }
 
@@ -584,6 +592,37 @@ public class GameManager : MonoBehaviour
     }
 
 
+    //for the third quest
+
+    [YarnFunction("getPumps")]
+    public static bool GetPumps()
+    {
+        return enoughPumps;
+    }
+
+    [YarnFunction("getEgyptAccept")]
+    public static bool GetEgyptAccept()
+    {
+        return acceptE;
+    }
+
+    [YarnCommand("setEgyptAccept")]
+    public static void SetEgyptAccept(bool val)
+    {
+        acceptE = val;
+    }
+
+    [YarnCommand("setFinishQuest3")]
+    public static void SetFinishQuest3(bool val)
+    {
+        finishQuest3 = val;
+    }
+
+    [YarnFunction("getFinishQuest3")]
+    public static bool GetFinishQuest3()
+    {
+        return finishQuest3;
+    }
 
 
     // Add Hats to Inventory

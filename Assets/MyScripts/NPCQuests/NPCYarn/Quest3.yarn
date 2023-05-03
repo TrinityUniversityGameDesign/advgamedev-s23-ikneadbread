@@ -1,10 +1,11 @@
 ﻿title: Quest3
 tags:
 ---
-<<if $numPump >= 1 && $quest3Resp == true>>
+<<if getPumps() == true && getEgyptAccept() == true>>
     <<jump Quest3Complete>>
-<<elseif $numPump < 1 && $quest3Resp == true>>
+<<elseif getPumps() == false && getEgyptAccept() == true>>
     EgyptCat: You got that Pumpernickel yet? My tummy's <b>grrrowling</b>!
+    <<set $dialogueFin = true>>
 <<else>>
 EgyptCat: Feline good?
     -> This heat is scorching my fur <b>furreal</b>.
@@ -25,12 +26,12 @@ EgyptCat: If you do, I’ll give you something better then <b>catnip</b>.
     EgyptCat: <b>Furreal?</b> Thank you!
     EgyptCat: You're much nicer than <b>Meowpatra</b> and <b>Julius Fleaser</b>. 
     <<set $dialogueFin = true>>
-    <<set $quest3Resp = true>>
+    <<setEgyptAccept true>>
  -> Deny
     EgyptCat: Oh, thats <b>clawful</b> but ok.
     EgyptCat: My <b>purr</b> has turned into a <b>meow</b> of sadness.
     <<set $dialogueFin = true>>
-    <<set $quest3Resp = false>>
+    <<setEgyptAccept false>>
 ===
 
 title: Quest3Complete
