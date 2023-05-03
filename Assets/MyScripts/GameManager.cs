@@ -579,8 +579,7 @@ public class GameManager : MonoBehaviour
     [YarnFunction("getPumps")]
     public static bool GetPumps()
     {
-        return true;
-        //return enoughPumps;
+        return enoughPumps;
     }
 
     [YarnFunction("getEgyptAccept")]
