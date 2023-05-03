@@ -88,6 +88,10 @@ public class UI_Inventory : MonoBehaviour
                 y++;
             }
         }
+
+        goldDisplay.GetComponent<Text>().text = GM.numGoldCoins.ToString();
+        silverDisplay.GetComponent<Text>().text = GM.numSilverCoins.ToString();
+        bronzeDisplay.GetComponent<Text>().text = GM.numBronzeCoins.ToString();
     }
 
     public void saveButtonClick()

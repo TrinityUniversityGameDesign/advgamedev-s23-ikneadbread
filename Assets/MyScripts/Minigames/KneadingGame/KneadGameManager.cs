@@ -83,7 +83,7 @@ public class KneadGameManager : MonoBehaviour
         // Roll = 2 flour, 1 yeast
         // Croissant = 2 flour, 1 yeast, 1 cocoa
         // Pumpernickel = 1 flour, 1 yeast, 1 cocoa, 1 rye
-        ingredientsNeeded = new int[,] { { 2,1,0,0 }, { 2,1,1,0 }, { 1,1,1,1 }  };
+        ingredientsNeeded = new int[,] { { 2,1,0,0 }, { 2,1,1,0 }, { 5,3,2,3 }  };
     }
 
     // Update is called once per frame
