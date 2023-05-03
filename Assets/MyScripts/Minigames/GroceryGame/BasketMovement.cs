@@ -11,6 +11,7 @@ public class BasketMovement : MonoBehaviour
     public List<Item> caughtIngrediants;
     public int ingrCount = 0;
     public GameObject bagIcon;
+    [SerializeField] private AudioSource collectSoundEffect;
 
     void Start()
     {
@@ -34,6 +35,7 @@ public class BasketMovement : MonoBehaviour
         {
             ingrCount++;
             Destroy(col.gameObject);
+            collectSoundEffect.Play();
         }
     }
 

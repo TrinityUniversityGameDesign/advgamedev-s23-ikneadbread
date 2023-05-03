@@ -15,6 +15,9 @@ public class foldBread : MonoBehaviour
     private RaycastHit _hit;
     public LayerMask hitMask;
 
+    [SerializeField] private AudioSource kneadSoundEffect;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +54,7 @@ public class foldBread : MonoBehaviour
                 catPaw1.transform.position = _hit.point;
                 catPaw2.transform.position = _hit.point + new Vector3(1f, 0f, 0f);
             }
+            kneadSoundEffect.Play();
         }
     }
 }

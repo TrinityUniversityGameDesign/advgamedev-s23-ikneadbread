@@ -42,6 +42,8 @@ public class KneadGameManager : MonoBehaviour
     public bool gameStarted = false;
     public bool gameEnded = false;
     public bool foldGame = false;
+    [SerializeField] private AudioSource winSoundEffect;
+
 
     public GameObject foldMenu;
 
@@ -178,6 +180,7 @@ public class KneadGameManager : MonoBehaviour
         int totalBronze = GM.numBronzeCoins;
         numTotalCoinsText.text = totalGold + " G" + spaces + totalSilver + " S" + spaces + totalBronze + " B";
 
+        winSoundEffect.Play();
     }
 
     public void Restart()

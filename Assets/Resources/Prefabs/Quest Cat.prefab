@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7642808177302312468}
-  m_LocalRotation: {x: -0, y: -0.81822336, z: -0, w: 0.5749005}
+  m_LocalRotation: {x: 0, y: -0.81822497, z: 0, w: 0.5748982}
   m_LocalPosition: {x: -541.93, y: 16.663599, z: 604.49}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   stopDistance: 2
   playerRadius: 5
   uiElement: {fileID: 7644038299275815560}
-  sceneName: QuestEqypt
+  sceneName: QuestEgypt
   uiButton: {fileID: 7644038298973325642}
 --- !u!1 &7642865526883740518
 GameObject:
@@ -801,6 +801,7 @@ GameObject:
   - component: {fileID: 7644038299275815562}
   - component: {fileID: 7644038299275815563}
   - component: {fileID: 7644038299275815560}
+  - component: {fileID: 610372287}
   m_Layer: 0
   m_Name: QuestCanvas
   m_TagString: Untagged
@@ -903,6 +904,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &610372287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644038299275815557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d50425492958e4bde89a5a0b1d00407c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7644476788875211692
 GameObject:
   m_ObjectHideFlags: 0
