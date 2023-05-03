@@ -9,6 +9,14 @@ using Yarn.Unity;
 public class GameManager : MonoBehaviour
 {
 
+    //for music
+    public AudioClip clickSound; // The sound to play when the mouse is clicked
+    public AudioClip backgroundMusic; // The background music to play
+    private AudioSource audioSource;
+    public float backgroundMusicVolume = 0.5f; // The volume of the background music
+
+
+
     //NPC quest + scene checking
     private string currentSceneName;
     private bool isFirstVisit = true;
@@ -23,7 +31,6 @@ public class GameManager : MonoBehaviour
     public static bool deniedF;
     public static bool finishQuest2;
     public static bool enoughCroissants;
-
     public bool forestTalked;
 
 
@@ -122,6 +129,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
+        //music things
+        audioSource = GetComponent<AudioSource>();
+        backgroundMusicStart();
+
         DontDestroyOnLoad(this.gameObject);
         //newGame(); // Temporary until Continuing Game is added
         gameStarted.AddListener(GlobalGameStart);
@@ -159,6 +170,16 @@ public class GameManager : MonoBehaviour
 
     }
 
+
+    void backgroundMusicStart()
+    {
+        // Play the background music
+        audioSource.clip = backgroundMusic;
+        audioSource.volume = backgroundMusicVolume;
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+
     void showSceneLabel()
     {
         Debug.Log("scene is here!");
@@ -168,14 +189,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(numDinnerRoll >= 1)
-        {
-            enoughRolls = true;
-        }
-        if(numCroissant >= 1)
-        {
-            enoughCroissants = true;
-        }
+
+        QuestBools();
+        musicRelated();
 
         if (playerCat == null)
         {
@@ -200,6 +216,29 @@ public class GameManager : MonoBehaviour
                 //Debug.Log(lastScene);
                 SceneManager.LoadScene("Inventory");
             }
+        }
+    }
+
+    public void musicRelated()
+    {
+        //for music
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Play the click sound
+            audioSource.PlayOneShot(clickSound);
+        }
+    }
+
+    public void QuestBools()
+    {
+        //for the npc Quests
+        if (numDinnerRoll >= 1)
+        {
+            enoughRolls = true;
+        }
+        if (numCroissant >= 1)
+        {
+            enoughCroissants = true;
         }
     }
 

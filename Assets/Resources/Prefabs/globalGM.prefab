@@ -44,6 +44,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2de63e400e2b433aaf7691fef353f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: bdea61e1e5edf42e69ff569e502d9b91, type: 3}
+  homesceneTalked: 0
+  forestTalked: 0
+  scenePanel: {fileID: 0}
+  quest3Accept: 0
+  gameStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  boost1:
+    m_PersistentCalls:
+      m_Calls: []
+  accessory1:
+    m_PersistentCalls:
+      m_Calls: []
+  accessory2:
+    m_PersistentCalls:
+      m_Calls: []
+  accessory3:
+    m_PersistentCalls:
+      m_Calls: []
+  accessory4:
+    m_PersistentCalls:
+      m_Calls: []
+  accessory5:
+    m_PersistentCalls:
+      m_Calls: []
+  playerCat: {fileID: 0}
+  numGoldCoins: 0
+  numSilverCoins: 0
+  numBronzeCoins: 0
+  boostsOwned: 
+  accessoriesOwned: 
+  ticketsOwned: 
+  numDinnerRoll: 0
+  numCroissant: 0
+  numPumpernickel: 0
+  townQuestStarted: 0
+  townQuestDone: 0
+  forestQuestStarted: 0
+  forestQuestDone: 0
+  egyptQuestStarted: 0
+  egyptQuestDone: 0
+  lastCoords: {x: 0, y: 0, z: 0}
+  planePos: {x: 0.15071453, y: -0.020006299, z: -27.397629}
+  lastScene: 0
+  currScene: 0
+  moveSpeed: 7
   onMiniGameCube:
     m_PersistentCalls:
       m_Calls:
@@ -59,3 +106,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  bootsBought: 0
