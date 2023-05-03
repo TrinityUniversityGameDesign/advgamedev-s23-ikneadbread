@@ -24,7 +24,7 @@ public class NPCQuest3 : MonoBehaviour
         vStorage = FindObjectOfType<InMemoryVariableStorage>();
 
         GM.lastCoords = player.transform.position;
-        vStorage.SetValue("$numPump", GM.numPumpernickel);
+        //vStorage.SetValue("$numPump", GM.numPumpernickel);
     }
 
     // Update is called once per frame
