@@ -21,6 +21,8 @@ title: finishDinnerRoll
 --- 
 Farmer: Thank you so meow!! 
 Farmer: Take this, it's used to be my Grandmao's favorite recipe
+Farmer: This is a Chocolate Croissant Recipe ! For your bread, I have also rewarded you GOLD coins 
+Farmer: Use these coins to buy tickets and travel the world! I am so proud of you.
     //invoke UI popup!
     <<set $croissantRec to true>>
     <<setFinishQuest1 true>>
@@ -67,8 +69,7 @@ Farmer: Within this Town, there is a ingredients store! This is where we play a 
 Farmer: After we catch our ingredients, you can go to your bakery. This is where we can knead with the ingredients we got to make our bread.
     <<set $cameraShift to false>>
 Farmer: Then, you can use the ingredients you caught and knead it to make bread! This happens at your bakery
-Farmer: I'm sure I don't need to tell you where the bakery is, it's your bakery afterall! 
+Farmer: Make sure to click on the lumps to get the smoothest dough! 
 Farmer: Finally, you can give ME the bread so I can eat it. Tasteeyyyyy!
-Farmer: I'll be waiting!
     <<set $acceptFinished to true>>
 ===

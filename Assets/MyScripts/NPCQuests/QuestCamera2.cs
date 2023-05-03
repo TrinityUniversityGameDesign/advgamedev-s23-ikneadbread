@@ -63,11 +63,6 @@ public class QuestCamera2 : MonoBehaviour
             Debug.Log("finished quest 2!");
 
 
-            Debug.Log("gold before: " + GM.numGoldCoins);
-            GM.numGoldCoins += 30;
-            Debug.Log("gold after: " + GM.numGoldCoins);
-
-
             Debug.Log("crois before: " + GM.numCroissant);
             GM.numCroissant -= 1;
             Debug.Log("crois after: " + GM.numCroissant);
