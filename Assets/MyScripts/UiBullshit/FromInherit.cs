@@ -7,9 +7,14 @@ public class FromInherit : MonoBehaviour
 {
     public GameManager GM;
 
+    private void Start()
+    {
+    }
+
     void OnTriggerEnter(Collider collide){
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
-        GM.lastCoords = GM.planePos;//set last coords to where you want to spawn in the next scene
-        SceneManager.LoadScene("CityTime");
+        GM.lastCoords = new Vector3(474.11f, 0.8f, 370);
+        GM.currScene = GameManager.travelDestination.NewHomeTown;
+        SceneManager.LoadScene("NewHomeTown");
     }
 }

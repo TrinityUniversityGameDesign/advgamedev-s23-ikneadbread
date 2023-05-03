@@ -7,16 +7,33 @@ public class TownSelect : MonoBehaviour
 {
     public GameManager GM;
 
+    public GameObject forestButton;
+    public GameObject forestLock;
+    public GameObject egyptButton;
+    public GameObject egyptLock;
+
     private void Start()
     {
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
+
+        // Apply Ticket Upgrades
+        if (GM.ticketsOwned.Substring(0, 1) == "t")
+        {
+            forestLock.SetActive(false);
+        }
+        else forestButton.SetActive(false);
+        if (GM.ticketsOwned.Substring(1, 1) == "t")
+        {
+            egyptLock.SetActive(false);
+        }
+        else egyptButton.SetActive(false);
     }
 
     public void FlyTown() {
         Vector3 homeTownPlanePos = new Vector3(474.100006f, 0.00699999928f, 371.799988f);
         GM.lastCoords = homeTownPlanePos;//set last coords to where you want to spawn in the next scene
         GM.lastScene = GM.currScene;
-        GM.currScene = GameManager.travelDestination.HomeTown;
+        GM.currScene = GameManager.travelDestination.NewHomeTown;
         SceneManager.LoadScene("NewHomeTown");
     }
 

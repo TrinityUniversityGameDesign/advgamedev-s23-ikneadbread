@@ -8,6 +8,12 @@ using UnityEngine.SceneManagement;
 
 public class UI_Inventory : MonoBehaviour
 {
+    //private Inventory inventory;
+    public GameObject goldDisplay;
+    public GameObject silverDisplay;
+    public GameObject bronzeDisplay;
+    public GameObject saveButton;
+
     private Inventory inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
@@ -22,15 +28,23 @@ public class UI_Inventory : MonoBehaviour
     private void Awake()
     {
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
+        if (GM.inventory == null)
+        {
+            GM.inventory = new Inventory();
+        }
+
         itemSlotContainer = transform.Find("ItemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
+        //SetInventory(GM.inventory);
+        RefreshInventoryItems();
     }
 
-    public void SetInventory(Inventory inventory)
+    
+    public void SetInventory() //Inventory inventory)
     {
         //GM.numGoldCoins 
-        this.inventory = inventory;
-        inventory.OnItemListChanged += Inventory_OnItemListChanged;
+        //this.inventory = inventory;
+        //GM.inventory.OnItemListChanged += Inventory_OnItemListChanged;
         RefreshInventoryItems();
     }
 
@@ -51,8 +65,10 @@ public class UI_Inventory : MonoBehaviour
         float y = 0f;
         float x_itemSlotCellSize = 135f;
         float y_itemSlotCellSize = -140f;
-        foreach (Item item in inventory.GetItemList())
+        Debug.Log("Before foreach loop in Refresh");
+        foreach (Item item in GM.inventory.GetItemList())
         {
+            Debug.Log("In RefreshInv: " + item);
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
             
@@ -73,7 +89,10 @@ public class UI_Inventory : MonoBehaviour
             }
         }
     }
-    
-    
-    
+
+    public void saveButtonClick()
+    {
+        GM.saveGame();
+        saveButton.SetActive(false);
+    }
 }

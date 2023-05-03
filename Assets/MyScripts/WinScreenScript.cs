@@ -10,7 +10,7 @@ public class WinScreenScript : MonoBehaviour
 
     public void continueGame()
     {
-        // Do something to go back to previous scene
+        SceneManager.LoadScene(GM.townToReturn());
     }
 
     public void mainMenu()

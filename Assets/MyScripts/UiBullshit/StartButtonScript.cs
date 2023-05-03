@@ -7,12 +7,27 @@ using UnityEngine.SceneManagement;
 
 public class StartButtonScript : MonoBehaviour
 {
-
     public GameManager GM;
-    public void StartGame()
+    public GameObject continueButton;
+
+    void Start()
     {
         GM = GameObject.Find("globalGM").GetComponent<GameManager>();
-        GM.lastCoords = new Vector3(3.501f, 0f, 3.504f);//set last coords to where you want to spawn in the next scene
-        SceneManager.LoadScene("InheritStore");   
+        if (PlayerPrefs.GetInt("savedGameExists") == 0)
+        {
+            continueButton.SetActive(false);
+        }
+    }
+
+    public void StartGame()
+    {
+        GM.newGame();
+        GM.lastCoords = new Vector3(474.11f, .0068f, 371.8f);//set last coords to where you want to spawn in the next scene
+        SceneManager.LoadScene("CopyBecauseImSilly");   
+    }
+
+    public void LoadGame()
+    {
+        GM.loadGame();
     }
 }
