@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
     private GameManager GM;
+    [SerializeField] private AudioSource meowEffect;
 
     [SerializeField]
     public float movementSpeed;
@@ -69,6 +71,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(0, jumpForce, 0);
             canJump = Time.time + timeBeforeNextJump;
             //anim.SetTrigger("jump");
+            meowEffect.Play();
         }
     }
 }
