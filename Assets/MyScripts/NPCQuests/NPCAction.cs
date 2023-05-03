@@ -84,7 +84,7 @@ public class NPCAction : MonoBehaviour
                 }
             }
         } else {
-            questPopUp(false);
+            questPopUp(true);
         }
     }
 
